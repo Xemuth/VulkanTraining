@@ -1,0 +1,19 @@
+uses
+	Core,
+	GLFW,
+	vulkan;
+
+library
+	vulkan-1.lib;
+
+file
+	cube.cpp,
+	VkMemoryManager.h,
+	VkMemoryManager.cpp,
+	VulkanToString.h,
+	VulkanToString.cpp,
+	CLANGx64_Vulkan.bm;
+
+mainconfig
+	"" = "";
+
