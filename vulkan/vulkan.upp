@@ -1,7 +1,7 @@
 description "\377226,42,0";
 
-uses
-	Vulkan;
+library
+	vulkan-1.lib;
 
 file
 	CODE_OF_CONDUCT.md,

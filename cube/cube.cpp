@@ -129,7 +129,7 @@ CONSOLE_APP_MAIN
 		nullptr,
 		0,
 		VK_IMAGE_TYPE_2D,
-		VK_FORMAT_R8G8B8A8_UNORM,
+		VK_FORMAT_R8G8B8A8_UNORM,	
 		{1024, 1024, 1},
 		10,
 		1,
@@ -146,6 +146,6 @@ CONSOLE_APP_MAIN
 	
 	VkMemoryAllocateFlagsInfo allocateInfo;
 	
-	vkAllocateMemory(device,  &allocateInfo, )
+	//vkAllocateMemory(device,  &allocateInfo, )
 }
 

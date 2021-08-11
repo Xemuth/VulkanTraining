@@ -1,0 +1,16 @@
+uses
+	Core,
+	vulkan;
+
+file
+	UVkApp.h,
+	UVkApp.cpp,
+	UVkPhysicalDevice.h,
+	UVkPhysicalDevice.cpp,
+	VulkanCommand.cpp,
+	VulkanToString.h,
+	VulkanToString.cpp;
+
+mainconfig
+	"" = "";
+
