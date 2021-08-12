@@ -13,13 +13,19 @@ class UVkPhysicalDevice{
 	public:
 		UVkPhysicalDevice(const VkPhysicalDevice& device);
 		
-		VkPhysicalDevice GetDevice();
+		VkPhysicalDevice GetPhysicalDevice();
 		inline operator VkPhysicalDevice(){return m_device;}
+		
+		//TODO
+		//UVkDevice CreateDevice();
 		
 		VkPhysicalDeviceMemoryProperties GetPhysicalDeviceMemoryProperties();
 		Array<VkQueueFamilyProperties> GetPhysicalDeviceQueueFamilyProperties();
 		VkPhysicalDeviceProperties GetPhysicalDeviceProperties();
 		VkPhysicalDeviceFeatures GetPhysicalDeviceFeatures();
+		Array<VkSparseImageFormatProperties> GetPhysicalDeviceSparseImageFormatProperties(const VkFormat& format, const VkImageType& type, const VkSampleCountFlagBits& samples, const VkImageUsageFlags& usage, const VkImageTiling& tiling);
+		VkImageFormatProperties GetPhysicalDeviceImageFormatProperties(const VkFormat& format, const VkImageType& type, const VkImageTiling& tiling, const VkImageUsageFlags& usage, const VkImageCreateFlags& flags);
+	
 	private:
 		VkPhysicalDevice m_device;
 };

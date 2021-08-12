@@ -3,25 +3,8 @@
 
 namespace Upp{
 UVkApp::UVkApp(){
-	VkApplicationInfo vkAppInfo{
-		VK_STRUCTURE_TYPE_APPLICATION_INFO,
-		nullptr,
-		"MyFirstVulkanApp",
-		1,
-		"UltimateVulkan",
-		1,
-		VK_API_VERSION_1_0
-	};
-	VkInstanceCreateInfo vkInstanceCreate{
-		VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO,
-		nullptr,
-		0,
-		&vkAppInfo,
-		0,
-		nullptr,
-		0,
-		nullptr
-	};
+	VkApplicationInfo vkAppInfo{VK_STRUCTURE_TYPE_APPLICATION_INFO,	nullptr, "UVulkanApp", 1, "UltimateVulkan", 1, VK_API_VERSION_1_0};
+	VkInstanceCreateInfo vkInstanceCreate{VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO, nullptr, 0, &vkAppInfo, 0, nullptr, 0, nullptr};
 	CreateInstance(vkInstanceCreate);
 }
 UVkApp::UVkApp(const VkInstanceCreateInfo& instanceCreateInfo){

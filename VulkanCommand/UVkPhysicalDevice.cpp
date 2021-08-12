@@ -9,6 +9,8 @@ VkPhysicalDeviceMemoryProperties UVkPhysicalDevice::GetPhysicalDeviceMemoryPrope
 	return pdmp;
 }
 
+VkPhysicalDevice UVkPhysicalDevice::GetPhysicalDevice(){return m_device;}
+
 Array<VkQueueFamilyProperties> UVkPhysicalDevice::GetPhysicalDeviceQueueFamilyProperties(){
 	unsigned int queueCount = 0;
 	Array<VkQueueFamilyProperties> data;
@@ -33,4 +35,25 @@ VkPhysicalDeviceFeatures UVkPhysicalDevice::GetPhysicalDeviceFeatures(){
 	vkGetPhysicalDeviceFeatures(m_device, &pdf);
 	return pdf;
 }
+
+Array<VkSparseImageFormatProperties> UVkPhysicalDevice::GetPhysicalDeviceSparseImageFormatProperties(const VkFormat& format, const VkImageType& type, const VkSampleCountFlagBits& samples, const VkImageUsageFlags& usage, const VkImageTiling& tiling){
+	unsigned int propertyCount = 0;
+	Array<VkSparseImageFormatProperties> data;
+	vkGetPhysicalDeviceSparseImageFormatProperties(m_device, format, type, samples, usage, tiling, &propertyCount, nullptr);
+	VkSparseImageFormatProperties* sifp = new VkSparseImageFormatProperties[propertyCount];
+	vkGetPhysicalDeviceSparseImageFormatProperties(m_device, format, type, samples, usage, tiling, &propertyCount, sifp);
+	for(int e = 0; e < propertyCount; e++){
+		data.Create(sifp[e]);
+	}
+	delete[] sifp;
+	return data;
+}
+
+VkImageFormatProperties UVkPhysicalDevice::GetPhysicalDeviceImageFormatProperties(const VkFormat& format, const VkImageType& type, const VkImageTiling& tiling, const VkImageUsageFlags& usage, const VkImageCreateFlags& flags){
+	VkImageFormatProperties ifp;
+	VkResult vkResult = vkGetPhysicalDeviceImageFormatProperties(m_device, format, type, tiling, usage, flags, &ifp);
+	ASSERT_(vkResult == VK_SUCCESS, "Can't retrieve VkImageFormatProperties");
+	return ifp;
+}
+
 }

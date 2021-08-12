@@ -11,7 +11,11 @@ CONSOLE_APP_MAIN
 	LOG("Devices counts : " + AsString( devices.GetCount()));
 	for(UVkPhysicalDevice& pd : devices){
 		//LOG(Upp::ToStringPhysicalDeviceMemoryProperties(pd.GetPhysicalDeviceMemoryProperties()));
-		LOG(ToStringPhysicalDeviceProperties(pd.GetPhysicalDeviceProperties()));
+		//LOG(ToStringPhysicalDeviceProperties(pd.GetPhysicalDeviceProperties()));
+		Array<VkQueueFamilyProperties> dqfp = pd.GetPhysicalDeviceQueueFamilyProperties();
+		for(VkQueueFamilyProperties& fp : dqfp){
+			LOG(Upp::ToStringQueueFamilyProperties(fp));
+		}
 		LOG("------------------------------");
 	}
 	
