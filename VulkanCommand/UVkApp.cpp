@@ -10,6 +10,7 @@ UVkApp::UVkApp(){
 UVkApp::UVkApp(const VkInstanceCreateInfo& instanceCreateInfo){
 	CreateInstance(instanceCreateInfo);
 }
+inline UVkApp::operator VkInstance(){return m_instance;}
 
 void UVkApp::CreateInstance(const VkInstanceCreateInfo& instanceCreateInfo){
 	VkResult vkResult = vkCreateInstance(&instanceCreateInfo,nullptr,&m_instance);

@@ -6,6 +6,7 @@
 #ifndef _vulkan_vulkan_h_
 #include <vulkan/vulkan.h>
 #endif
+#include "UVkDevice.h"
 
 namespace Upp{
 
@@ -14,17 +15,16 @@ class UVkPhysicalDevice{
 		UVkPhysicalDevice(const VkPhysicalDevice& device);
 		
 		VkPhysicalDevice GetPhysicalDevice();
-		inline operator VkPhysicalDevice(){return m_device;}
+		inline operator VkPhysicalDevice();
 		
-		//TODO
-		//UVkDevice CreateDevice();
+		UVkDevice CreateDevice(const VkDeviceCreateInfo& createInfo);
 		
-		VkPhysicalDeviceMemoryProperties GetPhysicalDeviceMemoryProperties();
-		Array<VkQueueFamilyProperties> GetPhysicalDeviceQueueFamilyProperties();
-		VkPhysicalDeviceProperties GetPhysicalDeviceProperties();
-		VkPhysicalDeviceFeatures GetPhysicalDeviceFeatures();
-		Array<VkSparseImageFormatProperties> GetPhysicalDeviceSparseImageFormatProperties(const VkFormat& format, const VkImageType& type, const VkSampleCountFlagBits& samples, const VkImageUsageFlags& usage, const VkImageTiling& tiling);
-		VkImageFormatProperties GetPhysicalDeviceImageFormatProperties(const VkFormat& format, const VkImageType& type, const VkImageTiling& tiling, const VkImageUsageFlags& usage, const VkImageCreateFlags& flags);
+		VkPhysicalDeviceMemoryProperties GetPhysicalDeviceMemoryProperties()const;
+		Array<VkQueueFamilyProperties> GetPhysicalDeviceQueueFamilyProperties()const;
+		VkPhysicalDeviceProperties GetPhysicalDeviceProperties()const;
+		VkPhysicalDeviceFeatures GetPhysicalDeviceFeatures()const;
+		Array<VkSparseImageFormatProperties> GetPhysicalDeviceSparseImageFormatProperties(const VkFormat& format, const VkImageType& type, const VkSampleCountFlagBits& samples, const VkImageUsageFlags& usage, const VkImageTiling& tiling)const;
+		VkImageFormatProperties GetPhysicalDeviceImageFormatProperties(const VkFormat& format, const VkImageType& type, const VkImageTiling& tiling, const VkImageUsageFlags& usage, const VkImageCreateFlags& flags)const;
 	
 	private:
 		VkPhysicalDevice m_device;

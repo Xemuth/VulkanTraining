@@ -18,7 +18,7 @@ class UVkApp{
 		Array<UVkPhysicalDevice>& GetPhysicalDevice(bool forceRetrieve = false);
 		
 		VkInstance GetInstance();
-		inline operator VkInstance(){return m_instance;}
+		inline operator VkInstance();
 	private:
 		void CreateInstance(const VkInstanceCreateInfo& instanceCreateInfo);
 		
