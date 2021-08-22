@@ -1,15 +1,24 @@
 #include <Core/Core.h>
 #include "UVkApp.h"
+#include "UVkCustomAllocator.h"
 #include "VulkanToString.h"
 using namespace Upp;
 
 CONSOLE_APP_MAIN
 {
 	StdLogSetup(LOG_COUT | LOG_FILE);
+//	UVkCustomAllocator allocator;
+//	VkAllocationCallbacks allocationCallback = allocator.GetAllocationCallbacks();
+	
+//	UVkApp app(&allocator);
 	UVkApp app;
+	//ASSERT_( UVkCustomAllocator::leakTracker.GetCount() == 0, "Many allocation have not been freed");
+	
 	Array<UVkPhysicalDevice>& devices = app.GetPhysicalDevice();
 	LOG("Devices counts : " + AsString( devices.GetCount()));
 	UVkPhysicalDevice* pdToUse = nullptr;
+	
+	
 	for(UVkPhysicalDevice& pd : devices){
 		if(Upp::String(pd.GetPhysicalDeviceProperties().deviceName).Find("NVIDIA") != -1){
 			pdToUse = &pd;
@@ -42,4 +51,6 @@ CONSOLE_APP_MAIN
 		
 		UVkDevice device = pdToUse->CreateDevice(deviceInfo);
 	}
+	
+	vkDestroyInstance(app, nullptr);
 }

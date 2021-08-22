@@ -7,21 +7,21 @@
 #include <vulkan/vulkan.h>
 #endif
 #include "UVkPhysicalDevice.h"
-
+#include "UVkCustomAllocator.h"
 namespace Upp{
 
 class UVkApp{
 	public:
-		UVkApp();
-		UVkApp(const VkInstanceCreateInfo& instanceCreateInfo);
+		UVkApp(UVkCustomAllocator* customAllocator= nullptr);
+		UVkApp(const VkInstanceCreateInfo& instanceCreateInfo, UVkCustomAllocator* customAllocator = nullptr);
 		
 		Array<UVkPhysicalDevice>& GetPhysicalDevice(bool forceRetrieve = false);
 		
 		VkInstance GetInstance();
-		inline operator VkInstance();
+		inline operator VkInstance(){return m_instance;}
 	private:
 		void CreateInstance(const VkInstanceCreateInfo& instanceCreateInfo);
-		
+		UVkCustomAllocator* m_customAllocator = nullptr;
 		VkInstance m_instance;
 		Array<UVkPhysicalDevice> m_phDevices;
 };

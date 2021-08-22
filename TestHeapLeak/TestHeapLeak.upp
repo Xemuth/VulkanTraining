@@ -1,0 +1,11 @@
+uses
+	vulkan,
+	Core;
+
+file
+	TestHeapLeak.cpp;
+
+mainconfig
+	"" = "USEMALLOC",
+	"" = "";
+

@@ -3,16 +3,19 @@ uses
 	vulkan;
 
 file
+	VulkanCommand.cpp,
 	UVkApp.h,
 	UVkApp.cpp,
 	UVkPhysicalDevice.h,
 	UVkPhysicalDevice.cpp,
+	UVkCustomAllocator.h,
+	UVkCustomAllocator.cpp,
 	UVkDevice.h,
 	UVkDevice.cpp,
-	VulkanCommand.cpp,
 	VulkanToString.h,
 	VulkanToString.cpp;
 
 mainconfig
-	"" = "";
+	"" = "USEMALLOC",
+	"" = "STD_NEWDELETE";
 

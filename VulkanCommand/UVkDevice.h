@@ -33,8 +33,8 @@ class UVkDevice{
 		UVkPhysicalDevice& GetParent();
 		inline operator VkPhysicalDevice();
 	private:
-		Array<VkDeviceMemory> mappedMemory
-		Array<VkDeviceMemory> allocatedMemory
+		Array<VkDeviceMemory> mappedMemory;
+		Array<VkDeviceMemory> allocatedMemory;
 		
 		Array<VkBuffer> createdBuffer;
 		

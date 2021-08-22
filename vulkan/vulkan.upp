@@ -1,7 +1,8 @@
 description "\377226,42,0";
 
-library
-	vulkan-1.lib;
+library(WIN32) vulkan-1.lib;
+
+library(LINUX) vulkan;
 
 file
 	CODE_OF_CONDUCT.md,
