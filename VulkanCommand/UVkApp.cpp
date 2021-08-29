@@ -2,13 +2,72 @@
 
 
 namespace Upp{
+	
+NTL_MOVEABLE(VkLayerProperties);
+	
 UVkApp::UVkApp(UVkCustomAllocator* customAllocator) : m_customAllocator(customAllocator){
+	
 	VkApplicationInfo vkAppInfo{VK_STRUCTURE_TYPE_APPLICATION_INFO,	nullptr, "UVulkanApp", 1, "UltimateVulkan", 1, VK_API_VERSION_1_0};
 	VkInstanceCreateInfo vkInstanceCreate{VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO, nullptr, 0, &vkAppInfo, 0, nullptr, 0, nullptr};
+	#ifdef _DEBUG
+		Vector<String> vl = QuerryAllValidationsLayers();
+		Vector<const char*> buffer;
+		for(String& str : vl){
+			buffer.Add(~str);
+		}
+		vkInstanceCreate.enabledLayerCount = vl.GetCount();
+		vkInstanceCreate.ppEnabledLayerNames = buffer;
+	#endif
 	CreateInstance(vkInstanceCreate);
 }
+
 UVkApp::UVkApp(const VkInstanceCreateInfo& instanceCreateInfo, UVkCustomAllocator* customAllocator) : m_customAllocator(customAllocator){
 	CreateInstance(instanceCreateInfo);
+}
+
+UVkApp::~UVkApp(){
+	if(m_customAllocator){
+		VkAllocationCallbacks allocator = m_customAllocator->GetAllocationCallbacks();
+		vkDestroyInstance(m_instance, &allocator);
+	}else{
+		vkDestroyInstance(m_instance, nullptr);
+	}
+}
+
+Vector<String> UVkApp::QuerryAllValidationsLayers(){
+	unsigned int totalVlCount = 0;
+	Vector<const char*> vl;
+	Vector<String> validationLayers;
+	
+	vkEnumerateInstanceLayerProperties(&totalVlCount, nullptr);
+	Vector<VkLayerProperties> totalVl(totalVlCount);
+	vkEnumerateInstanceLayerProperties(&totalVlCount, totalVl);
+	
+	for(const VkLayerProperties& lp : totalVl){
+		validationLayers.Add(lp.layerName);
+	}
+	return validationLayers;
+}
+
+bool UVkApp::CheckValidationLayerSupport(int vlCount, const char* vl){
+	bool layerFound = false;
+	unsigned int totalVlCount = 0;
+	vkEnumerateInstanceLayerProperties(&totalVlCount, nullptr);
+	Vector<VkLayerProperties> totalVl(totalVlCount);
+	vkEnumerateInstanceLayerProperties(&totalVlCount, totalVl);
+	for(int i = 0; i < vlCount; i++){
+		for(const VkLayerProperties& lp : totalVl){
+			if(strcmp(&vl[i], lp.layerName) == 0){
+				layerFound = true;
+				break;
+			}
+		}
+		if(layerFound == false){
+			LOG("[UVkApp][CheckValidationLayerSupport] Validation Layer '" + String(&vl[i]) +" can't be found in available layer list");
+			return false;
+		}
+	}
+	return layerFound;
 }
 
 void UVkApp::CreateInstance(const VkInstanceCreateInfo& instanceCreateInfo){

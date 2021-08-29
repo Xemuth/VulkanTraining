@@ -14,12 +14,15 @@ class UVkApp{
 	public:
 		UVkApp(UVkCustomAllocator* customAllocator= nullptr);
 		UVkApp(const VkInstanceCreateInfo& instanceCreateInfo, UVkCustomAllocator* customAllocator = nullptr);
+		~UVkApp();
 		
 		Array<UVkPhysicalDevice>& GetPhysicalDevice(bool forceRetrieve = false);
 		
 		VkInstance GetInstance();
 		inline operator VkInstance(){return m_instance;}
 	private:
+		bool CheckValidationLayerSupport(int vlCount, const char* vl);
+		Vector<String> QuerryAllValidationsLayers();
 		void CreateInstance(const VkInstanceCreateInfo& instanceCreateInfo);
 		UVkCustomAllocator* m_customAllocator = nullptr;
 		VkInstance m_instance;

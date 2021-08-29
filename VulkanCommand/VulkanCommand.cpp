@@ -51,6 +51,4 @@ CONSOLE_APP_MAIN
 		
 		UVkDevice device = pdToUse->CreateDevice(deviceInfo);
 	}
-	
-	vkDestroyInstance(app, nullptr);
 }
