@@ -21,7 +21,7 @@ class UVkApp{
 		VkInstance GetInstance();
 		inline operator VkInstance(){return m_instance;}
 	private:
-		bool CheckValidationLayerSupport(int vlCount, const char* vl);
+		bool CheckValidationLayerSupport(int vlCount, const char* const* vl);
 		Vector<String> QuerryAllValidationsLayers();
 		void CreateInstance(const VkInstanceCreateInfo& instanceCreateInfo);
 		UVkCustomAllocator* m_customAllocator = nullptr;
