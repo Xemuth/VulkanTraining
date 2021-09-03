@@ -82,10 +82,10 @@ void  UVkCustomAllocator::DefaultFree(void* pMemory){
 	LOG("[UVkCustomAllocator][DefaultFree] WARNING: Free memory address 0x" + Upp::Format64Hex ((unsigned long long)pMemory));
 }
 void  UVkCustomAllocator::DefaultInternalAllocationNotification(size_t size, VkInternalAllocationType allocationType, VkSystemAllocationScope allocationScope){
-	LOG("[UVkCustomAllocator][DefaultInternalAllocationNotification] Internal allocation 0x" + Upp::Format64Hex (size) + "bytes");
+	LOG("[UVkCustomAllocator][DefaultInternalAllocationNotification] Internal allocation 0x" + Upp::Format64Hex (size) + " bytes");
 }
 void  UVkCustomAllocator::DefaultInternalFreeNotification(size_t size, VkInternalAllocationType allocationType, VkSystemAllocationScope allocationScope){
-	LOG("[UVkCustomAllocator][DefaultInternalFreeNotification] Internal allocation 0x" + Upp::Format64Hex (size) + "bytes");
+	LOG("[UVkCustomAllocator][DefaultInternalFreeNotification] Internal allocation 0x" + Upp::Format64Hex (size) + " bytes");
 }
 	
 }
