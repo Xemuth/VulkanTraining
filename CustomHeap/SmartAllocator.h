@@ -12,12 +12,12 @@ class SmartAllocator{
 		
 		unsigned int GetCurrentHeapSize()const;
 		
-		void* _malloc(unsigned int size);
+		void* SAMalloc(unsigned int size, unsigned short* allocID = nullptr);
 	//	void* _realloc(void* ptr, unsigned int size);
 		
 	//	void* _aligned_malloc(unsigned int size, unsigned int alignement);
 	//	void* _aligned_realloc(void* ptr, unsigned int size, unsigned int alignement);
-		void  _free(void* ptr);
+		void  SAFree(void* ptr);
 		
 	private:
 		SmartAllocator(unsigned int heapSize, unsigned int alignement);

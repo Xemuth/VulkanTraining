@@ -84,6 +84,10 @@ void UVkApp::CreateInstance(const VkInstanceCreateInfo& instanceCreateInfo){
 		vkResult = vkCreateInstance(&instanceCreateInfo, nullptr, &m_instance);
 	}
 	ASSERT_(vkResult == VK_SUCCESS, "Impossible to initialize Vulkan");
+	#ifdef _DEBUG
+		debugFunc = (PFN_vkCreateDebugUtilsMessengerEXT) vkGetInstanceProcAddr(m_instance, "vkCreateDebugUtilsMEssengerEXT");
+		ASSERT_(debugFunc,"Can't retrieve vkCreateDebugUtilsMEssengerEXT function, lookup your validation layers");
+	#endif
 }
 Array<UVkPhysicalDevice>& UVkApp::GetPhysicalDevice(bool forceRetrieve){
 	if(forceRetrieve || m_phDevices.GetCount() == 0){

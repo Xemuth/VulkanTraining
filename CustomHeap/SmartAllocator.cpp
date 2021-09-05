@@ -22,7 +22,7 @@ namespace Upp{
 		return m_heapSize;
 	}
 	
-	void* SmartAllocator::_malloc(unsigned int size){
+	void* SmartAllocator::SAMalloc(unsigned int size, unsigned short* allocID){
 		BlockFound block = FindFreeBlock(size);
 		if(block.current){
 			char* ptr = (char*)block.current;
@@ -31,15 +31,16 @@ namespace Upp{
 			block.current->size = numberBlockNeeded;
 			block.current->allocId = GenerateUniqueID();
 			block.current->used = 0x01;
-			LOG("[SmartAllocator][_malloc] New allocation of " + AsString(numberBlockNeeded) + " blocks (" + AsString(numberBlockNeeded * (sizeof(MBlock) + m_blockSize)) + " bytes) on the heap with ID " + AsString(block.current->allocId) );
+			if(allocID) *allocID = block.current->allocId;
+			LOG("[SmartAllocator][SAMalloc] New allocation of " + AsString(numberBlockNeeded) + " blocks (" + AsString(numberBlockNeeded * (sizeof(MBlock) + m_blockSize)) + " bytes) on the heap with ID " + AsString(block.current->allocId) );
 			return ptr + sizeof(MBlock);
 		}else{
-			LOG("[SmartAllocator][_malloc] Can't allocate " + AsString(size) + " bytes on current heap");
+			LOG("[SmartAllocator][SAMalloc] Can't allocate " + AsString(size) + " bytes on current heap");
 		}
 		return nullptr;
 	}
 	
-	void SmartAllocator::_free(void* ptr){
+	void SmartAllocator::SAFree(void* ptr){
 		if(ptr && ptr >= m_begin && ptr < m_end){
 			MBlock* block = (MBlock*)((char*)ptr -sizeof(MBlock));
 			char* pBlock = (char*)ptr -sizeof(MBlock);
@@ -52,7 +53,7 @@ namespace Upp{
 				block->used = 0x00;
 				memset(pBlock + sizeof(MBlock), 0, m_blockSize);
 			}
-			LOG("[SmartAllocator][_free] Freed allocation ID " +  AsString(allocationId) +"("+ AsString(numberToClean * (sizeof(MBlock) + m_blockSize)) + " bytes)");
+			LOG("[SmartAllocator][SAFree] Freed allocation ID " +  AsString(allocationId) +"("+ AsString(numberToClean * (sizeof(MBlock) + m_blockSize)) + " bytes)");
 		}
 	}
 	

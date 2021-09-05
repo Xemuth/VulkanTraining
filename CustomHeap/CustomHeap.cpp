@@ -14,19 +14,19 @@ CONSOLE_APP_MAIN
 	
 	SmartAllocator& sa = SmartAllocator::GetAllocator(16, 8);
 	
-	T2* one = (T2*) sa._malloc(sizeof(T2));
+	T2* one = (T2*) sa.SAMalloc(sizeof(T2));
 	
-	T2* two = (T2*) sa._malloc(sizeof(T2));
+	T2* two = (T2*) sa.SAMalloc(sizeof(T2));
 	
-	T2* three = (T2*) sa._malloc(sizeof(T2));
+	T2* three = (T2*) sa.SAMalloc(sizeof(T2));
 	
-	sa._free(three); //Should do nothing
-	sa._free(two);
-	three = (T2*) sa._malloc(sizeof(T2));
-	sa._free(one);
-	T2* four = (T2*) sa._malloc(sizeof(T2));
-	sa._free(four);
-	sa._free(three);
+	sa.SAFree(three); //Should do nothing
+	sa.SAFree(two);
+	three = (T2*) sa.SAMalloc(sizeof(T2));
+	sa.SAFree(one);
+	T2* four = (T2*) sa.SAMalloc(sizeof(T2));
+	sa.SAFree(four);
+	sa.SAFree(three);
 	
 	SmartAllocator::DestroyAllocator();
 }

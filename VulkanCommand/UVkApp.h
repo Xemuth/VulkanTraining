@@ -27,6 +27,9 @@ class UVkApp{
 		UVkCustomAllocator* m_customAllocator = nullptr;
 		VkInstance m_instance;
 		Array<UVkPhysicalDevice> m_phDevices;
+		#ifdef _DEBUG
+			PFN_vkCreateDebugUtilsMessengerEXT debugFunc;
+		#endif
 };
 
 }
