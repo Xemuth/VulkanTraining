@@ -2,10 +2,11 @@ uses
 	Core;
 
 file
-	SmartAllocator.cpp,
 	SmartAllocator.h,
-	CustomHeap.cpp;
+	CustomHeap.cpp,
+	SmartAllocator.cpp;
 
 mainconfig
-	"" = "STD_NEWDELETE";
+	"" = "STD_NEWDELETE",
+	"" = "";
 
