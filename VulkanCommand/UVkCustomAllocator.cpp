@@ -46,13 +46,18 @@ void  VKAPI_CALL UVkCustomAllocator::SInternalFreeNotification(void* pUserData, 
 
 void* UVkCustomAllocator::DefaultAllocation(size_t size, size_t alignement, VkSystemAllocationScope allocationScope){
 	void* ptr;
-	if(alignement < size){
-		ptr = malloc(size);
-		ASSERT_(ptr, "Error during malloc for size of " +  AsString(size));
-	}else{
-		int rc = posix_memalign(&ptr, alignement, size);
-		ASSERT_(rc == 0,"Error code : "+ AsString(rc) +" during posix_memalign for size of " +  AsString(size) + " and alignement of " + AsString(alignement));
-	}
+	#if defined(LINUX)
+		if(alignement < size){
+			ptr = malloc(size);
+			ASSERT_(ptr, "Error during malloc for size of " +  AsString(size));
+		}else{
+			int rc = posix_memalign(&ptr, alignement, size);
+			ASSERT_(rc == 0,"Error code : "+ AsString(rc) +" during posix_memalign for size of " +  AsString(size) + " and alignement of " + AsString(alignement));
+		}
+	#elif defined(WIN32)
+		ptr = _aligned_malloc(size, alignement);
+		ASSERT_(ptr,"Error during _aligned_malloc for size of " +  AsString(size) + " and alignement of " + AsString(alignement));
+	#endif
 	LOG("[UVkCustomAllocator][DefaultAllocation] Allocation of 0x" + Upp::Format64Hex ((unsigned long long)ptr) + " for a size of " + AsString(size) + " bytes and alignment of " + AsString(alignement));
     leakTracker.Add((unsigned long long)ptr);
     return ptr;
@@ -77,7 +82,11 @@ void  UVkCustomAllocator::DefaultFree(void* pMemory){
 			}
 		}
 		ASSERT_(find, "DefaultFree is freeing a never allocated memory address 0x" + Upp::Format64Hex ((unsigned long long)pMemory));
-		return free(pMemory);
+		#if defined(LINUX)
+			return free(pMemory);
+		#elif defined(WIN32)
+			return _aligned_free(pMemory);
+		#endif
 	}
 	LOG("[UVkCustomAllocator][DefaultFree] WARNING: Free memory address 0x" + Upp::Format64Hex ((unsigned long long)pMemory));
 }

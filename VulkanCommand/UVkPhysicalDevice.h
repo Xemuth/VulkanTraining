@@ -15,10 +15,10 @@ class UVkPhysicalDevice{
 		UVkPhysicalDevice(const VkPhysicalDevice& device);
 		
 		VkPhysicalDevice GetPhysicalDevice();
+		VkPhysicalDevice GetPhysicalDevice()const;
 		inline operator VkPhysicalDevice();
-		
-		UVkDevice CreateDevice(const VkDeviceCreateInfo& createInfo);
-		
+		inline operator VkPhysicalDevice()const;
+			
 		VkPhysicalDeviceMemoryProperties GetPhysicalDeviceMemoryProperties()const;
 		Array<VkQueueFamilyProperties> GetPhysicalDeviceQueueFamilyProperties()const;
 		VkPhysicalDeviceProperties GetPhysicalDeviceProperties()const;

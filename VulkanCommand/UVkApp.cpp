@@ -84,10 +84,6 @@ void UVkApp::CreateInstance(const VkInstanceCreateInfo& instanceCreateInfo){
 		vkResult = vkCreateInstance(&instanceCreateInfo, nullptr, &m_instance);
 	}
 	ASSERT_(vkResult == VK_SUCCESS, "Impossible to initialize Vulkan");
-	#ifdef _DEBUG
-		debugFunc = (PFN_vkCreateDebugUtilsMessengerEXT) vkGetInstanceProcAddr(m_instance, "vkCreateDebugUtilsMEssengerEXT");
-		ASSERT_(debugFunc,"Can't retrieve vkCreateDebugUtilsMEssengerEXT function, lookup your validation layers");
-	#endif
 }
 Array<UVkPhysicalDevice>& UVkApp::GetPhysicalDevice(bool forceRetrieve){
 	if(forceRetrieve || m_phDevices.GetCount() == 0){
@@ -106,4 +102,13 @@ Array<UVkPhysicalDevice>& UVkApp::GetPhysicalDevice(bool forceRetrieve){
 	return m_phDevices;
 }
 VkInstance UVkApp::GetInstance(){return m_instance;}
+
+UVkDevice UVkApp::CreateDevice(const UVkPhysicalDevice& physicalDevice, const VkDeviceCreateInfo& createInfo){
+	//custom allocator must be implemented later
+	VkDevice dev;
+	VkResult vkResult = vkCreateDevice(physicalDevice.GetPhysicalDevice(), &createInfo, nullptr, &dev);
+	ASSERT_(vkResult == VK_SUCCESS, "Can't create VkDevice");
+	return UVkDevice(dev, physicalDevice);
+}
+
 }

@@ -16,6 +16,8 @@ class UVkApp{
 		UVkApp(const VkInstanceCreateInfo& instanceCreateInfo, UVkCustomAllocator* customAllocator = nullptr);
 		~UVkApp();
 		
+		UVkDevice CreateDevice(const UVkPhysicalDevice& physicalDevice, const VkDeviceCreateInfo& createInfo);
+		
 		Array<UVkPhysicalDevice>& GetPhysicalDevice(bool forceRetrieve = false);
 		
 		VkInstance GetInstance();

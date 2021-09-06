@@ -49,6 +49,6 @@ CONSOLE_APP_MAIN
 		VkPhysicalDeviceFeatures pdf = pdToUse->GetPhysicalDeviceFeatures();
 		deviceInfo.pEnabledFeatures = &pdf;
 		
-		UVkDevice device = pdToUse->CreateDevice(deviceInfo);
+		UVkDevice device = app.CreateDevice(*pdToUse, deviceInfo);
 	}
 }

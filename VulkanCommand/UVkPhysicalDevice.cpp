@@ -11,15 +11,11 @@ VkPhysicalDeviceMemoryProperties UVkPhysicalDevice::GetPhysicalDeviceMemoryPrope
 
 
 inline UVkPhysicalDevice::operator VkPhysicalDevice(){return m_device;}
+inline UVkPhysicalDevice::operator VkPhysicalDevice()const{return m_device;}
+VkPhysicalDevice UVkPhysicalDevice::GetPhysicalDevice()const{return m_device;}
 VkPhysicalDevice UVkPhysicalDevice::GetPhysicalDevice(){return m_device;}
 
-UVkDevice UVkPhysicalDevice::CreateDevice(const VkDeviceCreateInfo& createInfo){
-	//custom allocator must be implemented later
-	VkDevice dev;
-	VkResult vkResult = vkCreateDevice(m_device, &createInfo, nullptr, &dev);
-	ASSERT_(vkResult == VK_SUCCESS, "Can't create VkDevice");
-	return UVkDevice(dev, *this);
-}
+
 
 Array<VkQueueFamilyProperties> UVkPhysicalDevice::GetPhysicalDeviceQueueFamilyProperties()const{
 	unsigned int queueCount = 0;
