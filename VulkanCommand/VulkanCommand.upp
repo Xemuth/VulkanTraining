@@ -10,8 +10,6 @@ file
 	UVkPhysicalDevice.cpp,
 	UVkCustomAllocator.h,
 	UVkCustomAllocator.cpp,
-	UVkDevice.h,
-	UVkDevice.cpp,
 	VulkanToString.h,
 	VulkanToString.cpp;
 

@@ -1,0 +1,12 @@
+uses
+	Core,
+	vulkan;
+
+file
+	UVKengine.h,
+	UVKengine.cpp,
+	main.cpp;
+
+mainconfig
+	"" = "";
+

@@ -102,13 +102,54 @@ Array<UVkPhysicalDevice>& UVkApp::GetPhysicalDevice(bool forceRetrieve){
 	return m_phDevices;
 }
 VkInstance UVkApp::GetInstance(){return m_instance;}
-
+/*
 UVkDevice UVkApp::CreateDevice(const UVkPhysicalDevice& physicalDevice, const VkDeviceCreateInfo& createInfo){
 	//custom allocator must be implemented later
 	VkDevice dev;
 	VkResult vkResult = vkCreateDevice(physicalDevice.GetPhysicalDevice(), &createInfo, nullptr, &dev);
 	ASSERT_(vkResult == VK_SUCCESS, "Can't create VkDevice");
 	return UVkDevice(dev, physicalDevice);
+}
+*/
+
+
+VkDevice UVkApp::CreateDevice(const UVkPhysicalDevice& physicalDevice, Array<VkExtensionProperties>& extenssions, Vector<String>& validationLayers, Array<VkDeviceQueueCreateInfo>& allQueues ){
+	VkDevice dev;
+
+	VkDeviceCreateInfo deviceInfo{};
+	deviceInfo.sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO;
+	deviceInfo.pNext = nullptr;
+	deviceInfo.flags = 0;
+	
+	//Queue
+	Buffer<VkDeviceQueueCreateInfo> queues(sizeof(VkDeviceQueueCreateInfo) * allQueues.GetCount());
+	for(int i = 0; i < allQueues.GetCount(); i++)
+		queues[i] = allQueues[i];
+	deviceInfo.queueCreateInfoCount = allQueues.GetCount();
+	deviceInfo.pQueueCreateInfos = queues;
+	
+	//Layers
+	Vector<const char*> layers;
+	for(String& str : validationLayers){
+		layers.Add(~str);
+	}
+	deviceInfo.enabledLayerCount = layers.GetCount();
+	deviceInfo.ppEnabledLayerNames = layers;
+	
+	//Extensions
+	Vector<const char*> exts;
+	for(const VkExtensionProperties& extenssion : extenssions)
+		exts.Add(extenssion.extensionName);
+	deviceInfo.enabledExtensionCount = exts.GetCount();
+	deviceInfo.ppEnabledExtensionNames = exts;
+	
+	//Features
+	VkPhysicalDeviceFeatures pdf = physicalDevice.GetPhysicalDeviceFeatures();
+	deviceInfo.pEnabledFeatures = &pdf;
+	
+	//Creation
+	VkResult vkResult = vkCreateDevice(physicalDevice.GetPhysicalDevice(), &deviceInfo, nullptr, &dev);
+	ASSERT_(vkResult == VK_SUCCESS, "Can't create VkDevice");
 }
 
 }
