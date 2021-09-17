@@ -28,6 +28,13 @@ namespace Upp{
 			Upp::Vector<Upp::String> PickAllValidationLayers(const Upp::Vector<Upp::String>& layers = {});
 			Upp::Vector<Upp::String> PickAllExtensions(const Upp::Vector<Upp::String>& extensions = {}, bool trace = false);
 			
+			void ClearInstance(VkInstance& instance);
+			void ClearDebugMessenger(VkInstance& instance, VkDebugUtilsMessengerEXT& debugMessenger);
+			
+			VkResult CreateInstance(VkInstance& instance, const Upp::Vector<Upp::String>& layers = {}, const Upp::Vector<Upp::String>& extensions = {});
+			VkResult CreateMessenger(VkInstance& instance,VkDebugUtilsMessengerEXT& debugMessenger);
+			VkResult PickPhysicalDevice(VkInstance& instance, VkPhysicalDevice& physicalDevice);
+			VkResult CreateDevice(VkInstance& instance, VkPhysicalDevice& physicalDevice, VkDevice& device);
 			
 			bool m_created = false;
 			Upp::String m_windowName;
@@ -37,8 +44,10 @@ namespace Upp{
 			Upp::Vector<Upp::String> m_validationLayers;
 			
 			//Vulkan
-			VkDebugUtilsMessengerEXT m_debugMessenger = 0;
 			VkInstance m_instance = 0;
+			VkDebugUtilsMessengerEXT m_debugMessenger = 0;
+			VkPhysicalDevice m_physicalDevice = 0;
+			VkDevice m_device = 0;
 	};
 	
 }
