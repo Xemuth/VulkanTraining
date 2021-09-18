@@ -4,31 +4,44 @@
 
 namespace Upp{
 	
+NTL_MOVEABLE(VkLayerProperties);
+NTL_MOVEABLE(VkExtensionProperties);
+NTL_MOVEABLE(VkQueueFamilyProperties);
+
+static dword messageSeverityInfoLog = VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT | VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT | VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT | VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT;
+static dword messageTypeInfoLog = VK_DEBUG_UTILS_MESSAGE_TYPE_PERFORMANCE_BIT_EXT | VK_DEBUG_UTILS_MESSAGE_TYPE_VALIDATION_BIT_EXT | VK_DEBUG_UTILS_MESSAGE_TYPE_GENERAL_BIT_EXT;
+
+void ConfigureVulkanDebugMessengerDefault(){
+	messageSeverityInfoLog = VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT | VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT | VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT | VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT;
+	messageTypeInfoLog = VK_DEBUG_UTILS_MESSAGE_TYPE_PERFORMANCE_BIT_EXT | VK_DEBUG_UTILS_MESSAGE_TYPE_VALIDATION_BIT_EXT | VK_DEBUG_UTILS_MESSAGE_TYPE_GENERAL_BIT_EXT;
+}
+
+
+void ConfigureVulkanDebugMessenger(dword severityFilter,
+								   dword typeFilter){
+	messageSeverityInfoLog = severityFilter;
+	messageTypeInfoLog = typeFilter;
+}
+
 static VKAPI_ATTR VkBool32 VKAPI_CALL debugCallback(VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity, VkDebugUtilsMessageTypeFlagsEXT messageType, const VkDebugUtilsMessengerCallbackDataEXT* pCallbackData, void* pUserData){
 	Upp::String severity = "";
-	if((messageSeverity & VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT) == VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT){
-		severity += "[ERROR]";
+	if(messageSeverity & messageSeverityInfoLog && messageType & messageTypeInfoLog){
+		if((messageSeverity & VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT) == VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT)
+			severity += "[ERROR]";
+		if((messageSeverity & VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT) == VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT)
+			severity += "[WARNING]";
+		if((messageSeverity & VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT) == VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT)
+			severity += "[INFO]";
+		if((messageSeverity & VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT) == VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT)
+			severity += "[VERBOSE]";
+		if((messageType & VK_DEBUG_UTILS_MESSAGE_TYPE_PERFORMANCE_BIT_EXT) == VK_DEBUG_UTILS_MESSAGE_TYPE_PERFORMANCE_BIT_EXT)
+			severity += "[PERFORMANCE]";
+		if((messageType & VK_DEBUG_UTILS_MESSAGE_TYPE_VALIDATION_BIT_EXT) == VK_DEBUG_UTILS_MESSAGE_TYPE_VALIDATION_BIT_EXT)
+			severity += "[VALIDATION]";
+		if((messageType & VK_DEBUG_UTILS_MESSAGE_TYPE_GENERAL_BIT_EXT) == VK_DEBUG_UTILS_MESSAGE_TYPE_GENERAL_BIT_EXT)
+			severity += "[GENERAL]";
+		LLOG(severity + Upp::String(pCallbackData->pMessage));
 	}
-	if((messageSeverity & VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT) == VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT){
-		severity += "[WARNING]";
-	}
-	if((messageSeverity & VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT) == VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT){
-		severity += "[INFO]";
-	}
-	if((messageSeverity & VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT) == VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT){
-		severity += "[VERBOSE]";
-	}
-	
-	if((messageType & VK_DEBUG_UTILS_MESSAGE_TYPE_PERFORMANCE_BIT_EXT) == VK_DEBUG_UTILS_MESSAGE_TYPE_PERFORMANCE_BIT_EXT){
-		severity += "[PERFORMANCE]";
-	}
-	if((messageType & VK_DEBUG_UTILS_MESSAGE_TYPE_VALIDATION_BIT_EXT) == VK_DEBUG_UTILS_MESSAGE_TYPE_VALIDATION_BIT_EXT){
-		severity += "[VALIDATION]";
-	}
-	if((messageType & VK_DEBUG_UTILS_MESSAGE_TYPE_GENERAL_BIT_EXT) == VK_DEBUG_UTILS_MESSAGE_TYPE_GENERAL_BIT_EXT){
-		severity += "[GENERAL]";
-	}
-	LOG(severity + Upp::String(pCallbackData->pMessage));
 	return VK_FALSE;
 }
 
@@ -48,15 +61,51 @@ void DestroyDebugUtilsMEssengerEXT(VkInstance app, VkDebugUtilsMessengerEXT debu
 	}
 }
 
+int GetQueuePosition(VkPhysicalDevice& physicalDevice, dword queue){
+	unsigned int queueFamilyCount = 0;
+	vkGetPhysicalDeviceQueueFamilyProperties(physicalDevice, &queueFamilyCount, nullptr);
+	Vector<VkQueueFamilyProperties> queueFamilies(queueFamilyCount);
+	vkGetPhysicalDeviceQueueFamilyProperties(physicalDevice, &queueFamilyCount, queueFamilies);
+	for(int i = 0; i < queueFamilyCount; i++){
+		if (queueFamilies[i].queueFlags & queue){
+			return i;
+		}
+	}
+	return -1;
+}
 
-NTL_MOVEABLE(VkLayerProperties);
-NTL_MOVEABLE(VkExtensionProperties);
+unsigned int QueryScore(VkPhysicalDevice& physicalDevice){
+	VkPhysicalDeviceProperties deviceProperties;
+    VkPhysicalDeviceFeatures deviceFeatures;
+    vkGetPhysicalDeviceProperties(physicalDevice, &deviceProperties);
+    vkGetPhysicalDeviceFeatures(physicalDevice, &deviceFeatures);
+	unsigned int score = 0;
+    // Discrete GPUs have a significant performance advantage
+    if (deviceProperties.deviceType == VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU) {
+        score += 1000;
+    }
+    // Maximum possible size of textures affects graphics quality
+    score += deviceProperties.limits.maxImageDimension2D;
+    // Application can't function without geometry shaders
+    if (!deviceFeatures.geometryShader) {
+        return 0;
+    }
+    if (GetQueuePosition(physicalDevice, VK_QUEUE_GRAPHICS_BIT) == -1){
+        return 0;
+	}
+    return score;
+}
+
+
 	UVKapp::UVKapp() : m_windowName("UVKApp"){}
 	UVKapp::UVKapp(const Upp::String& windowName) : m_windowName(windowName){}
 	UVKapp::~UVKapp(){
 		if(m_created){
 			if(m_debugMessenger){
 				ClearDebugMessenger(m_instance, m_debugMessenger);
+			}
+			if(m_device != VK_NULL_HANDLE){
+				ClearDevice(m_device);
 			}
 			ClearInstance(m_instance);
 		}
@@ -70,22 +119,22 @@ NTL_MOVEABLE(VkExtensionProperties);
 				if(trace){
 					result = CreateMessenger(m_instance, m_debugMessenger);
 					if(result != VK_SUCCESS){
-						m_debugMessenger = 0;
+						m_debugMessenger = VK_NULL_HANDLE;
 						LLOG("UVKApp::Create][WARNING] Messenger creation have failled");
 					}
 				}
 				result = PickPhysicalDevice(m_instance, m_physicalDevice);
 				if(result == VK_SUCCESS){
-					result = CreateDevice(m_instance, m_physicalDevice, m_device);
+					result = CreateDevice(m_physicalDevice, m_device);
 					if(result == VK_SUCCESS){
 						m_created = true;
 						return m_created;
 					}else{
-						m_device = 0;
+						m_device = VK_NULL_HANDLE;
 						LLOG("[UVKapp::Create][ERROR] Error during VkDevice creation");
 					}
 				}else{
-					m_physicalDevice = 0;
+					m_physicalDevice = VK_NULL_HANDLE;
 					LLOG("[UVKapp::Create][ERROR] No compatible physical device found");
 				}
 				ClearInstance(m_instance);
@@ -99,15 +148,22 @@ NTL_MOVEABLE(VkExtensionProperties);
 	}
 	
 	void UVKapp::ClearInstance(VkInstance& instance){
-		ASSERT_(instance != 0, "Clear instance handler is null (equal to 0)");
+		ASSERT_(instance != VK_NULL_HANDLE, "Clear instance handler is null (equal to VK_NULL_HANDLE)");
 		vkDestroyInstance(instance,nullptr);
 		LLOG("[UVKapp::ClearInstance][INFO] Vulkan instance has been cleared (handler=" + AsString((int*)instance) + ")");
 	}
+	
 	void UVKapp::ClearDebugMessenger(VkInstance& instance, VkDebugUtilsMessengerEXT& debugMessenger){
-		ASSERT_(instance != 0, "Instance handler is null (equal to 0)");
-		ASSERT_(debugMessenger != 0, "Debug Utils Messenger handler is null (equal to 0)");
+		ASSERT_(instance != VK_NULL_HANDLE, "Instance handler is null (equal to VK_NULL_HANDLE)");
+		ASSERT_(debugMessenger != VK_NULL_HANDLE, "Debug Utils Messenger handler is null (equal to VK_NULL_HANDLE)");
 		DestroyDebugUtilsMEssengerEXT(instance, debugMessenger, nullptr);
 		LLOG("[UVKapp::ClearDebugMessenger][INFO] Debug Utils Messenger have been cleared (handler=" + AsString((int*)m_debugMessenger) +")");
+	}
+	
+	void UVKapp::ClearDevice(VkDevice& device){
+		ASSERT_(device != VK_NULL_HANDLE, " Device handler is null (equal to VK_NULL_HANDLE)");
+		vkDestroyDevice(m_device, nullptr);
+		LLOG("[UVKapp::ClearDevice][INFO] Device successfully deleted (handle=" + AsString(device) + ")");
 	}
 	
 	VkResult UVKapp::CreateInstance(VkInstance& instance, const Upp::Vector<Upp::String>& layers, const Upp::Vector<Upp::String>& extensions){
@@ -123,7 +179,7 @@ NTL_MOVEABLE(VkExtensionProperties);
 		appInfo.applicationVersion = UVK_ENGINE_VERSION_0_1;
 		appInfo.pEngineName = UVK_ENGINE_NAME;
 		appInfo.engineVersion = UVK_ENGINE_VERSION_0_1;
-		appInfo.apiVersion = UVK_ENGINE_VERSION_0_1;
+		appInfo.apiVersion = VK_API_VERSION_1_2;
 		createInfo.pApplicationInfo = &appInfo;
 		//	Code to fill layers here
 		createInfo.enabledLayerCount = 0;
@@ -162,20 +218,87 @@ NTL_MOVEABLE(VkExtensionProperties);
 	}
 	
 	VkResult UVKapp::PickPhysicalDevice(VkInstance& instance, VkPhysicalDevice& physicalDevice){
-		return VK_SUCCESS; //TEMPORARY RETURN VALUE
-	}
-	VkResult UVKapp::CreateDevice(VkInstance& instance, VkPhysicalDevice& physicalDevice, VkDevice& device){
-		return VK_SUCCESS; //TEMPORARY RETURN VALUE
+		unsigned int physicalDeviceNumber = 0;
+		VkResult result = vkEnumeratePhysicalDevices(instance, &physicalDeviceNumber, nullptr);
+		if(result == VK_SUCCESS){
+			if(physicalDeviceNumber > 0){
+				Vector<VkPhysicalDevice> physicalDevices(physicalDeviceNumber);
+				result = vkEnumeratePhysicalDevices(instance, &physicalDeviceNumber, physicalDevices);
+				int scoreMax = 0;
+				int position = -1;
+				for(int i = 0; i < physicalDeviceNumber; i++){
+					int score = QueryScore(physicalDevices[i]);
+					if(score > scoreMax){
+						scoreMax = score;
+						position = i;
+					}
+				}
+				if(position != -1){
+					physicalDevice = clone(physicalDevices[position]);
+					VkPhysicalDeviceProperties deviceProperties;
+					vkGetPhysicalDeviceProperties(physicalDevice, &deviceProperties);
+					LLOG("[UVKapp::PickPhysicalDevice][INFO] Physical device chosen is " + String(deviceProperties.deviceName));
+					return VK_SUCCESS;
+				}else{
+					LLOG("[UVKapp::PickPhysicalDevice][ERROR] No vulkan suitable physdical device have been found");
+					physicalDevice = VK_NULL_HANDLE;
+				}
+			}else{
+				LLOG("[UVKapp::PickPhysicalDevice][ERROR] No vulkan physdical device have been found");
+			}
+		}else{
+			LLOG("[UVKapp::PickPhysicalDevice][ERROR] Impossible to query physical device");
+			return result;
+		}
+		return VK_ERROR_UNKNOWN;
 	}
 	
+	VkResult UVKapp::CreateDevice(VkPhysicalDevice& physicalDevice, VkDevice& device){
+			int queueIndice = GetQueuePosition(physicalDevice, VK_QUEUE_GRAPHICS_BIT);
+			float queuePriority = 1.0f;
+			ASSERT_(queueIndice != -1, "VK_QUEUE_GRAPHICS_BIT  not found on the selected physicalDevice");
+			
+			VkDeviceQueueCreateInfo queueCreateInfo{};
+			queueCreateInfo.sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO;
+			queueCreateInfo.queueFamilyIndex = queueIndice;
+			queueCreateInfo.queueCount = 1;
+			queueCreateInfo.pQueuePriorities = &queuePriority;
+			
+			VkPhysicalDeviceFeatures deviceFeatures{};
+			
+			VkDeviceCreateInfo createInfo{};
+			createInfo.sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO;
+			createInfo.pEnabledFeatures = &deviceFeatures;
+			createInfo.queueCreateInfoCount = 1;
+			createInfo.pQueueCreateInfos = &queueCreateInfo;
+			
+			createInfo.enabledExtensionCount = 0;
+			/*if (enableValidationLayers) {
+			    createInfo.enabledLayerCount = static_cast<uint32_t>(validationLayers.size());
+			    createInfo.ppEnabledLayerNames = validationLayers.data();
+			} else {
+			    createInfo.enabledLayerCount = 0;
+			}*/
+			VkResult result = vkCreateDevice(physicalDevice, &createInfo, nullptr, &device);
+			if(result == VK_SUCCESS){
+				LLOG("[UVKapp::CreateDevice][INFO] Device successfully created (handle=" + AsString(device) + ")");
+				return result;
+			}else{
+				LLOG("[UVKapp::CreateDevice][ERROR] Error during creation of device");
+				return result;
+			}
+			return VK_ERROR_UNKNOWN;
+	}
 	
 	UVKapp& UVKapp::EnableValidationLayers(bool b){
 		m_enableValidationLayers = b;
 		return *this;
 	}
+	
 	bool UVKapp::IsValidationLayersEnabled()const{
 		return m_enableValidationLayers;
 	}
+	
 	Upp::Vector<Upp::String> UVKapp::PickAllValidationLayers(const Upp::Vector<Upp::String>& layers){
 		unsigned int totalVlCount = 0;
 		Upp::Vector<Upp::String> validationLayers;
@@ -198,6 +321,7 @@ NTL_MOVEABLE(VkExtensionProperties);
 		}
 		return pick(validationLayers);
 	}
+	
 	Upp::Vector<Upp::String> UVKapp::PickAllExtensions(const Upp::Vector<Upp::String>& extensions, bool trace){
 		//we query only vulkan extensions here
 		unsigned int totalECount = 0;
@@ -232,6 +356,7 @@ NTL_MOVEABLE(VkExtensionProperties);
 		m_extensionName = clone(extensionName);
 		return *this;
 	}
+	
 	UVKapp& UVKapp::SetValidationLayers(const Upp::Vector<Upp::String>& layers){
 		m_validationLayers = clone(layers);
 		return *this;
