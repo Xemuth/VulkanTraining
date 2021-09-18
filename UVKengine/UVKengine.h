@@ -1,6 +1,7 @@
 #ifndef _UVKengine_UVKengine_h_
 #define _UVKengine_UVKengine_h_
 #include <Core/Core.h>
+#include <CtrlLib/CtrlLib.h>
 #include <vulkan/vulkan.h>
 
 #define UVK_ENGINE_VERSION_0_1 0x01
@@ -21,33 +22,38 @@ namespace Upp{
 	
 	Upp::Vector<const char*> GetTemporaryCharPtr(const Upp::Vector<Upp::String>& vectorStr);
 	
-	class UVKapp{
+	class VKCtrl : public Ctrl{
+		typedef VKCtrl CLASSNAME;
 		public:
-			UVKapp(const Upp::String& windowName);
-			UVKapp();
-			~UVKapp();
-		
-			bool Create(bool trace);
-	
-			UVKapp& SetExtensions(const Upp::Vector<Upp::String>& extensionName);
+			VKCtrl(const Upp::String& windowName);
+			VKCtrl();
+			~VKCtrl();
 			
-			UVKapp& EnableValidationLayers(bool b);
+			bool Create(bool trace);
+			
+			VKCtrl& SetExtensions(const Upp::Vector<Upp::String>& extensionName);
+			
+			VKCtrl& EnableValidationLayers(bool b);
 			bool IsValidationLayersEnabled()const;
-			UVKapp& SetValidationLayers(const Upp::Vector<Upp::String>& layers);
+			VKCtrl& SetValidationLayers(const Upp::Vector<Upp::String>& layers);
 			
 		private:
+			
 			Upp::Vector<Upp::String> PickAllValidationLayers(const Upp::Vector<Upp::String>& layers = {});
 			Upp::Vector<Upp::String> PickAllExtensions(const Upp::Vector<Upp::String>& extensions = {}, bool trace = false);
+			
 			
 			void ClearInstance(VkInstance& instance);
 			void ClearDebugMessenger(VkInstance& instance, VkDebugUtilsMessengerEXT& debugMessenger);
 			void ClearDevice(VkDevice& device);
+			void ClearSurface(VkInstance& instance, VkSurfaceKHR& surface);
 			
 			VkResult CreateInstance(VkInstance& instance, const Upp::Vector<Upp::String>& layers = {}, const Upp::Vector<Upp::String>& extensions = {});
 			VkResult CreateMessenger(VkInstance& instance,VkDebugUtilsMessengerEXT& debugMessenger);
 			VkResult PickPhysicalDevice(VkInstance& instance, VkPhysicalDevice& physicalDevice);
 			VkResult CreateDevice(VkPhysicalDevice& physicalDevice, VkDevice& device);
-			
+			VkResult CreateSurface(VkInstance& instance, VkSurfaceKHR& surface);
+
 			bool m_created = false;
 			Upp::String m_windowName;
 			Upp::Vector<Upp::String> m_extensionName;
@@ -55,11 +61,24 @@ namespace Upp{
 			bool m_enableValidationLayers = false;
 			Upp::Vector<Upp::String> m_validationLayers;
 			
-			//Vulkan
+			//Vulkan handler
 			VkInstance m_instance = VK_NULL_HANDLE;
 			VkDebugUtilsMessengerEXT m_debugMessenger = VK_NULL_HANDLE;
 			VkPhysicalDevice m_physicalDevice = VK_NULL_HANDLE;
 			VkDevice m_device = VK_NULL_HANDLE;
+			VkSurfaceKHR m_surface = VK_NULL_HANDLE;
+
+#if defined(WIN32)
+			struct VkPane : DHCtrl{
+				private:
+					friend class VKCtrl;
+					VKCtrl *ctrl;
+				public:
+					VkPane() { NoWantFocus(); }
+					virtual void State(int reason);
+			};
+			VkPane m_pane;
+#endif
 	};
 	
 }

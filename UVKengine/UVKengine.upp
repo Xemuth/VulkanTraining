@@ -1,10 +1,12 @@
 uses
 	Core,
-	vulkan;
+	vulkan,
+	CtrlLib;
 
 file
 	UVKengine.h,
 	UVKengine.cpp,
+	Win32UVKCtrl.cpp,
 	main.cpp;
 
 mainconfig

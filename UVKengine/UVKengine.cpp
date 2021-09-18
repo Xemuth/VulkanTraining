@@ -97,12 +97,15 @@ unsigned int QueryScore(VkPhysicalDevice& physicalDevice){
 }
 
 
-	UVKapp::UVKapp() : m_windowName("UVKApp"){}
-	UVKapp::UVKapp(const Upp::String& windowName) : m_windowName(windowName){}
-	UVKapp::~UVKapp(){
+	VKCtrl::VKCtrl() : m_windowName("VKCtrl"){}
+	VKCtrl::VKCtrl(const Upp::String& windowName) : m_windowName(windowName){}
+	VKCtrl::~VKCtrl(){
 		if(m_created){
 			if(m_debugMessenger){
 				ClearDebugMessenger(m_instance, m_debugMessenger);
+			}
+			if(m_surface != VK_NULL_HANDLE){
+				ClearSurface(m_instance, m_surface);
 			}
 			if(m_device != VK_NULL_HANDLE){
 				ClearDevice(m_device);
@@ -110,7 +113,8 @@ unsigned int QueryScore(VkPhysicalDevice& physicalDevice){
 			ClearInstance(m_instance);
 		}
 	}
-	bool UVKapp::Create(bool trace){
+	
+	bool VKCtrl::Create(bool trace){
 		if(!m_created){
 			Upp::Vector<Upp::String> extensions = PickAllExtensions(m_extensionName, trace);
 			Upp::Vector<Upp::String> layers = PickAllValidationLayers(m_validationLayers);
@@ -120,53 +124,81 @@ unsigned int QueryScore(VkPhysicalDevice& physicalDevice){
 					result = CreateMessenger(m_instance, m_debugMessenger);
 					if(result != VK_SUCCESS){
 						m_debugMessenger = VK_NULL_HANDLE;
-						LLOG("UVKApp::Create][WARNING] Messenger creation have failled");
+						LLOG("VKCtrl::Create][WARNING] Messenger creation have failled");
 					}
 				}
 				result = PickPhysicalDevice(m_instance, m_physicalDevice);
 				if(result == VK_SUCCESS){
 					result = CreateDevice(m_physicalDevice, m_device);
 					if(result == VK_SUCCESS){
+						Transparent();
+#ifdef PLATFORM_WIN32
+						m_pane.ctrl = this;
+						Add(m_pane.SizePos());
+#endif
 						m_created = true;
 						return m_created;
 					}else{
 						m_device = VK_NULL_HANDLE;
-						LLOG("[UVKapp::Create][ERROR] Error during VkDevice creation");
+						LLOG("[VKCtrl::Create][ERROR] Error during VkDevice creation");
 					}
 				}else{
 					m_physicalDevice = VK_NULL_HANDLE;
-					LLOG("[UVKapp::Create][ERROR] No compatible physical device found");
+					LLOG("[VKCtrl::Create][ERROR] No compatible physical device found");
+				}
+				if(trace && m_debugMessenger != VK_NULL_HANDLE){
+					ClearDebugMessenger(m_instance, m_debugMessenger);
 				}
 				ClearInstance(m_instance);
 			}else{
-				LLOG("[UVKapp::Create][ERROR] Vulkan instance creation failled");
+				LLOG("[VKCtrl::Create][ERROR] Vulkan instance creation failled");
 			}
 		}else{
-			LLOG("[UVKapp::Create][ERROR] Vulkan instance is already created");
+			LLOG("[VKCtrl::Create][ERROR] Vulkan instance is already created");
 		}
 		return false;
 	}
-	
-	void UVKapp::ClearInstance(VkInstance& instance){
+
+//	void VKCtrl::Activate(){
+//		if(m_created){
+//			VkResult result = CreateSurface(m_instance, m_surface);
+//			if(result == VK_SUCCESS){
+//
+//			}else{
+//				m_surface = VK_NULL_HANDLE;
+//				LLOG("[VKCtrl::Create][ERROR] Error during VkSurfaceKHR creation");
+//			}
+//		}else{
+//			LLOG("[VKCtrl::Run][ERROR] Error during Run function");
+//		}
+//	}
+
+	void VKCtrl::ClearInstance(VkInstance& instance){
 		ASSERT_(instance != VK_NULL_HANDLE, "Clear instance handler is null (equal to VK_NULL_HANDLE)");
 		vkDestroyInstance(instance,nullptr);
-		LLOG("[UVKapp::ClearInstance][INFO] Vulkan instance has been cleared (handler=" + AsString((int*)instance) + ")");
+		LLOG("[VKCtrl::ClearInstance][INFO] Vulkan instance successfully deleted (handler=" + AsString((int*)instance) + ")");
 	}
 	
-	void UVKapp::ClearDebugMessenger(VkInstance& instance, VkDebugUtilsMessengerEXT& debugMessenger){
+	void VKCtrl::ClearDebugMessenger(VkInstance& instance, VkDebugUtilsMessengerEXT& debugMessenger){
 		ASSERT_(instance != VK_NULL_HANDLE, "Instance handler is null (equal to VK_NULL_HANDLE)");
 		ASSERT_(debugMessenger != VK_NULL_HANDLE, "Debug Utils Messenger handler is null (equal to VK_NULL_HANDLE)");
 		DestroyDebugUtilsMEssengerEXT(instance, debugMessenger, nullptr);
-		LLOG("[UVKapp::ClearDebugMessenger][INFO] Debug Utils Messenger have been cleared (handler=" + AsString((int*)m_debugMessenger) +")");
+		LLOG("[VKCtrl::ClearDebugMessenger][INFO] Debug Utils Messenger successfully deleted (handler=" + AsString((int*)m_debugMessenger) +")");
 	}
 	
-	void UVKapp::ClearDevice(VkDevice& device){
-		ASSERT_(device != VK_NULL_HANDLE, " Device handler is null (equal to VK_NULL_HANDLE)");
+	void VKCtrl::ClearDevice(VkDevice& device){
+		ASSERT_(device != VK_NULL_HANDLE, "Device handler is null (equal to VK_NULL_HANDLE)");
 		vkDestroyDevice(m_device, nullptr);
-		LLOG("[UVKapp::ClearDevice][INFO] Device successfully deleted (handle=" + AsString(device) + ")");
+		LLOG("[VKCtrl::ClearDevice][INFO] Device successfully deleted (handle=" + AsString(device) + ")");
 	}
 	
-	VkResult UVKapp::CreateInstance(VkInstance& instance, const Upp::Vector<Upp::String>& layers, const Upp::Vector<Upp::String>& extensions){
+	void VKCtrl::ClearSurface(VkInstance& instance, VkSurfaceKHR& surface){
+		ASSERT_(surface != VK_NULL_HANDLE, "Surface handler is null (equal to VK_NULL_HANDLE)");
+		 vkDestroySurfaceKHR(instance, surface, nullptr);
+		 LLOG("[VKCtrl::ClearSurface][INFO] Surface successfully deleted (handle=" + AsString(surface) + ")");
+	}
+	
+	VkResult VKCtrl::CreateInstance(VkInstance& instance, const Upp::Vector<Upp::String>& layers, const Upp::Vector<Upp::String>& extensions){
 		//	VkInstanceCreateInfo struct
 		VkInstanceCreateInfo createInfo{};
 		createInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
@@ -196,11 +228,11 @@ unsigned int QueryScore(VkPhysicalDevice& physicalDevice){
 		createInfo.ppEnabledExtensionNames = extensionsPtr;
 		
 		VkResult result = vkCreateInstance(&createInfo, nullptr, &instance);
-		LLOG("[UVKapp::CreateInstance][INFO] Vulkan instance have been created (handler=" + AsString((int*)instance) + ")");
+		LLOG("[VKCtrl::CreateInstance][INFO] Vulkan instance have been created (handler=" + AsString((int*)instance) + ")");
 		return result;
 	}
 	
-	VkResult UVKapp::CreateMessenger(VkInstance& instance, VkDebugUtilsMessengerEXT& debugMessenger ){
+	VkResult VKCtrl::CreateMessenger(VkInstance& instance, VkDebugUtilsMessengerEXT& debugMessenger ){
 		VkDebugUtilsMessengerCreateInfoEXT createInfo{};
 		createInfo.messageSeverity = VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT |
 								     VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT |
@@ -213,11 +245,11 @@ unsigned int QueryScore(VkPhysicalDevice& physicalDevice){
 	    createInfo.pfnUserCallback = debugCallback;
 	    createInfo.pUserData = nullptr;
 	    VkResult result = CreateDebugUtilsMessengerEXT(instance, &createInfo, nullptr, &debugMessenger);
-	    LLOG("[UVKapp::CreateMessenger][INFO] Debug Utils Messenger have been created (handler=" + AsString((int*)debugMessenger) + ")");
+	    LLOG("[VKCtrl::CreateMessenger][INFO] Debug Utils Messenger have been created (handler=" + AsString((int*)debugMessenger) + ")");
 	    return result;
 	}
 	
-	VkResult UVKapp::PickPhysicalDevice(VkInstance& instance, VkPhysicalDevice& physicalDevice){
+	VkResult VKCtrl::PickPhysicalDevice(VkInstance& instance, VkPhysicalDevice& physicalDevice){
 		unsigned int physicalDeviceNumber = 0;
 		VkResult result = vkEnumeratePhysicalDevices(instance, &physicalDeviceNumber, nullptr);
 		if(result == VK_SUCCESS){
@@ -237,23 +269,23 @@ unsigned int QueryScore(VkPhysicalDevice& physicalDevice){
 					physicalDevice = clone(physicalDevices[position]);
 					VkPhysicalDeviceProperties deviceProperties;
 					vkGetPhysicalDeviceProperties(physicalDevice, &deviceProperties);
-					LLOG("[UVKapp::PickPhysicalDevice][INFO] Physical device chosen is " + String(deviceProperties.deviceName));
+					LLOG("[VKCtrl::PickPhysicalDevice][INFO] Physical device chosen is " + String(deviceProperties.deviceName));
 					return VK_SUCCESS;
 				}else{
-					LLOG("[UVKapp::PickPhysicalDevice][ERROR] No vulkan suitable physdical device have been found");
+					LLOG("[VKCtrl::PickPhysicalDevice][ERROR] No vulkan suitable physdical device have been found");
 					physicalDevice = VK_NULL_HANDLE;
 				}
 			}else{
-				LLOG("[UVKapp::PickPhysicalDevice][ERROR] No vulkan physdical device have been found");
+				LLOG("[VKCtrl::PickPhysicalDevice][ERROR] No vulkan physdical device have been found");
 			}
 		}else{
-			LLOG("[UVKapp::PickPhysicalDevice][ERROR] Impossible to query physical device");
+			LLOG("[VKCtrl::PickPhysicalDevice][ERROR] Impossible to query physical device");
 			return result;
 		}
 		return VK_ERROR_UNKNOWN;
 	}
 	
-	VkResult UVKapp::CreateDevice(VkPhysicalDevice& physicalDevice, VkDevice& device){
+	VkResult VKCtrl::CreateDevice(VkPhysicalDevice& physicalDevice, VkDevice& device){
 			int queueIndice = GetQueuePosition(physicalDevice, VK_QUEUE_GRAPHICS_BIT);
 			float queuePriority = 1.0f;
 			ASSERT_(queueIndice != -1, "VK_QUEUE_GRAPHICS_BIT  not found on the selected physicalDevice");
@@ -281,25 +313,44 @@ unsigned int QueryScore(VkPhysicalDevice& physicalDevice){
 			}*/
 			VkResult result = vkCreateDevice(physicalDevice, &createInfo, nullptr, &device);
 			if(result == VK_SUCCESS){
-				LLOG("[UVKapp::CreateDevice][INFO] Device successfully created (handle=" + AsString(device) + ")");
+				LLOG("[VKCtrl::CreateDevice][INFO] Device successfully created (handle=" + AsString(device) + ")");
 				return result;
 			}else{
-				LLOG("[UVKapp::CreateDevice][ERROR] Error during creation of device");
+				LLOG("[VKCtrl::CreateDevice][ERROR] Error during creation of device");
 				return result;
 			}
 			return VK_ERROR_UNKNOWN;
 	}
 	
-	UVKapp& UVKapp::EnableValidationLayers(bool b){
+	VkResult VKCtrl::CreateSurface(VkInstance& instance, VkSurfaceKHR& surface){
+#if defined(WIN32)
+		VkWin32SurfaceCreateInfoKHR  createInfo{};
+		createInfo.sType = VK_STRUCTURE_TYPE_WIN32_SURFACE_CREATE_INFO_KHR;
+		createInfo.hwnd = GetHWND();
+		createInfo.hinstance = GetModuleHandle(nullptr);
+		createInfo.pNext = nullptr;
+		VkResult result = vkCreateWin32SurfaceKHR(instance, &createInfo, nullptr, &surface);
+#endif
+
+		if(result == VK_SUCCESS){
+			LLOG("[VKCtrl::CreateSurface][INFO] VkSurfaceKHR is successfully created (handle=" + AsString(surface) +")");
+		}else{
+			surface = VK_NULL_HANDLE;
+			LLOG("[VKCtrl::CreateSurface][INFO] Error during creation of surface");
+		}
+		return result;
+	}
+	
+	VKCtrl& VKCtrl::EnableValidationLayers(bool b){
 		m_enableValidationLayers = b;
 		return *this;
 	}
 	
-	bool UVKapp::IsValidationLayersEnabled()const{
+	bool VKCtrl::IsValidationLayersEnabled()const{
 		return m_enableValidationLayers;
 	}
 	
-	Upp::Vector<Upp::String> UVKapp::PickAllValidationLayers(const Upp::Vector<Upp::String>& layers){
+	Upp::Vector<Upp::String> VKCtrl::PickAllValidationLayers(const Upp::Vector<Upp::String>& layers){
 		unsigned int totalVlCount = 0;
 		Upp::Vector<Upp::String> validationLayers;
 		
@@ -322,7 +373,7 @@ unsigned int QueryScore(VkPhysicalDevice& physicalDevice){
 		return pick(validationLayers);
 	}
 	
-	Upp::Vector<Upp::String> UVKapp::PickAllExtensions(const Upp::Vector<Upp::String>& extensions, bool trace){
+	Upp::Vector<Upp::String> VKCtrl::PickAllExtensions(const Upp::Vector<Upp::String>& extensions, bool trace){
 		//we query only vulkan extensions here
 		unsigned int totalECount = 0;
 		bool addedDebugUtils = false;
@@ -352,12 +403,12 @@ unsigned int QueryScore(VkPhysicalDevice& physicalDevice){
 	}
 	
 
-	UVKapp& UVKapp::SetExtensions(const Upp::Vector<Upp::String>& extensionName){
+	VKCtrl& VKCtrl::SetExtensions(const Upp::Vector<Upp::String>& extensionName){
 		m_extensionName = clone(extensionName);
 		return *this;
 	}
 	
-	UVKapp& UVKapp::SetValidationLayers(const Upp::Vector<Upp::String>& layers){
+	VKCtrl& VKCtrl::SetValidationLayers(const Upp::Vector<Upp::String>& layers){
 		m_validationLayers = clone(layers);
 		return *this;
 	}
