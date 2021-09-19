@@ -13,8 +13,12 @@ GUI_APP_MAIN
 	VKCtrl app;
 #if defined(_DEBUG)
 	app.EnableValidationLayers(true);
+	Vector<String> vl = app.PickAllValidationLayers();
+	for(Upp::String& str : vl){
+		app.AddValidationLayers(str);
+	}
 #endif
-	app.Create(true);
+	app.Init(true);
 
 	win.Add(app.HSizePos(10, 10).VSizePos(10, 10));
 	win.Sizeable().Zoomable();
