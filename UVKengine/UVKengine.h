@@ -19,6 +19,7 @@ NTL_MOVEABLE(VkExtensionProperties);
 NTL_MOVEABLE(VkQueueFamilyProperties);
 NTL_MOVEABLE(VkPresentModeKHR);
 NTL_MOVEABLE(VkSurfaceFormatKHR);
+NTL_MOVEABLE(VkDeviceQueueCreateInfo);
 	
 void ConfigureVulkanDebugMessenger(
 	dword severityFilter = VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT | VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT | VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT | VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT,
@@ -31,6 +32,16 @@ struct SwapChainSupportDetails {
 	VkSurfaceCapabilitiesKHR Capabilities;
 	Vector<VkSurfaceFormatKHR> Formats;
 	Vector<VkPresentModeKHR> PresentModes;
+};
+
+
+struct QueueFamilyIndices {
+	int graphicsFamily = Null;
+    int presentFamily = Null;
+
+    bool isComplete() {
+        return !IsNull(graphicsFamily) && !IsNull(presentFamily) ;
+    }
 };
 
 class VKCtrl : public Ctrl{

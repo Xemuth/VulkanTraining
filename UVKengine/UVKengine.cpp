@@ -70,17 +70,27 @@ void DestroyDebugUtilsMEssengerEXT(VkInstance app, VkDebugUtilsMessengerEXT debu
 	}
 }
 
-int GetQueuePosition(VkPhysicalDevice& physicalDevice, dword queue){
+QueueFamilyIndices GetQueuePosition(VkPhysicalDevice& physicalDevice, VkSurfaceKHR& surface){
+	QueueFamilyIndices indices;
 	unsigned int queueFamilyCount = 0;
 	vkGetPhysicalDeviceQueueFamilyProperties(physicalDevice, &queueFamilyCount, nullptr);
 	Vector<VkQueueFamilyProperties> queueFamilies(queueFamilyCount);
 	vkGetPhysicalDeviceQueueFamilyProperties(physicalDevice, &queueFamilyCount, queueFamilies);
+	
 	for(int i = 0; i < queueFamilyCount; i++){
-		if (queueFamilies[i].queueFlags & queue){
-			return i;
-		}
+		if(queueFamilies[i].queueFlags & VK_QUEUE_GRAPHICS_BIT) {
+            indices.graphicsFamily = i;
+        }
+        VkBool32 presentSupport = false;
+        vkGetPhysicalDeviceSurfaceSupportKHR(physicalDevice, i, surface, &presentSupport);
+        if(presentSupport) {
+            indices.presentFamily = i;
+        }
+        if(indices.isComplete()) {
+            break;
+        }
 	}
-	return -1;
+	return indices;
 }
 
 SwapChainSupportDetails QuerySwapchainDetails(VkPhysicalDevice& physicalDevice, VkSurfaceKHR& surface){
@@ -166,8 +176,9 @@ unsigned int QueryScore(VkPhysicalDevice& physicalDevice, VkSurfaceKHR& surface,
     if (!deviceFeatures.geometryShader) {
         return 0;
     }
-    if (GetQueuePosition(physicalDevice, VK_QUEUE_GRAPHICS_BIT) == -1){
-        return 0;
+	QueueFamilyIndices indices = GetQueuePosition(physicalDevice, surface);
+	if(!indices.isComplete()){
+		return 0;
 	}
 	if(!checkDeviceExtensionSupport(physicalDevice, extensionsRequired)){
 		return 0;
@@ -180,11 +191,113 @@ unsigned int QueryScore(VkPhysicalDevice& physicalDevice, VkSurfaceKHR& surface,
     return score;
 }
 
-VkResult CreateSwapChain(VkPhysicalDevice& physicalDevice, VkDevice& device, VkSurfaceKHR& surface, VkSwapchainKHR& swapchain){
-	//VkSwapchainCreateInfoKHR createInfo ={};
+VkSurfaceFormatKHR ChooseSwapSurfaceFormat(Upp::Vector<VkSurfaceFormatKHR>& availableFormats){
+	for (const VkSurfaceFormatKHR& availableFormat : availableFormats) {
+	    if (availableFormat.format == VK_FORMAT_B8G8R8A8_SRGB && availableFormat.colorSpace == VK_COLOR_SPACE_SRGB_NONLINEAR_KHR) {
+	        return availableFormat;
+	    }
+	}
+	ASSERT_(availableFormats.GetCount() > 0, "Available formats for swap chain is empty");
+	return availableFormats[0];
+}
+
+VkPresentModeKHR ChooseSwapPresentMode(const Upp::Vector<VkPresentModeKHR>& availablePresentModes) {
 	
-	//VkResult result = vkCreateSwapchainKHR(device, &createInfo, nullptr, &swapchain);
-	return VK_SUCCESS;
+	//	VK_PRESENT_MODE_IMMEDIATE_KHR: Images submitted by your application are transferred to the screen right away, which may result in tearing.
+	//	VK_PRESENT_MODE_FIFO_KHR: The swap chain is a queue where the display takes an image from the front of the queue when the display is
+	//							  refreshed and the program inserts rendered images at the back of the queue. If the queue is full then the
+	//							  program has to wait. This is most similar to vertical sync as found in modern games. The moment that the display
+	//							  is refreshed is known as "vertical blank".
+	//	VK_PRESENT_MODE_FIFO_RELAXED_KHR: This mode only differs from the previous one if the application is late and the queue was empty at the
+	//									  last vertical blank. Instead of waiting for the next vertical blank, the image is transferred right away
+	//									  when it finally arrives. This may result in visible tearing.
+	//	VK_PRESENT_MODE_MAILBOX_KHR: This is another variation of the second mode. Instead of blocking the application when the queue is full, the
+	//								 images that are already queued are simply replaced with the newer ones. This mode can be used to render frames
+	//								 as fast as possible while still avoiding tearing, resulting in fewer latency issues than standard vertical sync.
+	//								 This is commonly known as "triple buffering", although the existence of three buffers alone does not necessarily
+	//								 mean that the framerate is unlocked.
+
+	for (const VkPresentModeKHR& availablePresentMode : availablePresentModes) {
+        if (availablePresentMode == VK_PRESENT_MODE_MAILBOX_KHR) {
+            return availablePresentMode;
+        }
+    }
+    return VK_PRESENT_MODE_FIFO_KHR;
+}
+
+VkExtent2D ChooseSwapExtent(const VkSurfaceCapabilitiesKHR& capabilities){
+    if (capabilities.currentExtent.width != UINT32_MAX) {
+        return capabilities.currentExtent;
+    } else {
+        //Querry U++ Window max framebuffer size here
+        /*
+        int width, height;
+        glfwGetFramebufferSize(window, &width, &height);
+
+        VkExtent2D actualExtent = {
+            static_cast<uint32_t>(width),
+            static_cast<uint32_t>(height)
+        };
+
+        actualExtent.width = std::clamp(actualExtent.width, capabilities.minImageExtent.width, capabilities.maxImageExtent.width);
+        actualExtent.height = std::clamp(actualExtent.height, capabilities.minImageExtent.height, capabilities.maxImageExtent.height);
+		
+        return actualExtent;*/
+        return capabilities.currentExtent;
+    }
+}
+
+VkResult CreateSwapChain(VkInstance& instance, VkPhysicalDevice& physicalDevice, VkDevice& device, VkSurfaceKHR& surface, VkSwapchainKHR& swapchain){
+	SwapChainSupportDetails swapChainSupport = QuerySwapchainDetails(physicalDevice, surface);
+
+    VkSurfaceFormatKHR surfaceFormat = ChooseSwapSurfaceFormat(swapChainSupport.Formats);
+    VkPresentModeKHR presentMode = ChooseSwapPresentMode(swapChainSupport.PresentModes);
+    VkExtent2D extent = ChooseSwapExtent(swapChainSupport.Capabilities);
+    
+    unsigned int imageCount = swapChainSupport.Capabilities.minImageCount + 1;
+    if (swapChainSupport.Capabilities.maxImageCount > 0 && imageCount > swapChainSupport.Capabilities.maxImageCount) {
+	    imageCount = swapChainSupport.Capabilities.maxImageCount;
+	}
+	
+	VkSwapchainCreateInfoKHR createInfo{};
+	createInfo.sType = VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR;
+	createInfo.surface = surface;
+    createInfo.minImageCount = imageCount;
+	createInfo.imageFormat = surfaceFormat.format;
+	createInfo.imageColorSpace = surfaceFormat.colorSpace;
+	createInfo.imageExtent = extent;
+	createInfo.imageArrayLayers = 1;
+	createInfo.imageUsage = VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT;
+
+	QueueFamilyIndices indices = GetQueuePosition(physicalDevice, surface);
+	ASSERT_(indices.isComplete(), "QueueFamilyIndices have null queue");
+	unsigned int queueFamilyIndices[] = {(unsigned int)indices.graphicsFamily, (unsigned int)indices.presentFamily};
+	if (indices.graphicsFamily != indices.presentFamily) {
+	    createInfo.imageSharingMode = VK_SHARING_MODE_CONCURRENT;
+	    createInfo.queueFamilyIndexCount = 2;
+	    createInfo.pQueueFamilyIndices = queueFamilyIndices;
+	} else {
+	    createInfo.imageSharingMode = VK_SHARING_MODE_EXCLUSIVE;
+	    createInfo.queueFamilyIndexCount = 0; // Optional
+	    createInfo.pQueueFamilyIndices = nullptr; // Optional
+	}
+
+	createInfo.preTransform = swapChainSupport.Capabilities.currentTransform;
+	createInfo.compositeAlpha = VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR;
+	createInfo.presentMode = presentMode;
+	createInfo.clipped = VK_TRUE;
+	createInfo.oldSwapchain = VK_NULL_HANDLE;
+	
+	VkResult result = vkCreateSwapchainKHR(device, &createInfo, nullptr, &swapchain) ;
+	if(result == VK_SUCCESS){
+		ASSERT_(swapchain != VK_NULL_HANDLE, "Swapchain is equal to VK_NULL_HANDLE despite Vulkan return VK_SUCCESS");
+		LLOG("[VKCtrl::CreateSwapChain][INFO] Swapchain have been created (handler=" + AsString((int*)swapchain) + ")");
+		return VK_SUCCESS;
+	}else{
+		LLOG("[VKCtrl::CreateSwapChain][ERROR] Swapchain creation failled");
+		swapchain = VK_NULL_HANDLE;
+		return result;
+	}
 }
 
 void ClearInstance(VkInstance& instance){
@@ -208,8 +321,15 @@ void ClearDevice(VkDevice& device){
 
 void ClearSurface(VkInstance& instance, VkSurfaceKHR& surface){
 	ASSERT_(surface != VK_NULL_HANDLE, "Surface handler is null (equal to VK_NULL_HANDLE)");
-	 vkDestroySurfaceKHR(instance, surface, nullptr);
-	 LLOG("[VKCtrl::ClearSurface][INFO] Surface successfully deleted (handle=" + AsString(surface) + ")");
+	vkDestroySurfaceKHR(instance, surface, nullptr);
+	LLOG("[VKCtrl::ClearSurface][INFO] Surface successfully deleted (handle=" + AsString(surface) + ")");
+}
+
+void ClearSwapChain(VkDevice& device, VkSwapchainKHR& swapchain){
+	ASSERT_(device != VK_NULL_HANDLE, "Device handler is null (equal to VK_NULL_HANDLE)");
+	ASSERT_(swapchain != VK_NULL_HANDLE, "Swapchain handler is null (equal to VK_NULL_HANDLE)");
+	vkDestroySwapchainKHR(device, swapchain, nullptr);
+	LLOG("[VKCtrl::ClearSwapChain][INFO] Swapchain successfully deleted (handle=" + AsString(swapchain) + ")");
 }
 
 VkResult CreateInstance(VkInstance& instance, bool enableLayer, const Upp::Index<Upp::String>& layers, const Upp::Index<Upp::String>& extensions, Upp::String& appName){
@@ -242,8 +362,15 @@ VkResult CreateInstance(VkInstance& instance, bool enableLayer, const Upp::Index
 	createInfo.ppEnabledExtensionNames = extensionsPtr;
 	
 	VkResult result = vkCreateInstance(&createInfo, nullptr, &instance);
-	LLOG("[VKCtrl::CreateInstance][INFO] Vulkan instance have been created (handler=" + AsString((int*)instance) + ")");
-	return result;
+	if(result == VK_SUCCESS){
+		ASSERT_(instance != VK_NULL_HANDLE, "Vulkan instance is equal to VK_NULL_HANDLE despite Vulkan return VK_SUCCESS");
+		LLOG("[VKCtrl::CreateInstance][INFO] Vulkan instance have been created (handler=" + AsString((int*)instance) + ")");
+		return VK_SUCCESS;
+	}else{
+		LLOG("[VKCtrl::CreateInstance][ERROR] Vulkan instance creation failled");
+		instance = VK_NULL_HANDLE;
+		return result;
+	}
 }
 
 VkResult CreateMessenger(VkInstance& instance, VkDebugUtilsMessengerEXT& debugMessenger ){
@@ -259,8 +386,15 @@ VkResult CreateMessenger(VkInstance& instance, VkDebugUtilsMessengerEXT& debugMe
     createInfo.pfnUserCallback = debugCallback;
     createInfo.pUserData = nullptr;
     VkResult result = CreateDebugUtilsMessengerEXT(instance, &createInfo, nullptr, &debugMessenger);
-    LLOG("[VKCtrl::CreateMessenger][INFO] Debug Utils Messenger have been created (handler=" + AsString((int*)debugMessenger) + ")");
-    return result;
+    if(result == VK_SUCCESS){
+		ASSERT_(debugMessenger != VK_NULL_HANDLE, "Debug Utils Messenger is equal to VK_NULL_HANDLE despite Vulkan return VK_SUCCESS");
+		LLOG("[VKCtrl::CreateMessenger][INFO] Debug Utils Messenger have been created (handler=" + AsString((int*)debugMessenger) + ")");
+		return VK_SUCCESS;
+	}else{
+		LLOG("VKCtrl::CreateMessenger][WARNING] Messenger creation have failled");
+		debugMessenger = VK_NULL_HANDLE;
+		return result;
+	}
 }
 
 VkResult PickPhysicalDevice(VkInstance& instance, VkPhysicalDevice& physicalDevice, VkSurfaceKHR& surface, Index<String>& extensionsRequired){
@@ -287,7 +421,6 @@ VkResult PickPhysicalDevice(VkInstance& instance, VkPhysicalDevice& physicalDevi
 				return VK_SUCCESS;
 			}else{
 				LLOG("[VKCtrl::PickPhysicalDevice][ERROR] No vulkan suitable physdical device have been found");
-				physicalDevice = VK_NULL_HANDLE;
 			}
 		}else{
 			LLOG("[VKCtrl::PickPhysicalDevice][ERROR] No vulkan physdical device have been found");
@@ -296,29 +429,42 @@ VkResult PickPhysicalDevice(VkInstance& instance, VkPhysicalDevice& physicalDevi
 		LLOG("[VKCtrl::PickPhysicalDevice][ERROR] Impossible to query physical device");
 		return result;
 	}
+	physicalDevice = VK_NULL_HANDLE;
+	LLOG("[VKCtrl::Create][ERROR] No compatible physical device found");
 	return VK_ERROR_UNKNOWN;
 }
 
-VkResult CreateDevice(VkPhysicalDevice& physicalDevice, VkDevice& device){
-		int queueIndice = GetQueuePosition(physicalDevice, VK_QUEUE_GRAPHICS_BIT);
-		float queuePriority = 1.0f;
-		ASSERT_(queueIndice != -1, "VK_QUEUE_GRAPHICS_BIT  not found on the selected physicalDevice");
+VkResult CreateDevice(VkPhysicalDevice& physicalDevice, VkDevice& device, VkSurfaceKHR& surface, Upp::Index<Upp::String>& extessionsName ){
+		QueueFamilyIndices indices = GetQueuePosition(physicalDevice, surface);
+		ASSERT_(indices.isComplete() == true, "QueueFamilyIndices have null queue");
 		
-		VkDeviceQueueCreateInfo queueCreateInfo{};
-		queueCreateInfo.sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO;
-		queueCreateInfo.queueFamilyIndex = queueIndice;
-		queueCreateInfo.queueCount = 1;
-		queueCreateInfo.pQueuePriorities = &queuePriority;
-		
+		Upp::Vector<VkDeviceQueueCreateInfo> queueCreateInfos;
+        Upp::Vector<unsigned int> uniqueQueueFamilies = {(unsigned int)indices.graphicsFamily};
+        if(indices.graphicsFamily != indices.presentFamily) uniqueQueueFamilies.push_back((unsigned int)indices.presentFamily);
+
+        float queuePriority = 1.0f;
+        for (unsigned int queueFamily : uniqueQueueFamilies) {
+            VkDeviceQueueCreateInfo queueCreateInfo{};
+            queueCreateInfo.sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO;
+            queueCreateInfo.queueFamilyIndex = queueFamily;
+            queueCreateInfo.queueCount = 1;
+            queueCreateInfo.pQueuePriorities = &queuePriority;
+            queueCreateInfos.push_back(queueCreateInfo);
+        }
+			
 		VkPhysicalDeviceFeatures deviceFeatures{};
 		
 		VkDeviceCreateInfo createInfo{};
 		createInfo.sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO;
 		createInfo.pEnabledFeatures = &deviceFeatures;
-		createInfo.queueCreateInfoCount = 1;
-		createInfo.pQueueCreateInfos = &queueCreateInfo;
+		createInfo.queueCreateInfoCount = queueCreateInfos.GetCount();
+		createInfo.pQueueCreateInfos = queueCreateInfos;
 		
-		createInfo.enabledExtensionCount = 0;
+		
+		createInfo.enabledExtensionCount = extessionsName.GetCount();
+		Vector<const char*> extenssions = GetTemporaryCharPtr(extessionsName);
+		createInfo.ppEnabledExtensionNames = extenssions;
+
 		/*if (enableValidationLayers) {
 		    createInfo.enabledLayerCount = static_cast<uint32_t>(validationLayers.size());
 		    createInfo.ppEnabledLayerNames = validationLayers.data();
@@ -327,18 +473,15 @@ VkResult CreateDevice(VkPhysicalDevice& physicalDevice, VkDevice& device){
 		}*/
 		VkResult result = vkCreateDevice(physicalDevice, &createInfo, nullptr, &device);
 		if(result == VK_SUCCESS){
+			ASSERT_(device != VK_NULL_HANDLE, "Device is equal to VK_NULL_HANDLE despite Vulkan return VK_SUCCESS");
 			LLOG("[VKCtrl::CreateDevice][INFO] Device successfully created (handle=" + AsString(device) + ")");
 			return result;
 		}else{
 			LLOG("[VKCtrl::CreateDevice][ERROR] Error during creation of device");
+			device = VK_NULL_HANDLE;
 			return result;
 		}
-		return VK_ERROR_UNKNOWN;
 }
-
-
-
-
 
 VKCtrl::VKCtrl() : m_windowName("VKCtrl"){}
 VKCtrl::VKCtrl(const Upp::String& windowName) : m_windowName(windowName){}
@@ -346,6 +489,9 @@ VKCtrl::~VKCtrl(){
 	if(m_created){
 		if(m_debugMessenger){
 			ClearDebugMessenger(m_instance, m_debugMessenger);
+		}
+		if(m_swapchain != VK_NULL_HANDLE){
+			ClearSwapChain(m_device, m_swapchain);
 		}
 		if(m_surface != VK_NULL_HANDLE){
 			ClearSurface(m_instance, m_surface);
@@ -364,22 +510,17 @@ bool VKCtrl::Init(bool trace){
 		AddInstanceExtensions(VK_KHR_WIN32_SURFACE_EXTENSION_NAME);
 		if(trace) AddInstanceExtensions(VK_EXT_DEBUG_UTILS_EXTENSION_NAME);
 		if(!checkInstanceExtensionSupport(m_extensionName)){
-			LLOG("VKCtrl::Create][WARNING] Invalide extension provided");
+			LLOG("VKCtrl::Create][ERROR] Invalide extension provided");
 			return false;
 		}
 		if(!checkValidationlayerExtensionSupport(m_validationLayers)){
-			LLOG("VKCtrl::Create][WARNING] Invalide validation layer provided");
+			LLOG("VKCtrl::Create][ERROR] Invalide validation layer provided");
 			return false;
 		}
 		VkResult result = CreateInstance(m_instance, m_enableValidationLayers, m_validationLayers, m_extensionName, m_windowName);
 		if(result == VK_SUCCESS){
-			if(trace){
-				result = CreateMessenger(m_instance, m_debugMessenger);
-				if(result != VK_SUCCESS){
-					m_debugMessenger = VK_NULL_HANDLE;
-					LLOG("VKCtrl::Create][WARNING] Messenger creation have failled");
-				}
-			}
+			if(trace)
+				CreateMessenger(m_instance, m_debugMessenger);
 			Transparent();
 #ifdef PLATFORM_WIN32
 			m_pane.ctrl = this;
@@ -387,8 +528,6 @@ bool VKCtrl::Init(bool trace){
 #endif
 			m_created = true;
 			return m_created;
-		}else{
-			LLOG("[VKCtrl::Create][ERROR] Vulkan instance creation failled");
 		}
 	}else{
 		LLOG("[VKCtrl::Create][ERROR] Vulkan instance is already created");
@@ -400,24 +539,14 @@ bool VKCtrl::InitEntireVulkanChain(){
 	if(m_created){
 		VkResult result = PickPhysicalDevice(m_instance, m_physicalDevice, m_surface, m_deviceExtensionName);
 		if(result == VK_SUCCESS){
-			result = CreateDevice(m_physicalDevice, m_device);
+			result = CreateDevice(m_physicalDevice, m_device, m_surface, m_deviceExtensionName);
 			if(result == VK_SUCCESS){
-				result = CreateSwapChain(m_physicalDevice, m_device, m_surface, m_swapchain);
+				result = CreateSwapChain(m_instance ,m_physicalDevice, m_device, m_surface, m_swapchain);
 				if(result == VK_SUCCESS){
 					
-					
 					return true;
-				}else{
-					m_swapchain = VK_NULL_HANDLE;
-					LLOG("[VKCtrl::VkPane::State][ERROR] Impossible to create VkSurfaceKHR");
 				}
-			}else{
-				m_device = VK_NULL_HANDLE;
-				LLOG("[VKCtrl::Create][ERROR] Error during VkDevice creation");
 			}
-		}else{
-			m_physicalDevice = VK_NULL_HANDLE;
-			LLOG("[VKCtrl::Create][ERROR] No compatible physical device found");
 		}
 		if(m_debugMessenger != VK_NULL_HANDLE){
 			ClearDebugMessenger(m_instance, m_debugMessenger);
