@@ -5,6 +5,8 @@ uses
 
 file
 	UVKengine.h,
+	VulkanHelper.h,
+	VulkanHelper.cpp,
 	UVKengine.cpp,
 	Win32UVKCtrl.cpp,
 	main.cpp;

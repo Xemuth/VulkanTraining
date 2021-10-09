@@ -26,13 +26,12 @@ void ConfigureVulkanDebugMessenger(
 	dword typeFilter =  VK_DEBUG_UTILS_MESSAGE_TYPE_PERFORMANCE_BIT_EXT | VK_DEBUG_UTILS_MESSAGE_TYPE_VALIDATION_BIT_EXT | VK_DEBUG_UTILS_MESSAGE_TYPE_GENERAL_BIT_EXT
 );
 
+
+
+		
 Upp::Vector<const char*> GetTemporaryCharPtr(const Upp::Vector<Upp::String>& vectorStr);
 
-struct SwapChainSupportDetails {
-	VkSurfaceCapabilitiesKHR Capabilities;
-	Vector<VkSurfaceFormatKHR> Formats;
-	Vector<VkPresentModeKHR> PresentModes;
-};
+
 
 
 struct QueueFamilyIndices {
@@ -64,6 +63,12 @@ class VKCtrl : public Ctrl{
 		bool InitEntireVulkanChain();
 	
 	private:
+		struct SwapChainSupportDetails {
+			VkSurfaceCapabilitiesKHR Capabilities;
+			Vector<VkSurfaceFormatKHR> Formats;
+			Vector<VkPresentModeKHR> PresentModes;
+		}m_swapchainSupport;
+		
 		typedef VKCtrl CLASSNAME;
 		
 		bool m_created = false;
@@ -73,16 +78,10 @@ class VKCtrl : public Ctrl{
 		Upp::Index<Upp::String> m_validationLayers;
 		
 		
-		bool m_enableValidationLayers = false;
 		
 		
 		//Vulkan handler
-		VkInstance m_instance = VK_NULL_HANDLE;
-		VkDebugUtilsMessengerEXT m_debugMessenger = VK_NULL_HANDLE;
-		VkPhysicalDevice m_physicalDevice = VK_NULL_HANDLE;
-		VkDevice m_device = VK_NULL_HANDLE;
-		VkSurfaceKHR m_surface = VK_NULL_HANDLE;
-		VkSwapchainKHR m_swapchain = VK_NULL_HANDLE;
+		
 		
 #if defined(WIN32)
 		struct VkPane : DHCtrl{
