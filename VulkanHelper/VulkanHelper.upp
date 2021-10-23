@@ -1,0 +1,11 @@
+description "\377255,0,0";
+
+uses
+	vulkan;
+
+file
+	VulkanHelper.h,
+	VulkanSelector.cpp,
+	VulkanHelper.cpp,
+	PhysicalDeviceSelector.cpp;
+

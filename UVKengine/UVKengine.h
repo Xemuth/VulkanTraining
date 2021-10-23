@@ -76,10 +76,6 @@ class VKCtrl : public Ctrl{
 		Upp::Index<Upp::String> m_extensionName;
 		Upp::Index<Upp::String> m_deviceExtensionName;
 		Upp::Index<Upp::String> m_validationLayers;
-		
-		
-		
-		
 		//Vulkan handler
 		
 		

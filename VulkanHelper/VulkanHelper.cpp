@@ -1,85 +1,9 @@
 #include "VulkanHelper.h"
 
+#define LLOG(x) LOG(x)
+
 namespace Upp{
-	
-	
-PhysicalDeviceSelector::operator()(VulkanHelper& helper){
-	CHECK_HANDLER(helper.GetInstance());
-	unsigned int physicalDeviceNumber = 0;
-	VkResult result = vkEnumeratePhysicalDevices(helper.GetInstance(), &physicalDeviceNumber, nullptr);
-	if(result == VK_SUCCESS){
-		if(physicalDeviceNumber > 0){
-			Vector<VkPhysicalDevice> physicalDevices(physicalDeviceNumber);
-			result = vkEnumeratePhysicalDevices(instance, &physicalDeviceNumber, physicalDevices);
-			int scoreMax = 0;
-			int position = -1;
-			for(int i = 0; i < physicalDeviceNumber; i++){
-				int score = QueryScore(physicalDevices[i], helper);
-				if(score > scoreMax){
-					scoreMax = score;
-					position = i;
-				}
-			}
-			if(position != -1){
-				VkPhysicalDeviceProperties deviceProperties;
-				vkGetPhysicalDeviceProperties(physicalDevices[position], &deviceProperties);
-				LLOG("[PhysicalDeviceSelector::operator()][INFO] Physical device chosen is " + String(deviceProperties.deviceName));
-				return physicalDevices[position];
-			}else{
-				LLOG("[PhysicalDeviceSelector::operator()][ERROR] No vulkan suitable physdical device have been found");
-			}
-		}else{
-			LLOG("[PhysicalDeviceSelector::operator()][ERROR] No vulkan physdical device have been found");
-		}
-	}else{
-		LLOG("[PhysicalDeviceSelector::operator()][ERROR] Impossible to querry physical device");
-	}
-	return VK_NULL_HANDLE;
-}
 
-PhysicalDeviceSelector::QueryScore(VkPhysicalDevice physicalDevice, VulkanHelper& helper){
-	VkPhysicalDeviceProperties deviceProperties;
-    VkPhysicalDeviceFeatures deviceFeatures;
-    vkGetPhysicalDeviceProperties(physicalDevice, &deviceProperties);
-    vkGetPhysicalDeviceFeatures(physicalDevice, &deviceFeatures);
-	unsigned int score = 0;
-    // Discrete GPUs have a significant performance advantage
-    if (deviceProperties.deviceType == VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU) {
-        score += 1000;
-    }
-    // Maximum possible size of textures affects graphics quality
-    score += deviceProperties.limits.maxImageDimension2D;
-    // Application can't function without geometry shaders
-    if (!deviceFeatures.geometryShader) {
-        return 0;
-    }
-	if(!checkDeviceExtensionSupport(physicalDevice, helper.GetSelector().GetDeviceExtensions())){
-		return 0;
-	}
-    return score;
-}
-
-bool PhysicalDeviceSelector::checkDeviceExtensionSupport(VkPhysicalDevice& physicalDevice, const Vector<const char*>& extensionsRequired) {
-    unsigned int extensionCount;
-    vkEnumerateDeviceExtensionProperties(physicalDevice, nullptr, &extensionCount, nullptr);
-    Vector<VkExtensionProperties> availableExtensions(extensionCount);
-    vkEnumerateDeviceExtensionProperties(physicalDevice, nullptr, &extensionCount, availableExtensions);
-
-	Index<String> requiredExtensions;
-	for(const char* ptr : extensionsRequired){
-		requiredExtensions.Add(ptr);
-	}
-	
-    for (const auto& extension : availableExtensions) {
-        requiredExtensions.RemoveKey(extension.extensionName);
-    }
-
-    return requiredExtensions.GetCount() == 0;
-}
-
-
-
-	
 VulkanHelper::VulkanHelper(){
 	m_selector.AddValidationLayers("VK_LAYER_KHRONOS_validation");
 	m_selector.AddDeviceExtensions(VK_KHR_SWAPCHAIN_EXTENSION_NAME);
@@ -89,9 +13,20 @@ VulkanHelper::VulkanHelper(){
 #endif
 	m_selector.AddInstanceExtensions(VK_EXT_DEBUG_UTILS_EXTENSION_NAME);
 }
+
+VulkanHelper::~VulkanHelper(){
+	if(m_debugMessenger){
+		ClearDebugMessenger();
+	}
+	if(m_device != VK_NULL_HANDLE){
+		ClearDevice();
+	}
+	if(m_instance != VK_NULL_HANDLE){
+		ClearInstance();
+	}
+}
 		
 VkInstance VulkanHelper::GetInstance()const{
-	
 	return m_instance;
 }
 VkDebugUtilsMessengerEXT VulkanHelper::GetDebugMessenger()const{
@@ -101,15 +36,23 @@ VkDevice VulkanHelper::GetDevice()const{
 	return m_device;
 }
 
+bool VulkanHelper::AutoSelectPhysicalDevice(){
+	PhysicalDeviceSelector selector;
+	m_physicalDevice = selector(*this);
+	return (m_physicalDevice != VK_NULL_HANDLE);
+}
+
 bool VulkanHelper::SelectPhysicalDevice(PhysicalDeviceSelector& selector){
 	m_physicalDevice = selector(*this);
+	return (m_physicalDevice != VK_NULL_HANDLE);
 }
 
 bool VulkanHelper::SelectPhysicalDevice(Upp::String& name){
 	m_physicalDevice = GetPhysicalDevice(name);
+	return (m_physicalDevice != VK_NULL_HANDLE);
 }
 
-VkInstance VulkanHelper::CreateInstance(){
+VkInstance VulkanHelper::CreateInstance(Upp::String appname, unsigned long applicationVersion, Upp::String engineName, unsigned long engineVersion, unsigned long apiVersion){
 	if(m_instance == VK_NULL_HANDLE){
 		//	VkInstanceCreateInfo struct
 		VkInstanceCreateInfo createInfo{};
@@ -120,20 +63,22 @@ VkInstance VulkanHelper::CreateInstance(){
 		VkApplicationInfo appInfo{};
 		appInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
 		appInfo.pNext = nullptr;
-		appInfo.pApplicationName = ~appName;
-		appInfo.applicationVersion = UVK_ENGINE_VERSION_0_1;
-		appInfo.pEngineName = UVK_ENGINE_NAME;
-		appInfo.engineVersion = UVK_ENGINE_VERSION_0_1;
-		appInfo.apiVersion = VK_API_VERSION_1_2;
+		appInfo.pApplicationName = ~appname;
+		appInfo.applicationVersion = applicationVersion;
+		appInfo.pEngineName = ~engineName;
+		appInfo.engineVersion = engineVersion;
+		appInfo.apiVersion = apiVersion;
 		createInfo.pApplicationInfo = &appInfo;
 		
 		//	Code to fill layers here
 		createInfo.enabledLayerCount = m_selector.GetValidationsLayersCount();
-		createInfo.ppEnabledLayerNames = m_selector.GetValidationsLayers();
+		Vector<const char*> validationLayers = m_selector.GetValidationsLayers();
+		createInfo.ppEnabledLayerNames = validationLayers;
 		
 		//	Code to fill extensions here
 		createInfo.enabledExtensionCount = m_selector.GetInstanceExtensionsCount();
-		createInfo.ppEnabledExtensionNames = m_selector.GetInstanceExtensions();
+		Vector<const char*> instanceExtensions = m_selector.GetInstanceExtensions();
+		createInfo.ppEnabledExtensionNames = instanceExtensions;
 		
 		VkResult result = vkCreateInstance(&createInfo, nullptr, &m_instance);
 		if(result == VK_SUCCESS){
@@ -141,7 +86,7 @@ VkInstance VulkanHelper::CreateInstance(){
 				throw Exc("Vulkan instance is equal to VK_NULL_HANDLE despite Vulkan return VK_SUCCESS");
 			}else{
 				LLOG("[VulkanHelper::CreateInstance][INFO] Vulkan instance have been created (handler=" + AsString((int*)m_instance) + ")");
-				CHECK_NOT_NULL_HANDLER(m_instance);
+				CHECK_HANDLER(m_instance);
 				return m_instance;
 			}
 		}else{
@@ -150,11 +95,18 @@ VkInstance VulkanHelper::CreateInstance(){
 	}
 	throw Exc("VulkanHelper instance is already create. You must clear it before recreating it");
 }
+
+static VKAPI_ATTR VkBool32 VKAPI_CALL debugCallback(VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity, VkDebugUtilsMessageTypeFlagsEXT messageType, const VkDebugUtilsMessengerCallbackDataEXT* pCallbackData, void* pUserData){
+	return (*((Function<VkBool32(VkDebugUtilsMessageSeverityFlagBitsEXT, VkDebugUtilsMessageTypeFlagsEXT, const VkDebugUtilsMessengerCallbackDataEXT*, void*)>*)pUserData))(messageSeverity, messageType, pCallbackData, pUserData);
+}
+
 VkDebugUtilsMessengerEXT VulkanHelper::CreateDebugMessenger(){
 	CHECK_HANDLER(m_instance)
-	CHECK_NOT_NULL_HANDLER(m_debugMessenger);
+	CHECK_NOT_USED_HANDLER(m_debugMessenger);
 	
 	VkDebugUtilsMessengerCreateInfoEXT createInfo{};
+	createInfo.sType = VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT;
+	
 	createInfo.messageSeverity = VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT |
 							     VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT |
 							     VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT |
@@ -163,16 +115,17 @@ VkDebugUtilsMessengerEXT VulkanHelper::CreateDebugMessenger(){
 						     VK_DEBUG_UTILS_MESSAGE_TYPE_VALIDATION_BIT_EXT |
 						     VK_DEBUG_UTILS_MESSAGE_TYPE_PERFORMANCE_BIT_EXT;
 	
-    createInfo.pfnUserCallback = m_debugCallback;
+	createInfo.pfnUserCallback = debugCallback;
+
     createInfo.pUserData = nullptr;
     PFN_vkCreateDebugUtilsMessengerEXT func = (PFN_vkCreateDebugUtilsMessengerEXT) vkGetInstanceProcAddr(m_instance, "vkCreateDebugUtilsMessengerEXT");
     
 	if(func != nullptr){
-		VkResult result = VK_ERROR_DEVICE_LOST
-		result = func(m_instance, &createInfo, AllocatorNullPtr, m_debugMessenger);
-		if(result == VK_SUCCESS)
+		VkResult result = VK_ERROR_DEVICE_LOST;
+		result = func(m_instance, &createInfo, AllocatorNullPtr, &m_debugMessenger);
+		if(result == VK_SUCCESS){
 			LLOG("[VulkanHelper::CreateDebugMessenger][INFO] Debug Utils Messenger have been created (handler=" + AsString((int*)m_debugMessenger) + ")");
-			CHECK_NOT_NULL_HANDLER(m_debugMessenger);
+			CHECK_HANDLER(m_debugMessenger);
 			return m_debugMessenger;
 		}else{
 			throw Exc("Messenger creation have failled");
@@ -181,7 +134,7 @@ VkDebugUtilsMessengerEXT VulkanHelper::CreateDebugMessenger(){
 	throw Exc("Impossible to querry vkCreateDebugUtilsMessengerEXT function");
 }
 
-VkPhysicalDevice VulkanHelper::GetPhysicalDevice(Upp::String& phyiscalDeviceName = ""){
+VkPhysicalDevice VulkanHelper::GetPhysicalDevice(Upp::String& phyiscalDeviceName){
 	CHECK_HANDLER(m_instance);
 	unsigned int physicalDeviceNumber = 0;
 	VkResult result = vkEnumeratePhysicalDevices(m_instance, &physicalDeviceNumber, nullptr);
@@ -191,8 +144,7 @@ VkPhysicalDevice VulkanHelper::GetPhysicalDevice(Upp::String& phyiscalDeviceName
 			result = vkEnumeratePhysicalDevices(m_instance, &physicalDeviceNumber, physicalDevices);
 			for(VkPhysicalDevice& physicalDevice : physicalDevices){
 				VkPhysicalDeviceProperties properties;
-				result = vkGetPhysicalDeviceProperties(physicalDevice, &properties);
-				ASSERT_(result == VK_SUCCESS, "[VulkanHelper::GetPhysicalDevice] Fatal error during vkGetPhysicalDeviceProperties");
+				vkGetPhysicalDeviceProperties(physicalDevice, &properties);
 				if(phyiscalDeviceName.IsEqual(properties.deviceName)) return physicalDevice;
 			}
 		}
@@ -212,11 +164,6 @@ VkDevice VulkanHelper::CreateDevice(){
 	
 	
 	//Querry queues position:
-		
-	
-	
-	
-	
 	
 	/*
 	QueueFamilyIndices indices = GetQueuePosition(physicalDevice, surface);
@@ -260,10 +207,35 @@ VkDevice VulkanHelper::CreateDevice(){
 		return result;
 	}*/
 }
-void VulkanHelper::SetMessengerCallback(Function<void ( VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity, VkDebugUtilsMessageTypeFlagsEXT messageType, const VkDebugUtilsMessengerCallbackDataEXT* pCallbackData, void* pUserData)>){
+
+void VulkanHelper::ClearInstance(){
+	CHECK_HANDLER(m_instance);
+	vkDestroyInstance(m_instance,nullptr);
+	LLOG("[VulkanHelper::ClearInstance][INFO] Vulkan instance successfully deleted (handler=" + AsString((int*)m_instance) + ")");
+}
+
+void VulkanHelper::ClearDebugMessenger(){
+	CHECK_HANDLER(m_instance);
+	CHECK_HANDLER(m_debugMessenger);
+	PFN_vkDestroyDebugUtilsMessengerEXT func = (PFN_vkDestroyDebugUtilsMessengerEXT) vkGetInstanceProcAddr(m_instance, "vkDestroyDebugUtilsMessengerEXT");
+	if(func){
+		func(m_instance, m_debugMessenger, nullptr);
+		LLOG("[VulkanHelper::ClearDebugMessenger][INFO] Debug Utils Messenger successfully deleted (handler=" + AsString((int*)m_debugMessenger) +")");
+		return;
+	}
+	LLOG("[VulkanHelper::ClearDebugMessenger][ERROR] Error, can't retrieve PFN_vkDestroyDebugUtilsMessengerEXT");
+}
+
+void VulkanHelper::ClearDevice(){
+	CHECK_HANDLER(m_device);
+	vkDestroyDevice(m_device, nullptr);
+	LLOG("[VulkanHelper::ClearDevice][INFO] Device successfully deleted (handle=" + AsString(m_device) + ")");
+}
+
+void VulkanHelper::SetMessengerCallback(Function<VkBool32(VkDebugUtilsMessageSeverityFlagBitsEXT, VkDebugUtilsMessageTypeFlagsEXT, const VkDebugUtilsMessengerCallbackDataEXT*, void*)>){
 	
 }
 VulkanSelector& VulkanHelper::GetSelector(){
-	
+	return m_selector;
 }
 }

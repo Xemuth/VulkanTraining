@@ -1,4 +1,4 @@
-description "\377226,42,0";
+description "\377255,0,0";
 
 library(WIN32) vulkan-1.lib;
 

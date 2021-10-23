@@ -15,10 +15,22 @@
 #define AllocatorNullPtr nullptr
 
 namespace Upp{
-	
+
+//To do a custom PhysicalDeviceSelector, just inheritate from this class and define Operator()
+class PhysicalDeviceSelector{
+	public:
+		virtual PhysicalDevice operator()(VulkanHelper& helper);
+	private:
+		unsigned int QueryScore(VkPhysicalDevice device);
+		bool checkDeviceExtensionSupport(VkPhysicalDevice& physicalDevice, const Vector<const char*>& extensionsRequired);
+};
+
 class VulkanHelper{
 	public:
 		VulkanHelper();
+		
+		bool SelectPhysicalDevice(PhysicalDeviceSelector& selector = PhysicalDeviceSelector());
+		bool SelectPhysicalDevice(Upp::String& name);
 		
 		VkInstance GetInstance()const;
 		VkDebugUtilsMessengerEXT GetDebugMessenger()const;
@@ -31,9 +43,9 @@ class VulkanHelper{
 		void SetMessengerCallback(Function<void ( VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity, VkDebugUtilsMessageTypeFlagsEXT messageType, const VkDebugUtilsMessengerCallbackDataEXT* pCallbackData, void* pUserData)>);
 
 		VulkanSelector& GetSelector();
-	
 	private:
-		
+		VkPhysicalDevice GetPhysicalDevice(Upp::String& phyiscalDeviceName);
+
 		VulkanSelector m_selector;
 		Function<void(VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity, VkDebugUtilsMessageTypeFlagsEXT messageType, const VkDebugUtilsMessengerCallbackDataEXT* pCallbackData, void* pUserData)> m_debugCallback;
 
@@ -74,7 +86,6 @@ class VulkanSelector{
 		Vector<String> m_devicesExtensions;
 		Vector<String> m_validationLayers;
 		Vector<String> m_instanceExtensions;
-	
 };
 
 }
