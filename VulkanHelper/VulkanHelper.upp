@@ -4,8 +4,8 @@ uses
 	vulkan;
 
 file
-	VulkanHelper.h,
 	VulkanSelector.cpp,
 	VulkanHelper.cpp,
-	PhysicalDeviceSelector.cpp;
+	PhysicalDeviceSelector.cpp,
+	VulkanHelper.h;
 
