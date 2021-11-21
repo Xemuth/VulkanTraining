@@ -4,8 +4,10 @@ uses
 	vulkan;
 
 file
-	VulkanSelector.cpp,
+	VulkanHelper.h,
 	VulkanHelper.cpp,
+	VulkanSelector.cpp,
 	PhysicalDeviceSelector.cpp,
-	VulkanHelper.h;
+	VulkanSelectorRules.h,
+	VulkanSelectorsRules.cpp;
 

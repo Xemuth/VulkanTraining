@@ -37,18 +37,58 @@ VkDevice VulkanHelper::GetDevice()const{
 }
 
 bool VulkanHelper::AutoSelectPhysicalDevice(){
-	PhysicalDeviceSelector selector;
-	m_physicalDevice = selector(*this);
+	
+	//PhysicalDeviceSelector selector;
+	//m_physicalDevice = selector(*this);
 	return (m_physicalDevice != VK_NULL_HANDLE);
 }
 
 bool VulkanHelper::SelectPhysicalDevice(PhysicalDeviceSelector& selector){
-	m_physicalDevice = selector(*this);
-	return (m_physicalDevice != VK_NULL_HANDLE);
+	CHECK_HANDLER(m_instance);
+	unsigned int physicalDeviceNumber = 0;
+	VkResult result = vkEnumeratePhysicalDevices(m_instance, &physicalDeviceNumber, nullptr);
+	if(result == VK_SUCCESS){
+		if(physicalDeviceNumber > 0){
+			Vector<VkPhysicalDevice> physicalDevices(physicalDeviceNumber);
+			result = vkEnumeratePhysicalDevices(m_instance, &physicalDeviceNumber, physicalDevices);
+			int scoreMax = 0;
+			int position = -1;
+			CurrentPhysicalDeviceData datas;
+			for(int i = 0; i < physicalDeviceNumber; i++){
+				datas.m_current = physicalDevices[i];
+			    vkGetPhysicalDeviceProperties(datas.m_current, &datas.m_deviceProperties);
+			    vkGetPhysicalDeviceFeatures(datas.m_current, &datas.m_deviceFeatures);
+				int score = selector(datas);
+				if(score == -1){
+					LLOG("[VulkanHelper::SelectPhysicalDevice][INFO] Physical device " + String(datas.m_deviceProperties.deviceName) + " don't fit criteria of PhysicalDeviceSelector and have been discarded");
+					continue;
+				}
+				LLOG("[VulkanHelper::SelectPhysicalDevice][INFO] Physical device " + String(datas.m_deviceProperties.deviceName) + " fit criteria with a score of " + AsString(score));
+				if(score > scoreMax){
+					LLOG("[VulkanHelper::SelectPhysicalDevice][INFO] Physical device " + String(datas.m_deviceProperties.deviceName) + " is now the best device with a score of " + AsString(score));
+					scoreMax = score;
+					position = i;
+				}
+			}
+			if(position != -1){
+				LLOG("[VulkanHelper::operator()][INFO] Physical device chosen is " + String(datas.m_deviceProperties.deviceName));
+				m_physicalDevice =  physicalDevices[position];
+				CHECK_HANDLER(m_physicalDevice);
+				return (m_physicalDevice != VK_NULL_HANDLE);
+			}else{
+				LLOG("[VulkanHelper::operator()][ERROR] No vulkan suitable physdical device have been found");
+			}
+		}else{
+			LLOG("[VulkanHelper::operator()][ERROR] No vulkan physdical device have been found");
+		}
+	}else{
+		LLOG("[VulkanHelper::operator()][ERROR] Impossible to querry physical device");
+	}
+	return false;;
 }
 
 bool VulkanHelper::SelectPhysicalDevice(Upp::String& name){
-	m_physicalDevice = GetPhysicalDevice(name);
+	//m_physicalDevice = GetPhysicalDevice(name);
 	return (m_physicalDevice != VK_NULL_HANDLE);
 }
 
@@ -155,6 +195,7 @@ VkPhysicalDevice VulkanHelper::GetPhysicalDevice(Upp::String& phyiscalDeviceName
 		return VK_NULL_HANDLE;
 	}
 }
+
 
 VkDevice VulkanHelper::CreateDevice(){
 	CHECK_HANDLER(m_instance);
