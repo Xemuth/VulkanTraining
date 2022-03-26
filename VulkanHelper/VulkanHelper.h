@@ -13,7 +13,7 @@
 #define CHECK_NOT_USED_HANDLER(x)  if(x != VK_NULL_HANDLE) throw Exc("$x is not null handler ($x=" + AsString((int*)x) +")");
 #endif
 
-#define RULES 
+#define RULES
 #define AllocatorNullPtr nullptr
 #define LLOG(x)  LOG(x)
 
@@ -57,7 +57,7 @@ class SelectorFactory {
 		static SelectorFactory Create();
 		PhysicalDeviceSelector Build();
 		SelectorFactory(SelectorFactory&& selector);
-		
+		//Contain all rules
 		#include "VulkanSelectorRules.h"
 					
 	private:
@@ -143,9 +143,7 @@ class VulkanHelper{
 		VulkanSelector& GetSelector();
 	private:
 		VkPhysicalDevice GetPhysicalDevice(Upp::String& phyiscalDeviceName);
-
-	
-
+		
 		VulkanSelector m_selector;
 		Function<VkBool32(VkDebugUtilsMessageSeverityFlagBitsEXT, VkDebugUtilsMessageTypeFlagsEXT, const VkDebugUtilsMessengerCallbackDataEXT*, void*)> m_debugCallback;
 
