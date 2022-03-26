@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>6</zoom_level>
+  <zoom_level>10</zoom_level>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>672</x>
-      <y>366</y>
-      <w>18</w>
-      <h>36</h>
+      <x>1050</x>
+      <y>610</y>
+      <w>30</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
@@ -15,10 +15,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>738</x>
-      <y>390</y>
-      <w>102</w>
-      <h>24</h>
+      <x>1160</x>
+      <y>650</y>
+      <w>170</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 vkCreateInstance</panel_attributes>
@@ -27,10 +27,10 @@ vkCreateInstance</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>588</x>
-      <y>408</y>
-      <w>306</w>
-      <h>60</h>
+      <x>910</x>
+      <y>680</y>
+      <w>510</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 vkEnumeratePhysicalDevices</panel_attributes>
@@ -39,10 +39,10 @@ vkEnumeratePhysicalDevices</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>192</x>
-      <y>468</y>
-      <w>342</w>
-      <h>24</h>
+      <x>250</x>
+      <y>780</y>
+      <w>570</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 vkGetPhysicalDeviceProperties</panel_attributes>
@@ -51,10 +51,10 @@ vkGetPhysicalDeviceProperties</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>498</x>
-      <y>498</y>
-      <w>174</w>
-      <h>276</h>
+      <x>760</x>
+      <y>830</y>
+      <w>290</w>
+      <h>460</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 vkGetPhysicalDeviceFeatures</panel_attributes>
@@ -63,10 +63,10 @@ vkGetPhysicalDeviceFeatures</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>240</x>
-      <y>450</y>
-      <w>294</w>
-      <h>24</h>
+      <x>330</x>
+      <y>750</y>
+      <w>490</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 vkGetPhysicalDeviceQueueFamilyProperties</panel_attributes>
@@ -75,10 +75,10 @@ vkGetPhysicalDeviceQueueFamilyProperties</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>198</x>
-      <y>132</y>
-      <w>66</w>
-      <h>18</h>
+      <x>260</x>
+      <y>220</y>
+      <w>110</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>90.0;10.0;10.0;10.0</additional_attributes>
@@ -86,10 +86,10 @@ vkGetPhysicalDeviceQueueFamilyProperties</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>252</x>
-      <y>132</y>
-      <w>18</w>
-      <h>18</h>
+      <x>350</x>
+      <y>220</y>
+      <w>30</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>A</panel_attributes>
     <additional_attributes/>
@@ -97,10 +97,10 @@ vkGetPhysicalDeviceQueueFamilyProperties</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>186</x>
-      <y>132</y>
-      <w>18</w>
-      <h>18</h>
+      <x>240</x>
+      <y>220</y>
+      <w>30</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>B</panel_attributes>
     <additional_attributes/>
@@ -108,10 +108,10 @@ vkGetPhysicalDeviceQueueFamilyProperties</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>198</x>
-      <y>120</y>
-      <w>60</w>
-      <h>18</h>
+      <x>260</x>
+      <y>200</y>
+      <w>100</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>A is part of B
 style=wordwrap</panel_attributes>
@@ -120,10 +120,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>186</x>
-      <y>168</y>
-      <w>18</w>
-      <h>18</h>
+      <x>240</x>
+      <y>280</y>
+      <w>30</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>A</panel_attributes>
     <additional_attributes/>
@@ -131,10 +131,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>252</x>
-      <y>168</y>
-      <w>18</w>
-      <h>18</h>
+      <x>350</x>
+      <y>280</y>
+      <w>30</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>B</panel_attributes>
     <additional_attributes/>
@@ -142,10 +142,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>162</x>
-      <y>156</y>
-      <w>138</w>
-      <h>18</h>
+      <x>200</x>
+      <y>260</y>
+      <w>230</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>A is used via C function to reach B
 style=wordwrap</panel_attributes>
@@ -154,10 +154,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>198</x>
-      <y>168</y>
-      <w>66</w>
-      <h>24</h>
+      <x>260</x>
+      <y>280</y>
+      <w>110</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 C</panel_attributes>
@@ -166,10 +166,10 @@ C</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>600</x>
-      <y>492</y>
-      <w>516</w>
-      <h>48</h>
+      <x>930</x>
+      <y>820</y>
+      <w>860</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 vkCreateDevice</panel_attributes>
@@ -178,10 +178,10 @@ vkCreateDevice</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>336</x>
-      <y>708</y>
-      <w>60</w>
-      <h>30</h>
+      <x>490</x>
+      <y>1180</y>
+      <w>100</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;30.0;10.0;10.0;80.0;10.0</additional_attributes>
@@ -189,10 +189,10 @@ vkCreateDevice</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>426</x>
-      <y>714</y>
-      <w>18</w>
-      <h>48</h>
+      <x>640</x>
+      <y>1190</y>
+      <w>30</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
@@ -200,10 +200,10 @@ vkCreateDevice</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>480</x>
-      <y>498</y>
-      <w>72</w>
-      <h>228</h>
+      <x>730</x>
+      <y>830</y>
+      <w>120</w>
+      <h>380</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
@@ -212,34 +212,34 @@ vkCreateDevice</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1086</x>
-      <y>552</y>
-      <w>90</w>
-      <h>312</h>
+      <x>1730</x>
+      <y>920</y>
+      <w>130</w>
+      <h>550</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 </panel_attributes>
-    <additional_attributes>130.0;10.0;130.0;500.0;10.0;500.0;10.0;460.0</additional_attributes>
+    <additional_attributes>110.0;10.0;110.0;530.0;10.0;530.0;10.0;460.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1092</x>
-      <y>780</y>
-      <w>84</w>
-      <h>24</h>
+      <x>1750</x>
+      <y>1300</y>
+      <w>110</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
-    <additional_attributes>10.0;20.0;120.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;90.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1242</x>
-      <y>762</y>
-      <w>108</w>
-      <h>24</h>
+      <x>2000</x>
+      <y>1270</y>
+      <w>180</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
@@ -248,10 +248,10 @@ vkCreateDevice</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1242</x>
-      <y>552</y>
-      <w>72</w>
-      <h>324</h>
+      <x>2000</x>
+      <y>920</y>
+      <w>120</w>
+      <h>540</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 vkCreateImage</panel_attributes>
@@ -260,10 +260,10 @@ vkCreateImage</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1086</x>
-      <y>912</y>
-      <w>90</w>
-      <h>60</h>
+      <x>1680</x>
+      <y>1520</y>
+      <w>150</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 vkCreateBufferView</panel_attributes>
@@ -272,22 +272,22 @@ vkCreateBufferView</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1086</x>
-      <y>552</y>
-      <w>102</w>
-      <h>390</h>
+      <x>1680</x>
+      <y>920</y>
+      <w>190</w>
+      <h>650</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
-    <additional_attributes>150.0;10.0;150.0;630.0;10.0;630.0</additional_attributes>
+    <additional_attributes>170.0;10.0;170.0;630.0;10.0;630.0</additional_attributes>
   </element>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>630</x>
-      <y>354</y>
-      <w>114</w>
-      <h>18</h>
+      <x>980</x>
+      <y>590</y>
+      <w>190</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -299,10 +299,10 @@ drawText("VkAppInfo",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>630</x>
-      <y>390</y>
-      <w>114</w>
-      <h>18</h>
+      <x>980</x>
+      <y>650</y>
+      <w>190</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -314,10 +314,10 @@ drawText("VkInstanceCreateInfo",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>828</x>
-      <y>366</y>
-      <w>78</w>
-      <h>48</h>
+      <x>1310</x>
+      <y>610</y>
+      <w>130</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -329,10 +329,10 @@ drawText("VkInstance",width/1.9,height/1.6,center)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>522</x>
-      <y>456</y>
-      <w>84</w>
-      <h>48</h>
+      <x>800</x>
+      <y>760</y>
+      <w>140</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -344,10 +344,10 @@ drawText("VkPhysicalDevice",width/1.9,height/1.6,center)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>114</x>
-      <y>450</y>
-      <w>132</w>
-      <h>18</h>
+      <x>120</x>
+      <y>750</y>
+      <w>220</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -359,10 +359,10 @@ drawText("VkQueueFamilyProperties",width/1.9,height/1.3,center)</panel_attribute
   <element>
     <id>Text</id>
     <coordinates>
-      <x>66</x>
-      <y>474</y>
-      <w>132</w>
-      <h>18</h>
+      <x>40</x>
+      <y>790</y>
+      <w>220</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -374,10 +374,10 @@ drawText("VkPhysicalDeviceProperties",width/1.9,height/1.3,center)</panel_attrib
   <element>
     <id>Text</id>
     <coordinates>
-      <x>372</x>
-      <y>750</y>
-      <w>132</w>
-      <h>18</h>
+      <x>550</x>
+      <y>1250</y>
+      <w>220</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -389,10 +389,10 @@ drawText("VkPhysicalDeviceFeatures",width/1.9,height/1.3,center)</panel_attribut
   <element>
     <id>Text</id>
     <coordinates>
-      <x>84</x>
-      <y>426</y>
-      <w>162</w>
-      <h>18</h>
+      <x>70</x>
+      <y>710</y>
+      <w>270</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -405,10 +405,10 @@ layer=1</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>240</x>
-      <y>726</y>
-      <w>132</w>
-      <h>18</h>
+      <x>330</x>
+      <y>1210</y>
+      <w>220</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -420,10 +420,10 @@ drawText("VkDeviceQueueCreateInfo",width/1.9,height/1.3,center)</panel_attribute
   <element>
     <id>Text</id>
     <coordinates>
-      <x>384</x>
-      <y>702</y>
-      <w>102</w>
-      <h>18</h>
+      <x>570</x>
+      <y>1170</y>
+      <w>170</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -435,10 +435,10 @@ drawText("VkDeviceCreateInfo",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1104</x>
-      <y>516</y>
-      <w>150</w>
-      <h>42</h>
+      <x>1770</x>
+      <y>860</y>
+      <w>250</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -450,10 +450,10 @@ drawText("VkDevice",width/1.9,height/1.6,center)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1002</x>
-      <y>786</y>
-      <w>96</w>
-      <h>18</h>
+      <x>1600</x>
+      <y>1310</y>
+      <w>160</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -465,10 +465,10 @@ drawText("VkBufferCreateInfo",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1338</x>
-      <y>768</y>
-      <w>96</w>
-      <h>18</h>
+      <x>2160</x>
+      <y>1280</y>
+      <w>160</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -480,10 +480,10 @@ drawText("VkImageCreateInfo",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1296</x>
-      <y>852</y>
-      <w>66</w>
-      <h>18</h>
+      <x>2090</x>
+      <y>1420</y>
+      <w>110</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -495,10 +495,10 @@ drawText("VkImage",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1032</x>
-      <y>810</y>
-      <w>66</w>
-      <h>18</h>
+      <x>1650</x>
+      <y>1350</y>
+      <w>110</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -510,10 +510,10 @@ drawText("VkBuffer",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1020</x>
-      <y>900</y>
-      <w>138</w>
-      <h>18</h>
+      <x>1630</x>
+      <y>1500</y>
+      <w>200</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -525,10 +525,10 @@ drawText("VkBufferViewCreateInfo",width/1.9,height/1.3,center)</panel_attributes
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1038</x>
-      <y>960</y>
-      <w>72</w>
-      <h>18</h>
+      <x>1660</x>
+      <y>1600</y>
+      <w>120</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -540,10 +540,10 @@ drawText("VkBufferView",65,height/1.3,center)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1386</x>
-      <y>966</y>
-      <w>72</w>
-      <h>18</h>
+      <x>2240</x>
+      <y>1610</y>
+      <w>120</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -555,10 +555,10 @@ drawText("VkImageView",65,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>300</x>
-      <y>498</y>
-      <w>246</w>
-      <h>198</h>
+      <x>430</x>
+      <y>830</y>
+      <w>410</w>
+      <h>330</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 </panel_attributes>
@@ -567,10 +567,10 @@ drawText("VkImageView",65,height/1.3,center)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>198</x>
-      <y>672</y>
-      <w>108</w>
-      <h>18</h>
+      <x>260</x>
+      <y>1120</y>
+      <w>180</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -582,10 +582,10 @@ drawText("VkFormatProperties",width/2,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>300</x>
-      <y>498</y>
-      <w>240</w>
-      <h>174</h>
+      <x>430</x>
+      <y>830</y>
+      <w>400</w>
+      <h>290</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 
@@ -595,10 +595,10 @@ layer=0</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>240</x>
-      <y>432</y>
-      <w>300</w>
-      <h>36</h>
+      <x>330</x>
+      <y>720</y>
+      <w>500</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 </panel_attributes>
@@ -607,10 +607,10 @@ layer=0</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>342</x>
-      <y>534</y>
-      <w>78</w>
-      <h>18</h>
+      <x>500</x>
+      <y>890</y>
+      <w>130</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("E",11,15,center)
@@ -622,10 +622,10 @@ drawText("VkFormat",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>342</x>
-      <y>558</y>
-      <w>78</w>
-      <h>18</h>
+      <x>500</x>
+      <y>930</y>
+      <w>130</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("E",11,15,center)
@@ -637,10 +637,10 @@ drawText("VkImageType",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>342</x>
-      <y>582</y>
-      <w>78</w>
-      <h>18</h>
+      <x>500</x>
+      <y>970</y>
+      <w>130</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("E",11,15,center)
@@ -652,10 +652,10 @@ drawText("VkImageTiling",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>174</x>
-      <y>648</y>
-      <w>132</w>
-      <h>18</h>
+      <x>220</x>
+      <y>1080</y>
+      <w>220</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -667,10 +667,10 @@ drawText("VkImageFormatProperties",width/1.9,height/1.3,center)</panel_attribute
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>414</x>
-      <y>528</y>
-      <w>126</w>
-      <h>24</h>
+      <x>620</x>
+      <y>880</y>
+      <w>210</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
@@ -679,10 +679,10 @@ drawText("VkImageFormatProperties",width/1.9,height/1.3,center)</panel_attribute
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>414</x>
-      <y>552</y>
-      <w>126</w>
-      <h>24</h>
+      <x>620</x>
+      <y>920</y>
+      <w>210</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
@@ -691,10 +691,10 @@ drawText("VkImageFormatProperties",width/1.9,height/1.3,center)</panel_attribute
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>414</x>
-      <y>576</y>
-      <w>126</w>
-      <h>24</h>
+      <x>620</x>
+      <y>960</y>
+      <w>210</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
@@ -703,10 +703,10 @@ drawText("VkImageFormatProperties",width/1.9,height/1.3,center)</panel_attribute
   <element>
     <id>Text</id>
     <coordinates>
-      <x>78</x>
-      <y>648</y>
-      <w>72</w>
-      <h>18</h>
+      <x>60</x>
+      <y>1080</y>
+      <w>120</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -718,10 +718,10 @@ drawText("VkExtent3D",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>144</x>
-      <y>654</y>
-      <w>42</w>
-      <h>18</h>
+      <x>170</x>
+      <y>1090</y>
+      <w>70</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;50.0;10.0</additional_attributes>
@@ -729,10 +729,10 @@ drawText("VkExtent3D",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1434</x>
-      <y>720</y>
-      <w>84</w>
-      <h>18</h>
+      <x>2320</x>
+      <y>1200</y>
+      <w>140</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("E",11,15,center)
@@ -744,10 +744,10 @@ drawText("VkFormat",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1392</x>
-      <y>720</y>
-      <w>54</w>
-      <h>60</h>
+      <x>2250</x>
+      <y>1200</y>
+      <w>90</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>70.0;10.0;10.0;10.0;10.0;80.0</additional_attributes>
@@ -755,10 +755,10 @@ drawText("VkFormat",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1434</x>
-      <y>744</y>
-      <w>84</w>
-      <h>18</h>
+      <x>2320</x>
+      <y>1240</y>
+      <w>140</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -770,10 +770,10 @@ drawText("VkExtent3D",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1392</x>
-      <y>672</y>
-      <w>54</w>
-      <h>66</h>
+      <x>2250</x>
+      <y>1120</y>
+      <w>90</w>
+      <h>110</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>70.0;10.0;10.0;10.0;10.0;90.0</additional_attributes>
@@ -781,10 +781,10 @@ drawText("VkExtent3D",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1434</x>
-      <y>696</y>
-      <w>84</w>
-      <h>18</h>
+      <x>2320</x>
+      <y>1160</y>
+      <w>140</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("E",11,15,center)
@@ -796,10 +796,10 @@ drawText("VkImageTiling",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1434</x>
-      <y>672</y>
-      <w>84</w>
-      <h>18</h>
+      <x>2320</x>
+      <y>1120</y>
+      <w>140</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("E",11,15,center)
@@ -811,10 +811,10 @@ drawText("VkImageType",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1392</x>
-      <y>696</y>
-      <w>54</w>
-      <h>18</h>
+      <x>2250</x>
+      <y>1160</y>
+      <w>90</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>70.0;10.0;10.0;10.0</additional_attributes>
@@ -822,10 +822,10 @@ drawText("VkImageType",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1392</x>
-      <y>744</y>
-      <w>54</w>
-      <h>18</h>
+      <x>2250</x>
+      <y>1240</y>
+      <w>90</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>70.0;10.0;10.0;10.0</additional_attributes>
@@ -833,10 +833,10 @@ drawText("VkImageType",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1434</x>
-      <y>648</y>
-      <w>90</w>
-      <h>18</h>
+      <x>2320</x>
+      <y>1080</y>
+      <w>150</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("E",11,15,center)
@@ -848,10 +848,10 @@ drawText("VkSharingMode",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1392</x>
-      <y>648</y>
-      <w>54</w>
-      <h>48</h>
+      <x>2250</x>
+      <y>1080</y>
+      <w>90</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>70.0;10.0;10.0;10.0;10.0;60.0</additional_attributes>
@@ -859,10 +859,10 @@ drawText("VkSharingMode",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1434</x>
-      <y>624</y>
-      <w>90</w>
-      <h>18</h>
+      <x>2320</x>
+      <y>1040</y>
+      <w>150</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("E",11,15,center)
@@ -874,10 +874,10 @@ drawText("VkImageLayout",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1392</x>
-      <y>624</y>
-      <w>54</w>
-      <h>48</h>
+      <x>2250</x>
+      <y>1040</y>
+      <w>90</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>70.0;10.0;10.0;10.0;10.0;60.0</additional_attributes>
@@ -885,10 +885,10 @@ drawText("VkImageLayout",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1272</x>
-      <y>936</y>
-      <w>114</w>
-      <h>18</h>
+      <x>2050</x>
+      <y>1560</y>
+      <w>190</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -900,10 +900,10 @@ drawText("VkImageSubresource",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1350</x>
-      <y>900</y>
-      <w>120</w>
-      <h>18</h>
+      <x>2180</x>
+      <y>1500</y>
+      <w>200</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -915,10 +915,10 @@ drawText("VkSubresourceLayout",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1314</x>
-      <y>894</y>
-      <w>48</w>
-      <h>24</h>
+      <x>2120</x>
+      <y>1490</y>
+      <w>80</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
@@ -927,10 +927,10 @@ drawText("VkSubresourceLayout",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1068</x>
-      <y>822</y>
-      <w>18</w>
-      <h>90</h>
+      <x>1710</x>
+      <y>1370</y>
+      <w>30</w>
+      <h>150</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
@@ -938,10 +938,10 @@ drawText("VkSubresourceLayout",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1458</x>
-      <y>852</y>
-      <w>114</w>
-      <h>18</h>
+      <x>2360</x>
+      <y>1420</y>
+      <w>190</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -953,10 +953,10 @@ drawText("VkImageViewCreateInfo",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1356</x>
-      <y>858</y>
-      <w>114</w>
-      <h>18</h>
+      <x>2190</x>
+      <y>1430</y>
+      <w>190</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;170.0;10.0</additional_attributes>
@@ -964,10 +964,10 @@ drawText("VkImageViewCreateInfo",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1590</x>
-      <y>798</y>
-      <w>96</w>
-      <h>18</h>
+      <x>2580</x>
+      <y>1330</y>
+      <w>160</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("E",11,15,center)
@@ -979,10 +979,10 @@ drawText("VkImageViewType",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1560</x>
-      <y>804</y>
-      <w>42</w>
-      <h>42</h>
+      <x>2530</x>
+      <y>1340</y>
+      <w>70</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>50.0;10.0;10.0;10.0;10.0;50.0</additional_attributes>
@@ -990,10 +990,10 @@ drawText("VkImageViewType",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1560</x>
-      <y>828</y>
-      <w>42</w>
-      <h>36</h>
+      <x>2530</x>
+      <y>1380</y>
+      <w>70</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>50.0;10.0;10.0;10.0;10.0;40.0</additional_attributes>
@@ -1001,10 +1001,10 @@ drawText("VkImageViewType",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1590</x>
-      <y>708</y>
-      <w>108</w>
-      <h>18</h>
+      <x>2580</x>
+      <y>1180</y>
+      <w>180</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("E",11,15,center)
@@ -1016,10 +1016,10 @@ drawText("VkComponentSwizzle",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1590</x>
-      <y>750</y>
-      <w>120</w>
-      <h>18</h>
+      <x>2580</x>
+      <y>1250</y>
+      <w>200</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -1031,10 +1031,10 @@ drawText("VkComponentMapping",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1632</x>
-      <y>720</y>
-      <w>18</w>
-      <h>42</h>
+      <x>2650</x>
+      <y>1200</y>
+      <w>30</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
@@ -1042,10 +1042,10 @@ drawText("VkComponentMapping",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1560</x>
-      <y>756</y>
-      <w>42</w>
-      <h>42</h>
+      <x>2530</x>
+      <y>1260</y>
+      <w>70</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>50.0;10.0;10.0;10.0;10.0;50.0</additional_attributes>
@@ -1053,10 +1053,10 @@ drawText("VkComponentMapping",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1590</x>
-      <y>774</y>
-      <w>126</w>
-      <h>18</h>
+      <x>2580</x>
+      <y>1290</y>
+      <w>210</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -1068,10 +1068,10 @@ drawText("VkImageSubresourceRange",width/1.9,height/1.3,center)</panel_attribute
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1560</x>
-      <y>780</y>
-      <w>42</w>
-      <h>42</h>
+      <x>2530</x>
+      <y>1300</y>
+      <w>70</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>50.0;10.0;10.0;10.0;10.0;50.0</additional_attributes>
@@ -1079,10 +1079,10 @@ drawText("VkImageSubresourceRange",width/1.9,height/1.3,center)</panel_attribute
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1452</x>
-      <y>864</y>
-      <w>120</w>
-      <h>120</h>
+      <x>2350</x>
+      <y>1440</y>
+      <w>200</w>
+      <h>200</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 vkCreateImageView</panel_attributes>
@@ -1091,10 +1091,10 @@ vkCreateImageView</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1236</x>
-      <y>552</y>
-      <w>162</w>
-      <h>438</h>
+      <x>1990</x>
+      <y>920</y>
+      <w>270</w>
+      <h>730</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
@@ -1103,10 +1103,10 @@ vkCreateImageView</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>942</x>
-      <y>630</y>
-      <w>108</w>
-      <h>18</h>
+      <x>1500</x>
+      <y>1050</y>
+      <w>180</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -1118,10 +1118,10 @@ drawText("VkDeviceMemory",width/2,height/1.3,center)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>864</x>
-      <y>654</y>
-      <w>120</w>
-      <h>18</h>
+      <x>1370</x>
+      <y>1090</y>
+      <w>200</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -1133,10 +1133,10 @@ drawText("VkMemoryAllocateInfo",width/2,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1020</x>
-      <y>552</y>
-      <w>114</w>
-      <h>126</h>
+      <x>1630</x>
+      <y>920</y>
+      <w>190</w>
+      <h>210</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 </panel_attributes>
@@ -1145,10 +1145,10 @@ drawText("VkMemoryAllocateInfo",width/2,height/1.3,center)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>978</x>
-      <y>708</y>
-      <w>42</w>
-      <h>18</h>
+      <x>1560</x>
+      <y>1180</y>
+      <w>70</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("P",11,15,center)
@@ -1160,10 +1160,10 @@ drawText("void**",46,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>996</x>
-      <y>552</y>
-      <w>150</w>
-      <h>204</h>
+      <x>1590</x>
+      <y>920</y>
+      <w>250</w>
+      <h>340</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 vkMapMemory</panel_attributes>
@@ -1172,10 +1172,10 @@ vkMapMemory</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>312</x>
-      <y>126</y>
-      <w>90</w>
-      <h>18</h>
+      <x>450</x>
+      <y>210</y>
+      <w>150</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("P",11,15,center)
@@ -1187,10 +1187,10 @@ drawText("Pointer to data",26,height/1.9,left)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>312</x>
-      <y>144</y>
-      <w>90</w>
-      <h>18</h>
+      <x>450</x>
+      <y>240</y>
+      <w>150</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -1201,10 +1201,10 @@ drawText("Structure of data",26,height/1.9,left)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>312</x>
-      <y>162</y>
-      <w>90</w>
-      <h>18</h>
+      <x>450</x>
+      <y>270</y>
+      <w>150</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("E",11,15,center)
@@ -1215,10 +1215,10 @@ drawText("Enumeration",26,height/1.9,left)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>270</x>
-      <y>486</y>
-      <w>264</w>
-      <h>150</h>
+      <x>380</x>
+      <y>810</y>
+      <w>440</w>
+      <h>250</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 vkGetPhysicalDeviceSparseImageFormatProperties</panel_attributes>
@@ -1227,10 +1227,10 @@ vkGetPhysicalDeviceSparseImageFormatProperties</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>156</x>
-      <y>624</y>
-      <w>150</w>
-      <h>18</h>
+      <x>190</x>
+      <y>1040</y>
+      <w>250</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -1242,10 +1242,10 @@ drawText("VkSparseImageFormatProperties",width/1.9,height/1.3,center)</panel_att
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>270</x>
-      <y>576</y>
-      <w>84</w>
-      <h>24</h>
+      <x>380</x>
+      <y>960</y>
+      <w>140</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
@@ -1254,10 +1254,10 @@ drawText("VkSparseImageFormatProperties",width/1.9,height/1.3,center)</panel_att
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1320</x>
-      <y>132</y>
-      <w>114</w>
-      <h>108</h>
+      <x>2130</x>
+      <y>220</y>
+      <w>190</w>
+      <h>180</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 vkQueueBindSparse</panel_attributes>
@@ -1266,10 +1266,10 @@ vkQueueBindSparse</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>312</x>
-      <y>180</y>
-      <w>126</w>
-      <h>18</h>
+      <x>450</x>
+      <y>300</y>
+      <w>210</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("V",11,15,center)
@@ -1280,10 +1280,10 @@ drawText("No interesting returning data",26,height/1.9,left)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1314</x>
-      <y>228</y>
-      <w>60</w>
-      <h>18</h>
+      <x>2120</x>
+      <y>380</y>
+      <w>100</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("V",11,15,center)
@@ -1295,10 +1295,10 @@ drawText("No return",55,height/1.3,center)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1374</x>
-      <y>120</y>
-      <w>72</w>
-      <h>18</h>
+      <x>2220</x>
+      <y>200</y>
+      <w>120</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -1310,10 +1310,10 @@ drawText("VkQueue",65,height/1.3,center)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1404</x>
-      <y>186</y>
-      <w>114</w>
-      <h>18</h>
+      <x>2270</x>
+      <y>310</y>
+      <w>190</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -1325,10 +1325,10 @@ drawText("VkBindSparseInfo",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1320</x>
-      <y>186</y>
-      <w>96</w>
-      <h>24</h>
+      <x>2130</x>
+      <y>310</y>
+      <w>160</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
@@ -1337,10 +1337,10 @@ drawText("VkBindSparseInfo",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>864</x>
-      <y>834</y>
-      <w>144</w>
-      <h>18</h>
+      <x>1370</x>
+      <y>1390</y>
+      <w>240</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -1352,10 +1352,10 @@ drawText("VkSparseBufferMemoryBindInfo",width/1.9,height/1.3,center)</panel_attr
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1002</x>
-      <y>822</y>
-      <w>60</w>
-      <h>30</h>
+      <x>1600</x>
+      <y>1370</y>
+      <w>100</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>80.0;10.0;80.0;30.0;10.0;30.0</additional_attributes>
@@ -1363,10 +1363,10 @@ drawText("VkSparseBufferMemoryBindInfo",width/1.9,height/1.3,center)</panel_attr
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1494</x>
-      <y>216</y>
-      <w>114</w>
-      <h>18</h>
+      <x>2420</x>
+      <y>360</y>
+      <w>190</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -1378,10 +1378,10 @@ drawText("VkSparseMemoryBind",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1512</x>
-      <y>192</y>
-      <w>66</w>
-      <h>36</h>
+      <x>2450</x>
+      <y>320</y>
+      <w>110</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>90.0;40.0;90.0;10.0;10.0;10.0</additional_attributes>
@@ -1389,10 +1389,10 @@ drawText("VkSparseMemoryBind",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1434</x>
-      <y>240</y>
-      <w>174</w>
-      <h>18</h>
+      <x>2320</x>
+      <y>400</y>
+      <w>290</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -1404,10 +1404,10 @@ drawText("VkSparseImageOpaqueMemoryBindInfo",width/1.9,height/1.3,center)</panel
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1452</x>
-      <y>198</y>
-      <w>18</w>
-      <h>54</h>
+      <x>2350</x>
+      <y>330</y>
+      <w>30</w>
+      <h>90</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
@@ -1415,10 +1415,10 @@ drawText("VkSparseImageOpaqueMemoryBindInfo",width/1.9,height/1.3,center)</panel
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1404</x>
-      <y>264</y>
-      <w>204</w>
-      <h>18</h>
+      <x>2270</x>
+      <y>440</y>
+      <w>340</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -1430,10 +1430,10 @@ drawText("VkSparseImageMemoryBindInfo",width/1.9,height/1.3,center)</panel_attri
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1410</x>
-      <y>198</y>
-      <w>18</w>
-      <h>78</h>
+      <x>2280</x>
+      <y>330</y>
+      <w>30</w>
+      <h>130</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;110.0;10.0;10.0</additional_attributes>
@@ -1441,10 +1441,10 @@ drawText("VkSparseImageMemoryBindInfo",width/1.9,height/1.3,center)</panel_attri
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1416</x>
-      <y>276</y>
-      <w>18</w>
-      <h>36</h>
+      <x>2290</x>
+      <y>460</y>
+      <w>30</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
@@ -1452,10 +1452,10 @@ drawText("VkSparseImageMemoryBindInfo",width/1.9,height/1.3,center)</panel_attri
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1404</x>
-      <y>300</y>
-      <w>132</w>
-      <h>18</h>
+      <x>2270</x>
+      <y>500</y>
+      <w>220</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -1467,10 +1467,10 @@ drawText("VkSparseImageMemoryBind",width/1.9,height/1.3,center)</panel_attribute
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1554</x>
-      <y>300</y>
-      <w>132</w>
-      <h>18</h>
+      <x>2520</x>
+      <y>500</y>
+      <w>220</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -1482,10 +1482,10 @@ drawText("VkImageSubresource",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1530</x>
-      <y>300</y>
-      <w>36</w>
-      <h>18</h>
+      <x>2480</x>
+      <y>500</y>
+      <w>60</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>40.0;10.0;10.0;10.0</additional_attributes>
@@ -1493,10 +1493,10 @@ drawText("VkImageSubresource",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1242</x>
-      <y>120</y>
-      <w>144</w>
-      <h>408</h>
+      <x>2000</x>
+      <y>200</y>
+      <w>240</w>
+      <h>680</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 vkGetDeviceQueue</panel_attributes>
@@ -1505,10 +1505,10 @@ vkGetDeviceQueue</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>906</x>
-      <y>174</y>
-      <w>96</w>
-      <h>18</h>
+      <x>1440</x>
+      <y>290</y>
+      <w>160</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -1520,10 +1520,10 @@ drawText("VkCommandPool",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>984</x>
-      <y>186</y>
-      <w>150</w>
-      <h>342</h>
+      <x>1570</x>
+      <y>310</y>
+      <w>250</w>
+      <h>570</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 vkCreateCommandPool</panel_attributes>
@@ -1532,10 +1532,10 @@ vkCreateCommandPool</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>954</x>
-      <y>228</y>
-      <w>138</w>
-      <h>18</h>
+      <x>1520</x>
+      <y>380</y>
+      <w>230</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -1547,10 +1547,10 @@ drawText("VkCommandPoolCreateInfo",width/1.9,height/1.3,center)</panel_attribute
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1020</x>
-      <y>210</y>
-      <w>18</w>
-      <h>30</h>
+      <x>1630</x>
+      <y>350</y>
+      <w>30</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
@@ -1559,10 +1559,10 @@ drawText("VkCommandPoolCreateInfo",width/1.9,height/1.3,center)</panel_attribute
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>750</x>
-      <y>276</y>
-      <w>372</w>
-      <h>252</h>
+      <x>1180</x>
+      <y>460</y>
+      <w>620</w>
+      <h>420</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 </panel_attributes>
@@ -1571,10 +1571,10 @@ drawText("VkCommandPoolCreateInfo",width/1.9,height/1.3,center)</panel_attribute
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>750</x>
-      <y>288</y>
-      <w>120</w>
-      <h>24</h>
+      <x>1180</x>
+      <y>480</y>
+      <w>200</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 vkAllocateCommandBuffers</panel_attributes>
@@ -1583,10 +1583,10 @@ vkAllocateCommandBuffers</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>930</x>
-      <y>294</y>
-      <w>168</w>
-      <h>18</h>
+      <x>1480</x>
+      <y>490</y>
+      <w>280</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -1598,10 +1598,10 @@ drawText("VkCommandBufferAllocateInfo",width/1.9,height/1.3,center)</panel_attri
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>930</x>
-      <y>186</y>
-      <w>18</w>
-      <h>120</h>
+      <x>1480</x>
+      <y>310</y>
+      <w>30</w>
+      <h>200</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;180.0</additional_attributes>
@@ -1609,10 +1609,10 @@ drawText("VkCommandBufferAllocateInfo",width/1.9,height/1.3,center)</panel_attri
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>750</x>
-      <y>294</y>
-      <w>192</w>
-      <h>24</h>
+      <x>1180</x>
+      <y>490</y>
+      <w>320</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
@@ -1621,10 +1621,10 @@ drawText("VkCommandBufferAllocateInfo",width/1.9,height/1.3,center)</panel_attri
   <element>
     <id>Text</id>
     <coordinates>
-      <x>720</x>
-      <y>264</y>
-      <w>102</w>
-      <h>18</h>
+      <x>1130</x>
+      <y>440</y>
+      <w>170</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -1636,10 +1636,10 @@ drawText("VkCommandBuffer",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>954</x>
-      <y>264</y>
-      <w>120</w>
-      <h>18</h>
+      <x>1520</x>
+      <y>440</y>
+      <w>200</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("E",11,15,center)
@@ -1651,10 +1651,10 @@ drawText("VkCommandBufferLevel",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1002</x>
-      <y>276</y>
-      <w>18</w>
-      <h>30</h>
+      <x>1600</x>
+      <y>460</y>
+      <w>30</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
@@ -1662,10 +1662,10 @@ drawText("VkCommandBufferLevel",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>780</x>
-      <y>162</y>
-      <w>60</w>
-      <h>18</h>
+      <x>1230</x>
+      <y>270</y>
+      <w>100</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("V",11,15,center)
@@ -1677,10 +1677,10 @@ drawText("No return",55,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>798</x>
-      <y>174</y>
-      <w>330</w>
-      <h>354</h>
+      <x>1260</x>
+      <y>290</y>
+      <w>550</w>
+      <h>590</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 </panel_attributes>
@@ -1689,10 +1689,10 @@ drawText("No return",55,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>798</x>
-      <y>192</y>
-      <w>108</w>
-      <h>24</h>
+      <x>1260</x>
+      <y>320</y>
+      <w>180</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 vkFreeCommandBuffers</panel_attributes>
@@ -1701,10 +1701,10 @@ vkFreeCommandBuffers</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>798</x>
-      <y>186</y>
-      <w>138</w>
-      <h>48</h>
+      <x>1260</x>
+      <y>310</y>
+      <w>230</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
@@ -1713,10 +1713,10 @@ vkFreeCommandBuffers</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>786</x>
-      <y>222</y>
-      <w>30</w>
-      <h>54</h>
+      <x>1240</x>
+      <y>370</y>
+      <w>50</w>
+      <h>90</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
@@ -1725,10 +1725,10 @@ vkFreeCommandBuffers</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1020</x>
-      <y>648</y>
-      <w>84</w>
-      <h>24</h>
+      <x>1630</x>
+      <y>1080</y>
+      <w>140</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 vkAllocateMemory</panel_attributes>
@@ -1737,10 +1737,10 @@ vkAllocateMemory</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1008</x>
-      <y>126</y>
-      <w>132</w>
-      <h>402</h>
+      <x>1610</x>
+      <y>210</y>
+      <w>220</w>
+      <h>670</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 </panel_attributes>
@@ -1749,10 +1749,10 @@ vkAllocateMemory</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1008</x>
-      <y>132</y>
-      <w>108</w>
-      <h>24</h>
+      <x>1610</x>
+      <y>220</y>
+      <w>180</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 vkDestroyCommandPool</panel_attributes>
@@ -1761,10 +1761,10 @@ vkDestroyCommandPool</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>978</x>
-      <y>156</y>
-      <w>162</w>
-      <h>30</h>
+      <x>1560</x>
+      <y>260</y>
+      <w>270</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
@@ -1773,10 +1773,10 @@ vkDestroyCommandPool</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>996</x>
-      <y>114</y>
-      <w>60</w>
-      <h>18</h>
+      <x>1590</x>
+      <y>190</y>
+      <w>100</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("V",11,15,center)
@@ -1788,10 +1788,10 @@ drawText("No return",55,height/1.3,center)</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>150</x>
-      <y>84</y>
-      <w>300</w>
-      <h>138</h>
+      <x>180</x>
+      <y>140</y>
+      <w>500</w>
+      <h>230</h>
     </coordinates>
     <panel_attributes>customelement=
 drawRectangle(10,10,width-20,height-20) //fg= bg= lt= lw= //Parameters (x, y, width, height)
@@ -1801,10 +1801,10 @@ drawRectangle(10,10,width-20,height-20) //fg= bg= lt= lw= //Parameters (x, y, wi
   <element>
     <id>Text</id>
     <coordinates>
-      <x>624</x>
-      <y>84</y>
-      <w>60</w>
-      <h>18</h>
+      <x>970</x>
+      <y>140</y>
+      <w>100</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("V",11,15,center)
@@ -1816,10 +1816,10 @@ drawText("No return",55,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>648</x>
-      <y>96</y>
-      <w>114</w>
-      <h>180</h>
+      <x>1010</x>
+      <y>160</y>
+      <w>190</w>
+      <h>300</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 </panel_attributes>
@@ -1828,10 +1828,10 @@ drawText("No return",55,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>648</x>
-      <y>108</y>
-      <w>108</w>
-      <h>24</h>
+      <x>1010</x>
+      <y>180</y>
+      <w>180</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 vkBeginCommandBuffer</panel_attributes>
@@ -1840,10 +1840,10 @@ vkBeginCommandBuffer</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>576</x>
-      <y>162</y>
-      <w>150</w>
-      <h>18</h>
+      <x>890</x>
+      <y>270</y>
+      <w>250</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -1855,10 +1855,10 @@ drawText("VkCommandBufferBeginInfo",width/1.9,height/1.3,center)</panel_attribut
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>720</x>
-      <y>162</y>
-      <w>42</w>
-      <h>24</h>
+      <x>1130</x>
+      <y>270</y>
+      <w>70</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
@@ -1867,10 +1867,10 @@ drawText("VkCommandBufferBeginInfo",width/1.9,height/1.3,center)</panel_attribut
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>270</x>
-      <y>552</y>
-      <w>84</w>
-      <h>24</h>
+      <x>380</x>
+      <y>920</y>
+      <w>140</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
@@ -1879,10 +1879,10 @@ drawText("VkCommandBufferBeginInfo",width/1.9,height/1.3,center)</panel_attribut
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>270</x>
-      <y>528</y>
-      <w>84</w>
-      <h>24</h>
+      <x>380</x>
+      <y>880</y>
+      <w>140</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
@@ -1891,10 +1891,10 @@ drawText("VkCommandBufferBeginInfo",width/1.9,height/1.3,center)</panel_attribut
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>630</x>
-      <y>186</y>
-      <w>126</w>
-      <h>90</h>
+      <x>980</x>
+      <y>310</y>
+      <w>210</w>
+      <h>150</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 vkEndCommandBuffer</panel_attributes>
@@ -1903,10 +1903,10 @@ vkEndCommandBuffer</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>576</x>
-      <y>186</y>
-      <w>60</w>
-      <h>18</h>
+      <x>890</x>
+      <y>310</y>
+      <w>100</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("V",11,15,center)
@@ -1918,10 +1918,10 @@ drawText("No return",55,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>750</x>
-      <y>66</y>
-      <w>18</w>
-      <h>210</h>
+      <x>1180</x>
+      <y>110</y>
+      <w>30</w>
+      <h>350</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 </panel_attributes>
@@ -1930,10 +1930,10 @@ drawText("No return",55,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>750</x>
-      <y>90</y>
-      <w>108</w>
-      <h>24</h>
+      <x>1180</x>
+      <y>150</y>
+      <w>180</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 vkResetCommandBuffer</panel_attributes>
@@ -1942,10 +1942,10 @@ vkResetCommandBuffer</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>732</x>
-      <y>54</y>
-      <w>60</w>
-      <h>18</h>
+      <x>1150</x>
+      <y>90</y>
+      <w>100</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("V",11,15,center)
@@ -1957,10 +1957,10 @@ drawText("No return",55,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1128</x>
-      <y>72</y>
-      <w>18</w>
-      <h>456</h>
+      <x>1810</x>
+      <y>120</y>
+      <w>30</w>
+      <h>760</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 </panel_attributes>
@@ -1969,10 +1969,10 @@ drawText("No return",55,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1128</x>
-      <y>78</y>
-      <w>102</w>
-      <h>24</h>
+      <x>1810</x>
+      <y>130</y>
+      <w>170</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 vkResetCommandPool</panel_attributes>
@@ -1981,10 +1981,10 @@ vkResetCommandPool</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>966</x>
-      <y>102</y>
-      <w>180</w>
-      <h>84</h>
+      <x>1540</x>
+      <y>170</y>
+      <w>300</w>
+      <h>140</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
@@ -1993,10 +1993,10 @@ vkResetCommandPool</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1104</x>
-      <y>60</y>
-      <w>60</w>
-      <h>18</h>
+      <x>1770</x>
+      <y>100</y>
+      <w>100</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("V",11,15,center)
@@ -2008,10 +2008,10 @@ drawText("No return",55,height/1.3,center)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>252</x>
-      <y>90</y>
-      <w>174</w>
-      <h>30</h>
+      <x>350</x>
+      <y>150</y>
+      <w>290</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>*Vulkan Interaction*
 by Clément Hamon
@@ -2021,10 +2021,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>156</x>
-      <y>204</y>
-      <w>222</w>
-      <h>18</h>
+      <x>190</x>
+      <y>340</y>
+      <w>370</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>/Based on Vulkan programming guide by Graham Sellers/
 
@@ -2034,10 +2034,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1506</x>
-      <y>24</y>
-      <w>60</w>
-      <h>18</h>
+      <x>2440</x>
+      <y>40</y>
+      <w>100</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("V",11,15,center)
@@ -2049,10 +2049,10 @@ drawText("No return",55,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1404</x>
-      <y>24</y>
-      <w>114</w>
-      <h>108</h>
+      <x>2270</x>
+      <y>40</y>
+      <w>190</w>
+      <h>180</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 vkQueueSubmit</panel_attributes>
@@ -2061,10 +2061,10 @@ vkQueueSubmit</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1284</x>
-      <y>24</y>
-      <w>78</w>
-      <h>18</h>
+      <x>2070</x>
+      <y>40</y>
+      <w>130</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -2076,10 +2076,10 @@ drawText("VkSubmitInfo",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>762</x>
-      <y>30</y>
-      <w>534</w>
-      <h>246</h>
+      <x>1200</x>
+      <y>50</y>
+      <w>890</w>
+      <h>410</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;390.0;10.0;210.0;170.0;210.0;170.0;10.0;870.0;10.0</additional_attributes>
@@ -2087,10 +2087,10 @@ drawText("VkSubmitInfo",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1356</x>
-      <y>24</y>
-      <w>66</w>
-      <h>24</h>
+      <x>2190</x>
+      <y>40</y>
+      <w>110</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
@@ -2099,10 +2099,10 @@ drawText("VkSubmitInfo",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1440</x>
-      <y>120</y>
-      <w>114</w>
-      <h>24</h>
+      <x>2330</x>
+      <y>200</y>
+      <w>190</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 vkQueueWaitIdle</panel_attributes>
@@ -2111,10 +2111,10 @@ vkQueueWaitIdle</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1542</x>
-      <y>120</y>
-      <w>60</w>
-      <h>18</h>
+      <x>2500</x>
+      <y>200</y>
+      <w>100</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("V",11,15,center)
@@ -2126,10 +2126,10 @@ drawText("No return",55,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>984</x>
-      <y>552</y>
-      <w>144</w>
-      <h>84</h>
+      <x>1570</x>
+      <y>920</y>
+      <w>240</w>
+      <h>140</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 vkUnmapMemory</panel_attributes>
@@ -2138,10 +2138,10 @@ vkUnmapMemory</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>942</x>
-      <y>594</y>
-      <w>60</w>
-      <h>18</h>
+      <x>1500</x>
+      <y>990</y>
+      <w>100</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>
 customelement=
@@ -2154,10 +2154,10 @@ drawText("No return",55,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>960</x>
-      <y>606</y>
-      <w>18</w>
-      <h>36</h>
+      <x>1530</x>
+      <y>1010</y>
+      <w>30</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
@@ -2166,10 +2166,10 @@ drawText("No return",55,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1032</x>
-      <y>552</y>
-      <w>108</w>
-      <h>180</h>
+      <x>1650</x>
+      <y>920</y>
+      <w>180</w>
+      <h>300</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 </panel_attributes>
@@ -2178,10 +2178,10 @@ drawText("No return",55,height/1.3,center)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>990</x>
-      <y>678</y>
-      <w>60</w>
-      <h>18</h>
+      <x>1580</x>
+      <y>1130</y>
+      <w>100</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("V",11,15,center)
@@ -2193,10 +2193,10 @@ drawText("No return",55,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>978</x>
-      <y>654</y>
-      <w>60</w>
-      <h>24</h>
+      <x>1560</x>
+      <y>1090</y>
+      <w>100</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
@@ -2205,10 +2205,10 @@ drawText("No return",55,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1032</x>
-      <y>696</y>
-      <w>72</w>
-      <h>24</h>
+      <x>1650</x>
+      <y>1160</y>
+      <w>120</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 vkFreeMemory</panel_attributes>
@@ -2217,10 +2217,10 @@ vkFreeMemory</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>984</x>
-      <y>858</y>
-      <w>84</w>
-      <h>18</h>
+      <x>1570</x>
+      <y>1430</y>
+      <w>140</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("E",11,15,center)
@@ -2232,10 +2232,10 @@ drawText("VkFormat",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1032</x>
-      <y>870</y>
-      <w>18</w>
-      <h>42</h>
+      <x>1650</x>
+      <y>1450</y>
+      <w>30</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
@@ -2243,10 +2243,10 @@ drawText("VkFormat",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1314</x>
-      <y>864</y>
-      <w>18</w>
-      <h>84</h>
+      <x>2120</x>
+      <y>1440</y>
+      <w>30</w>
+      <h>140</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 
@@ -2256,10 +2256,10 @@ drawText("VkFormat",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1314</x>
-      <y>876</y>
-      <w>138</w>
-      <h>24</h>
+      <x>2120</x>
+      <y>1460</y>
+      <w>230</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 vkGetImageSubresourceLayout</panel_attributes>
@@ -2268,10 +2268,10 @@ vkGetImageSubresourceLayout</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1590</x>
-      <y>822</y>
-      <w>84</w>
-      <h>18</h>
+      <x>2580</x>
+      <y>1370</y>
+      <w>140</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("E",11,15,center)
@@ -2283,10 +2283,10 @@ drawText("VkFormat",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>876</x>
-      <y>894</y>
-      <w>114</w>
-      <h>18</h>
+      <x>1390</x>
+      <y>1490</y>
+      <w>190</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -2298,10 +2298,10 @@ drawText("VkSparseMemoryBind",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>924</x>
-      <y>846</y>
-      <w>18</w>
-      <h>60</h>
+      <x>1470</x>
+      <y>1410</y>
+      <w>30</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
@@ -2309,10 +2309,10 @@ drawText("VkSparseMemoryBind",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>858</x>
-      <y>564</y>
-      <w>288</w>
-      <h>198</h>
+      <x>1360</x>
+      <y>940</y>
+      <w>470</w>
+      <h>330</h>
     </coordinates>
     <panel_attributes>
 transparency=90
@@ -2325,10 +2325,10 @@ fg=white
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1266</x>
+      <x>2040</x>
       <y>0</y>
-      <w>498</w>
-      <h>330</h>
+      <w>830</w>
+      <h>550</h>
     </coordinates>
     <panel_attributes>
 transparency=90
@@ -2341,10 +2341,10 @@ fg=white
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1086</x>
-      <y>828</y>
-      <w>72</w>
-      <h>24</h>
+      <x>1730</x>
+      <y>1390</y>
+      <w>120</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 vkCreateBuffer</panel_attributes>
@@ -2353,10 +2353,10 @@ vkCreateBuffer</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1230</x>
-      <y>594</y>
-      <w>534</w>
-      <h>402</h>
+      <x>1980</x>
+      <y>990</y>
+      <w>890</w>
+      <h>670</h>
     </coordinates>
     <panel_attributes>transparency=90
 bg=green
@@ -2368,10 +2368,10 @@ fg=white
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>858</x>
-      <y>774</y>
-      <w>330</w>
-      <h>222</h>
+      <x>1360</x>
+      <y>1290</y>
+      <w>500</w>
+      <h>370</h>
     </coordinates>
     <panel_attributes>transparency=90
 bg=blue
@@ -2383,10 +2383,10 @@ fg=white
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>564</x>
+      <x>870</x>
       <y>0</y>
-      <w>666</w>
-      <h>330</h>
+      <w>1110</w>
+      <h>550</h>
     </coordinates>
     <panel_attributes>
 transparency=90
@@ -2399,10 +2399,10 @@ fg=white
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>624</x>
-      <y>348</y>
-      <w>288</w>
-      <h>90</h>
+      <x>970</x>
+      <y>580</y>
+      <w>480</w>
+      <h>150</h>
     </coordinates>
     <panel_attributes>
 transparency=90
@@ -2415,10 +2415,10 @@ fg=white
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1470</x>
-      <y>456</y>
-      <w>96</w>
-      <h>18</h>
+      <x>2380</x>
+      <y>760</y>
+      <w>160</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -2430,10 +2430,10 @@ drawText("VkSwapchainKHR",width/2,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1248</x>
-      <y>462</y>
-      <w>234</w>
-      <h>72</h>
+      <x>2010</x>
+      <y>770</y>
+      <w>390</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 </panel_attributes>
@@ -2442,10 +2442,10 @@ drawText("VkSwapchainKHR",width/2,height/1.3,center)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1410</x>
-      <y>426</y>
-      <w>156</w>
-      <h>18</h>
+      <x>2280</x>
+      <y>710</y>
+      <w>260</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -2457,10 +2457,10 @@ drawText("VkSwapchainCreateInfoKHR",width/2,height/1.3,center)</panel_attributes
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1452</x>
-      <y>438</y>
-      <w>18</w>
-      <h>42</h>
+      <x>2350</x>
+      <y>730</y>
+      <w>30</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
@@ -2469,10 +2469,10 @@ drawText("VkSwapchainCreateInfoKHR",width/2,height/1.3,center)</panel_attributes
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1374</x>
-      <y>432</y>
-      <w>48</w>
-      <h>18</h>
+      <x>2220</x>
+      <y>720</y>
+      <w>80</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;60.0;10.0</additional_attributes>
@@ -2480,10 +2480,10 @@ drawText("VkSwapchainCreateInfoKHR",width/2,height/1.3,center)</panel_attributes
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1278</x>
-      <y>426</y>
-      <w>102</w>
-      <h>18</h>
+      <x>2060</x>
+      <y>710</y>
+      <w>170</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -2495,10 +2495,10 @@ drawText("VkSurfaceKHR",width/2,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>204</x>
-      <y>384</y>
-      <w>348</w>
-      <h>84</h>
+      <x>270</x>
+      <y>640</y>
+      <w>580</w>
+      <h>140</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 </panel_attributes>
@@ -2507,10 +2507,10 @@ drawText("VkSurfaceKHR",width/2,height/1.3,center)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>150</x>
-      <y>378</y>
-      <w>60</w>
-      <h>18</h>
+      <x>180</x>
+      <y>630</y>
+      <w>100</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("V",11,15,center)
@@ -2522,10 +2522,10 @@ drawText("Boolean",55,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>222</x>
-      <y>378</y>
-      <w>276</w>
-      <h>24</h>
+      <x>300</x>
+      <y>630</y>
+      <w>460</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 vkGetPhysicalDeviceWin32PresentationSupportKHR (only for Windows)</panel_attributes>
@@ -2534,10 +2534,10 @@ vkGetPhysicalDeviceWin32PresentationSupportKHR (only for Windows)</panel_attribu
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1248</x>
-      <y>396</y>
-      <w>72</w>
-      <h>24</h>
+      <x>2010</x>
+      <y>660</y>
+      <w>120</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
@@ -2546,10 +2546,10 @@ vkGetPhysicalDeviceWin32PresentationSupportKHR (only for Windows)</panel_attribu
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>906</x>
-      <y>396</y>
-      <w>192</w>
-      <h>24</h>
+      <x>1440</x>
+      <y>660</y>
+      <w>320</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 vkCreateWin32SurfaceKHR (only for Windows)</panel_attributes>
@@ -2558,10 +2558,10 @@ vkCreateWin32SurfaceKHR (only for Windows)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1578</x>
-      <y>348</y>
-      <w>150</w>
-      <h>18</h>
+      <x>2560</x>
+      <y>580</y>
+      <w>250</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -2573,10 +2573,10 @@ drawText("VkWin32SurfaceCreateInfoKHR",width/2,height/1.3,center)</panel_attribu
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1302</x>
-      <y>360</y>
-      <w>414</w>
-      <h>60</h>
+      <x>2100</x>
+      <y>600</y>
+      <w>690</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
@@ -2585,10 +2585,10 @@ drawText("VkWin32SurfaceCreateInfoKHR",width/2,height/1.3,center)</panel_attribu
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>204</x>
-      <y>360</y>
-      <w>354</w>
-      <h>108</h>
+      <x>270</x>
+      <y>600</y>
+      <w>590</w>
+      <h>180</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 </panel_attributes>
@@ -2597,10 +2597,10 @@ drawText("VkWin32SurfaceCreateInfoKHR",width/2,height/1.3,center)</panel_attribu
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>222</x>
-      <y>354</y>
-      <w>288</w>
-      <h>24</h>
+      <x>300</x>
+      <y>590</y>
+      <w>480</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 vkGetPhysicalDeviceXlibPresentationSupportKHR (only for Linux X server)</panel_attributes>
@@ -2609,10 +2609,10 @@ vkGetPhysicalDeviceXlibPresentationSupportKHR (only for Linux X server)</panel_a
   <element>
     <id>Text</id>
     <coordinates>
-      <x>150</x>
-      <y>354</y>
-      <w>60</w>
-      <h>18</h>
+      <x>180</x>
+      <y>590</y>
+      <w>100</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("V",11,15,center)
@@ -2624,10 +2624,10 @@ drawText("Boolean",55,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>204</x>
-      <y>336</y>
-      <w>360</w>
-      <h>132</h>
+      <x>270</x>
+      <y>560</y>
+      <w>600</w>
+      <h>220</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 </panel_attributes>
@@ -2636,10 +2636,10 @@ drawText("Boolean",55,height/1.3,center)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>150</x>
-      <y>330</y>
-      <w>60</w>
-      <h>18</h>
+      <x>180</x>
+      <y>550</y>
+      <w>100</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("V",11,15,center)
@@ -2651,10 +2651,10 @@ drawText("Boolean",55,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>222</x>
-      <y>330</y>
-      <w>288</w>
-      <h>24</h>
+      <x>300</x>
+      <y>550</y>
+      <w>480</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 vkGetPhysicalDeviceXcbPresentationSupportKHR (only for Linux X server)</panel_attributes>
@@ -2663,10 +2663,10 @@ vkGetPhysicalDeviceXcbPresentationSupportKHR (only for Linux X server)</panel_at
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1248</x>
-      <y>384</y>
-      <w>72</w>
-      <h>54</h>
+      <x>2010</x>
+      <y>640</y>
+      <w>120</w>
+      <h>90</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 </panel_attributes>
@@ -2675,10 +2675,10 @@ vkGetPhysicalDeviceXcbPresentationSupportKHR (only for Linux X server)</panel_at
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>912</x>
-      <y>378</y>
-      <w>192</w>
-      <h>24</h>
+      <x>1450</x>
+      <y>630</y>
+      <w>320</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 vkCreateXlibSurfaceKHR (only for Linux X server)</panel_attributes>
@@ -2687,10 +2687,10 @@ vkCreateXlibSurfaceKHR (only for Linux X server)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>900</x>
-      <y>360</y>
-      <w>216</w>
-      <h>24</h>
+      <x>1430</x>
+      <y>600</y>
+      <w>360</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
@@ -2699,10 +2699,10 @@ vkCreateXlibSurfaceKHR (only for Linux X server)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>912</x>
-      <y>360</y>
-      <w>192</w>
-      <h>24</h>
+      <x>1450</x>
+      <y>600</y>
+      <w>320</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 vkCreateXcbSurfaceKHR (only for Linux X server)</panel_attributes>
@@ -2711,10 +2711,10 @@ vkCreateXcbSurfaceKHR (only for Linux X server)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1434</x>
-      <y>348</y>
-      <w>138</w>
-      <h>18</h>
+      <x>2320</x>
+      <y>580</y>
+      <w>230</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -2726,10 +2726,10 @@ drawText("VkXlibSurfaceCreateInfoKHR",width/2,height/1.3,center)</panel_attribut
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1290</x>
-      <y>348</y>
-      <w>138</w>
-      <h>18</h>
+      <x>2080</x>
+      <y>580</y>
+      <w>230</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -2741,10 +2741,10 @@ drawText("VkXcbSurfaceCreateInfoKHR",width/2,height/1.3,center)</panel_attribute
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1302</x>
-      <y>360</y>
-      <w>258</w>
-      <h>42</h>
+      <x>2100</x>
+      <y>600</y>
+      <w>430</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
@@ -2753,10 +2753,10 @@ drawText("VkXcbSurfaceCreateInfoKHR",width/2,height/1.3,center)</panel_attribute
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1302</x>
-      <y>360</y>
-      <w>120</w>
-      <h>24</h>
+      <x>2100</x>
+      <y>600</y>
+      <w>200</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
@@ -2765,10 +2765,10 @@ drawText("VkXcbSurfaceCreateInfoKHR",width/2,height/1.3,center)</panel_attribute
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>600</x>
-      <y>456</y>
-      <w>288</w>
-      <h>24</h>
+      <x>930</x>
+      <y>760</y>
+      <w>480</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 vkGetPhysicalDeviceSurfaceCapabilitiesKHR</panel_attributes>
@@ -2777,10 +2777,10 @@ vkGetPhysicalDeviceSurfaceCapabilitiesKHR</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>876</x>
-      <y>456</y>
-      <w>132</w>
-      <h>18</h>
+      <x>1390</x>
+      <y>760</y>
+      <w>220</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -2792,10 +2792,10 @@ drawText("VkSurfaceCapabilitiesKHR",width/2,height/1.3,center)</panel_attributes
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>846</x>
-      <y>432</y>
-      <w>258</w>
-      <h>48</h>
+      <x>1340</x>
+      <y>720</y>
+      <w>430</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
@@ -2804,10 +2804,10 @@ drawText("VkSurfaceCapabilitiesKHR",width/2,height/1.3,center)</panel_attributes
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1560</x>
-      <y>432</y>
-      <w>60</w>
-      <h>18</h>
+      <x>2530</x>
+      <y>720</y>
+      <w>100</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>80.0;10.0;10.0;10.0</additional_attributes>
@@ -2815,10 +2815,10 @@ drawText("VkSurfaceCapabilitiesKHR",width/2,height/1.3,center)</panel_attributes
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1608</x>
-      <y>426</y>
-      <w>102</w>
-      <h>18</h>
+      <x>2610</x>
+      <y>710</y>
+      <w>170</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("E",11,15,center)
@@ -2830,10 +2830,10 @@ drawText("VkColorSpaceKHR",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1608</x>
-      <y>474</y>
-      <w>72</w>
-      <h>18</h>
+      <x>2610</x>
+      <y>790</y>
+      <w>120</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -2845,10 +2845,10 @@ drawText("VkExtent2D",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1572</x>
-      <y>456</y>
-      <w>48</w>
-      <h>42</h>
+      <x>2550</x>
+      <y>760</y>
+      <w>80</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>60.0;50.0;10.0;50.0;10.0;10.0</additional_attributes>
@@ -2856,10 +2856,10 @@ drawText("VkExtent2D",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1242</x>
-      <y>402</y>
-      <w>12</w>
-      <h>12</h>
+      <x>2000</x>
+      <y>670</y>
+      <w>20</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>customelement=
 drawArc(0,0,width,height,-180,-180,true) fg=black bg=white lt=.
@@ -2869,10 +2869,10 @@ drawArc(0,0,width,height,-180,-180,true) fg=black bg=white lt=.
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1242</x>
-      <y>384</y>
-      <w>12</w>
-      <h>12</h>
+      <x>2000</x>
+      <y>640</y>
+      <w>20</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>customelement=
 drawArc(0,0,width,height,-180,-180,true) fg=black bg=white lt=.
@@ -2882,10 +2882,10 @@ drawArc(0,0,width,height,-180,-180,true) fg=black bg=white lt=.
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>900</x>
-      <y>378</y>
-      <w>216</w>
-      <h>24</h>
+      <x>1430</x>
+      <y>630</y>
+      <w>360</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
@@ -2894,10 +2894,10 @@ drawArc(0,0,width,height,-180,-180,true) fg=black bg=white lt=.
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>900</x>
-      <y>396</y>
-      <w>216</w>
-      <h>24</h>
+      <x>1430</x>
+      <y>660</y>
+      <w>360</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
@@ -2906,10 +2906,10 @@ drawArc(0,0,width,height,-180,-180,true) fg=black bg=white lt=.
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1242</x>
-      <y>432</y>
-      <w>12</w>
-      <h>12</h>
+      <x>2000</x>
+      <y>720</y>
+      <w>20</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>customelement=
 drawArc(0,0,width,height,-180,-180,true) fg=black bg=white lt=.</panel_attributes>
@@ -2918,10 +2918,10 @@ drawArc(0,0,width,height,-180,-180,true) fg=black bg=white lt=.</panel_attribute
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1248</x>
-      <y>426</y>
-      <w>42</w>
-      <h>24</h>
+      <x>2010</x>
+      <y>710</y>
+      <w>70</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
@@ -2930,10 +2930,10 @@ drawArc(0,0,width,height,-180,-180,true) fg=black bg=white lt=.</panel_attribute
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1242</x>
-      <y>366</y>
-      <w>12</w>
-      <h>12</h>
+      <x>2000</x>
+      <y>610</y>
+      <w>20</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>customelement=
 drawArc(0,0,width,height,-180,-180,true) fg=black bg=white lt=.
@@ -2943,10 +2943,10 @@ drawArc(0,0,width,height,-180,-180,true) fg=black bg=white lt=.
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1248</x>
-      <y>360</y>
-      <w>72</w>
-      <h>42</h>
+      <x>2010</x>
+      <y>600</y>
+      <w>120</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
@@ -2955,10 +2955,10 @@ drawArc(0,0,width,height,-180,-180,true) fg=black bg=white lt=.
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1104</x>
-      <y>432</y>
-      <w>36</w>
-      <h>12</h>
+      <x>1770</x>
+      <y>720</y>
+      <w>60</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>customelement=
 drawArc(0,0,width,height,-180,-180,true) fg=black bg=white lt=.
@@ -2968,10 +2968,10 @@ drawArc(0,0,width,height,-180,-180,true) fg=black bg=white lt=.
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1134</x>
-      <y>426</y>
-      <w>120</w>
-      <h>24</h>
+      <x>1820</x>
+      <y>710</y>
+      <w>200</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
@@ -2980,10 +2980,10 @@ drawArc(0,0,width,height,-180,-180,true) fg=black bg=white lt=.
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1104</x>
-      <y>402</y>
-      <w>36</w>
-      <h>12</h>
+      <x>1770</x>
+      <y>670</y>
+      <w>60</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>customelement=
 drawArc(0,0,width,height,-180,-180,true) fg=black bg=white lt=.
@@ -2993,10 +2993,10 @@ drawArc(0,0,width,height,-180,-180,true) fg=black bg=white lt=.
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1104</x>
-      <y>384</y>
-      <w>36</w>
-      <h>12</h>
+      <x>1770</x>
+      <y>640</y>
+      <w>60</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>customelement=
 drawArc(0,0,width,height,-180,-180,true) fg=black bg=white lt=.
@@ -3006,10 +3006,10 @@ drawArc(0,0,width,height,-180,-180,true) fg=black bg=white lt=.
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1104</x>
-      <y>366</y>
-      <w>36</w>
-      <h>12</h>
+      <x>1770</x>
+      <y>610</y>
+      <w>60</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>customelement=
 drawArc(0,0,width,height,-180,-180,true) fg=black bg=white lt=.
@@ -3019,10 +3019,10 @@ drawArc(0,0,width,height,-180,-180,true) fg=black bg=white lt=.
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1134</x>
-      <y>396</y>
-      <w>120</w>
-      <h>24</h>
+      <x>1820</x>
+      <y>660</y>
+      <w>200</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
@@ -3031,10 +3031,10 @@ drawArc(0,0,width,height,-180,-180,true) fg=black bg=white lt=.
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1134</x>
-      <y>378</y>
-      <w>120</w>
-      <h>24</h>
+      <x>1820</x>
+      <y>630</y>
+      <w>200</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
@@ -3043,10 +3043,10 @@ drawArc(0,0,width,height,-180,-180,true) fg=black bg=white lt=.
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1134</x>
-      <y>360</y>
-      <w>120</w>
-      <h>24</h>
+      <x>1820</x>
+      <y>600</y>
+      <w>200</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
@@ -3055,10 +3055,10 @@ drawArc(0,0,width,height,-180,-180,true) fg=black bg=white lt=.
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1608</x>
-      <y>450</y>
-      <w>144</w>
-      <h>18</h>
+      <x>2610</x>
+      <y>750</y>
+      <w>240</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("E",11,15,center)
@@ -3070,10 +3070,10 @@ drawText("VkCompositeAlphaFlagBitsKHR",width/1.9,height/1.3,center)</panel_attri
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1572</x>
-      <y>432</y>
-      <w>48</w>
-      <h>42</h>
+      <x>2550</x>
+      <y>720</y>
+      <w>80</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>60.0;50.0;10.0;50.0;10.0;10.0</additional_attributes>
@@ -3081,10 +3081,10 @@ drawText("VkCompositeAlphaFlagBitsKHR",width/1.9,height/1.3,center)</panel_attri
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1026</x>
-      <y>456</y>
-      <w>72</w>
-      <h>18</h>
+      <x>1640</x>
+      <y>760</y>
+      <w>120</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -3096,10 +3096,10 @@ drawText("VkExtent2D",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1002</x>
-      <y>462</y>
-      <w>36</w>
-      <h>18</h>
+      <x>1600</x>
+      <y>770</y>
+      <w>60</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>40.0;10.0;10.0;10.0</additional_attributes>
@@ -3107,10 +3107,10 @@ drawText("VkExtent2D",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1266</x>
-      <y>342</y>
-      <w>498</w>
-      <h>240</h>
+      <x>2040</x>
+      <y>570</y>
+      <w>830</w>
+      <h>400</h>
     </coordinates>
     <panel_attributes>transparency=90
 bg=#A020F0
@@ -3122,10 +3122,10 @@ fg=white
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1572</x>
-      <y>378</y>
-      <w>108</w>
-      <h>24</h>
+      <x>2550</x>
+      <y>630</y>
+      <w>180</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>_/*Swap Chains*/_
 fontsize=25
@@ -3135,10 +3135,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1272</x>
-      <y>618</y>
-      <w>66</w>
-      <h>24</h>
+      <x>2050</x>
+      <y>1030</y>
+      <w>110</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>_/*Images*/_
 fontsize=25
@@ -3148,10 +3148,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>876</x>
-      <y>786</y>
-      <w>108</w>
-      <h>24</h>
+      <x>1390</x>
+      <y>1310</y>
+      <w>180</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>_/*Buffers*/_
 fontsize=25
@@ -3161,10 +3161,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>864</x>
-      <y>564</y>
-      <w>156</w>
-      <h>24</h>
+      <x>1370</x>
+      <y>940</y>
+      <w>260</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>_/*Memory Mapping*/_
 fontsize=25
@@ -3174,10 +3174,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>576</x>
-      <y>12</y>
-      <w>108</w>
-      <h>24</h>
+      <x>890</x>
+      <y>20</y>
+      <w>180</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>_/*Commands*/_
 fontsize=25
@@ -3187,10 +3187,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1644</x>
-      <y>12</y>
-      <w>78</w>
-      <h>24</h>
+      <x>2670</x>
+      <y>20</y>
+      <w>130</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>_/*Queues*/_
 fontsize=25
@@ -3200,10 +3200,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>750</x>
-      <y>354</y>
-      <w>72</w>
-      <h>30</h>
+      <x>1180</x>
+      <y>590</y>
+      <w>120</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>_/*Instance*/_
 fontsize=25
@@ -3213,10 +3213,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1248</x>
-      <y>546</y>
-      <w>312</w>
-      <h>318</h>
+      <x>2010</x>
+      <y>910</y>
+      <w>520</w>
+      <h>530</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 </panel_attributes>
@@ -3225,10 +3225,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1482</x>
-      <y>468</y>
-      <w>18</w>
-      <h>96</h>
+      <x>2400</x>
+      <y>780</y>
+      <w>30</w>
+      <h>160</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
@@ -3237,10 +3237,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1278</x>
-      <y>540</y>
-      <w>120</w>
-      <h>24</h>
+      <x>2060</x>
+      <y>900</y>
+      <w>200</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 vkGetSwapchainImagesKHR</panel_attributes>
@@ -3249,10 +3249,10 @@ vkGetSwapchainImagesKHR</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1542</x>
-      <y>540</y>
-      <w>156</w>
-      <h>24</h>
+      <x>2500</x>
+      <y>900</y>
+      <w>260</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 </panel_attributes>
@@ -3261,10 +3261,10 @@ vkGetSwapchainImagesKHR</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1686</x>
-      <y>546</y>
-      <w>54</w>
-      <h>18</h>
+      <x>2740</x>
+      <y>910</y>
+      <w>90</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("V",11,15,center)
@@ -3276,10 +3276,10 @@ drawText("UInt",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1566</x>
-      <y>540</y>
-      <w>84</w>
-      <h>24</h>
+      <x>2540</x>
+      <y>900</y>
+      <w>140</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 VkImage* = empty</panel_attributes>
@@ -3288,10 +3288,10 @@ VkImage* = empty</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>324</x>
-      <y>648</y>
-      <w>174</w>
-      <h>24</h>
+      <x>470</x>
+      <y>1080</y>
+      <w>290</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 vkGetPhysicalDeviceImageFormatProperties
@@ -3301,10 +3301,10 @@ layer=0</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>324</x>
-      <y>672</y>
-      <w>150</w>
-      <h>24</h>
+      <x>470</x>
+      <y>1120</y>
+      <w>250</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 vkGetPhysicalDeviceFormatProperties
@@ -3314,10 +3314,10 @@ layer=0</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>600</x>
-      <y>474</y>
-      <w>516</w>
-      <h>24</h>
+      <x>930</x>
+      <y>790</y>
+      <w>860</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 vkGetPhysicalDeviceSurfaceFormatsKHR</panel_attributes>
@@ -3326,10 +3326,10 @@ vkGetPhysicalDeviceSurfaceFormatsKHR</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1332</x>
-      <y>474</y>
-      <w>120</w>
-      <h>18</h>
+      <x>2150</x>
+      <y>790</y>
+      <w>200</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -3341,10 +3341,10 @@ drawText("VkSurfaceFormatKHR",width/2,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1284</x>
-      <y>510</y>
-      <w>102</w>
-      <h>24</h>
+      <x>2070</x>
+      <y>850</y>
+      <w>170</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 vkCreateSwapchainKHR</panel_attributes>
@@ -3353,10 +3353,10 @@ vkCreateSwapchainKHR</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1104</x>
-      <y>480</y>
-      <w>36</w>
-      <h>12</h>
+      <x>1770</x>
+      <y>800</y>
+      <w>60</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>customelement=
 drawArc(0,0,width,height,-180,-180,true) fg=black bg=white lt=.
@@ -3366,10 +3366,10 @@ drawArc(0,0,width,height,-180,-180,true) fg=black bg=white lt=.
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1134</x>
-      <y>474</y>
-      <w>120</w>
-      <h>24</h>
+      <x>1820</x>
+      <y>790</y>
+      <w>200</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
@@ -3378,10 +3378,10 @@ drawArc(0,0,width,height,-180,-180,true) fg=black bg=white lt=.
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1242</x>
-      <y>480</y>
-      <w>12</w>
-      <h>12</h>
+      <x>2000</x>
+      <y>800</y>
+      <w>20</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>customelement=
 drawArc(0,0,width,height,-180,-180,true) fg=black bg=white lt=.</panel_attributes>
@@ -3390,10 +3390,10 @@ drawArc(0,0,width,height,-180,-180,true) fg=black bg=white lt=.</panel_attribute
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1248</x>
-      <y>474</y>
-      <w>96</w>
-      <h>24</h>
+      <x>2010</x>
+      <y>790</y>
+      <w>160</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 </panel_attributes>
@@ -3402,10 +3402,10 @@ drawArc(0,0,width,height,-180,-180,true) fg=black bg=white lt=.</panel_attribute
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1284</x>
-      <y>438</y>
-      <w>18</w>
-      <h>60</h>
+      <x>2070</x>
+      <y>730</y>
+      <w>30</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
@@ -3414,10 +3414,10 @@ drawArc(0,0,width,height,-180,-180,true) fg=black bg=white lt=.</panel_attribute
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1410</x>
-      <y>498</y>
-      <w>42</w>
-      <h>18</h>
+      <x>2280</x>
+      <y>830</y>
+      <w>70</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("V",11,15,center)
@@ -3429,10 +3429,10 @@ drawText("UInt",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1266</x>
-      <y>480</y>
-      <w>156</w>
-      <h>36</h>
+      <x>2040</x>
+      <y>800</y>
+      <w>260</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 
@@ -3442,10 +3442,10 @@ drawText("UInt",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1278</x>
-      <y>492</y>
-      <w>132</w>
-      <h>24</h>
+      <x>2060</x>
+      <y>820</y>
+      <w>220</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 VkSurfaceFormatKHR* = empty</panel_attributes>
@@ -3454,10 +3454,10 @@ VkSurfaceFormatKHR* = empty</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>294</x>
-      <y>426</y>
-      <w>162</w>
-      <h>24</h>
+      <x>420</x>
+      <y>710</y>
+      <w>270</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 vkGetPhysicalDeviceMemoryProperties</panel_attributes>
@@ -3466,10 +3466,10 @@ vkGetPhysicalDeviceMemoryProperties</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>42</x>
-      <y>288</y>
-      <w>474</w>
-      <h>498</h>
+      <x>0</x>
+      <y>480</y>
+      <w>790</w>
+      <h>830</h>
     </coordinates>
     <panel_attributes>
 transparency=90
@@ -3482,10 +3482,10 @@ fg=white
   <element>
     <id>Text</id>
     <coordinates>
-      <x>54</x>
-      <y>300</y>
-      <w>156</w>
-      <h>24</h>
+      <x>20</x>
+      <y>500</y>
+      <w>260</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>_/*Physical datas*/_
 fontsize=25
@@ -3495,10 +3495,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>420</x>
-      <y>204</y>
-      <w>30</w>
-      <h>18</h>
+      <x>630</x>
+      <y>340</y>
+      <w>50</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>/V0.6/
 
@@ -3508,10 +3508,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1248</x>
-      <y>522</y>
-      <w>246</w>
-      <h>24</h>
+      <x>2010</x>
+      <y>870</y>
+      <w>410</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
@@ -3520,10 +3520,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1542</x>
-      <y>522</y>
-      <w>102</w>
-      <h>24</h>
+      <x>2500</x>
+      <y>870</y>
+      <w>170</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 vkAcquireNextImageKHR</panel_attributes>
@@ -3532,10 +3532,10 @@ vkAcquireNextImageKHR</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1500</x>
-      <y>468</y>
-      <w>18</w>
-      <h>78</h>
+      <x>2430</x>
+      <y>780</y>
+      <w>30</w>
+      <h>130</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
@@ -3544,10 +3544,10 @@ vkAcquireNextImageKHR</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1482</x>
-      <y>528</y>
-      <w>12</w>
-      <h>12</h>
+      <x>2400</x>
+      <y>880</y>
+      <w>20</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>customelement=
 drawArc(0,0,width,height,-180,-180,true) fg=black bg=white lt=.</panel_attributes>
@@ -3556,22 +3556,22 @@ drawArc(0,0,width,height,-180,-180,true) fg=black bg=white lt=.</panel_attribute
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1488</x>
-      <y>522</y>
-      <w>192</w>
-      <h>24</h>
+      <x>2410</x>
+      <y>870</y>
+      <w>350</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 </panel_attributes>
-    <additional_attributes>300.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>330.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1668</x>
-      <y>522</y>
-      <w>60</w>
-      <h>18</h>
+      <x>2740</x>
+      <y>870</y>
+      <w>90</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("V",11,15,center)
@@ -3583,10 +3583,10 @@ drawText("UInt",55,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1206</x>
-      <y>552</y>
-      <w>18</w>
-      <h>504</h>
+      <x>1940</x>
+      <y>920</y>
+      <w>30</w>
+      <h>840</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
@@ -3595,10 +3595,10 @@ drawText("UInt",55,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1212</x>
-      <y>552</y>
-      <w>18</w>
-      <h>480</h>
+      <x>1950</x>
+      <y>920</y>
+      <w>30</w>
+      <h>800</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
@@ -3607,10 +3607,10 @@ drawText("UInt",55,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1212</x>
-      <y>1008</y>
-      <w>180</w>
-      <h>66</h>
+      <x>1950</x>
+      <y>1680</y>
+      <w>300</w>
+      <h>110</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 vkCreateShaderModule</panel_attributes>
@@ -3619,10 +3619,10 @@ vkCreateShaderModule</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1404</x>
-      <y>1026</y>
-      <w>132</w>
-      <h>18</h>
+      <x>2270</x>
+      <y>1710</y>
+      <w>220</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -3634,10 +3634,10 @@ drawText("VkShaderModuleCreateInfo",width/1.9,height/1.3,center)</panel_attribut
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1338</x>
-      <y>1062</y>
-      <w>90</w>
-      <h>18</h>
+      <x>2160</x>
+      <y>1770</y>
+      <w>150</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -3649,10 +3649,10 @@ drawText("VkShaderModule",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1374</x>
-      <y>1020</y>
-      <w>42</w>
-      <h>24</h>
+      <x>2220</x>
+      <y>1700</y>
+      <w>70</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
@@ -3661,10 +3661,10 @@ drawText("VkShaderModule",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1206</x>
-      <y>1032</y>
-      <w>132</w>
-      <h>24</h>
+      <x>1940</x>
+      <y>1720</y>
+      <w>220</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 vkDestroyShaderModule</panel_attributes>
@@ -3673,10 +3673,10 @@ vkDestroyShaderModule</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1326</x>
-      <y>1032</y>
-      <w>48</w>
-      <h>18</h>
+      <x>2140</x>
+      <y>1720</y>
+      <w>80</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("V",11,15,center)
@@ -3688,10 +3688,10 @@ drawText("Void",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1260</x>
-      <y>1038</y>
-      <w>90</w>
-      <h>48</h>
+      <x>2030</x>
+      <y>1730</y>
+      <w>150</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
@@ -3700,10 +3700,10 @@ drawText("Void",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1200</x>
-      <y>552</y>
-      <w>18</w>
-      <h>552</h>
+      <x>1930</x>
+      <y>920</y>
+      <w>30</w>
+      <h>920</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
@@ -3712,22 +3712,22 @@ drawText("Void",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1200</x>
-      <y>1080</y>
-      <w>150</w>
-      <h>54</h>
+      <x>1930</x>
+      <y>1800</y>
+      <w>250</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 vkCreateComputePipelines</panel_attributes>
-    <additional_attributes>10.0;20.0;230.0;20.0;230.0;70.0</additional_attributes>
+    <additional_attributes>10.0;20.0;230.0;20.0;230.0;50.0</additional_attributes>
   </element>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1380</x>
-      <y>1086</y>
-      <w>156</w>
-      <h>18</h>
+      <x>2230</x>
+      <y>1810</y>
+      <w>260</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -3739,10 +3739,10 @@ drawText("VkComputePipelineCreateInfo",width/1.9,height/1.3,center)</panel_attri
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1296</x>
-      <y>1122</y>
-      <w>90</w>
-      <h>18</h>
+      <x>2090</x>
+      <y>1850</y>
+      <w>150</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -3754,10 +3754,10 @@ drawText("VkPipeline",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1332</x>
-      <y>1080</y>
-      <w>60</w>
-      <h>24</h>
+      <x>2150</x>
+      <y>1800</y>
+      <w>100</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
@@ -3766,10 +3766,10 @@ drawText("VkPipeline",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1560</x>
-      <y>1086</y>
-      <w>162</w>
-      <h>18</h>
+      <x>2530</x>
+      <y>1810</y>
+      <w>270</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -3781,10 +3781,10 @@ drawText("VkComputePipelineShaderCreateInfo",width/1.9,height/1.3,center)</panel
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1194</x>
-      <y>552</y>
-      <w>18</w>
-      <h>618</h>
+      <x>1920</x>
+      <y>920</y>
+      <w>30</w>
+      <h>1030</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
@@ -3793,10 +3793,10 @@ drawText("VkComputePipelineShaderCreateInfo",width/1.9,height/1.3,center)</panel
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1194</x>
-      <y>1146</y>
-      <w>156</w>
-      <h>24</h>
+      <x>1920</x>
+      <y>1910</y>
+      <w>260</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 vkDestroyPipeline</panel_attributes>
@@ -3805,10 +3805,10 @@ vkDestroyPipeline</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1338</x>
-      <y>1146</y>
-      <w>48</w>
-      <h>18</h>
+      <x>2160</x>
+      <y>1910</y>
+      <w>80</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("V",11,15,center)
@@ -3820,10 +3820,10 @@ drawText("Void",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1194</x>
-      <y>1122</y>
-      <w>114</w>
-      <h>24</h>
+      <x>1920</x>
+      <y>1850</y>
+      <w>190</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
@@ -3832,10 +3832,10 @@ drawText("Void",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1560</x>
-      <y>1056</y>
-      <w>132</w>
-      <h>18</h>
+      <x>2530</x>
+      <y>1760</y>
+      <w>220</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -3847,10 +3847,10 @@ drawText("VkSPecialisationMapEntry",width/1.9,height/1.3,center)</panel_attribut
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1560</x>
-      <y>1026</y>
-      <w>132</w>
-      <h>18</h>
+      <x>2530</x>
+      <y>1710</y>
+      <w>220</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>customelement=
 drawText("S",11,15,center)
@@ -3862,10 +3862,10 @@ drawText("VkSpecializationInfo",width/1.9,height/1.3,center)</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1194</x>
-      <y>1002</y>
-      <w>570</w>
-      <h>180</h>
+      <x>1880</x>
+      <y>1670</y>
+      <w>990</w>
+      <h>480</h>
     </coordinates>
     <panel_attributes>transparency=90
 bg=yellow
@@ -3877,10 +3877,10 @@ fg=white
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1590</x>
-      <y>1134</y>
-      <w>138</w>
-      <h>24</h>
+      <x>2540</x>
+      <y>1870</y>
+      <w>230</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>_/*Shader &amp; Pipeline*/_
 fontsize=25
@@ -3890,10 +3890,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1530</x>
-      <y>1026</y>
-      <w>42</w>
-      <h>18</h>
+      <x>2480</x>
+      <y>1710</y>
+      <w>70</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>50.0;10.0;10.0;10.0</additional_attributes>
@@ -3901,10 +3901,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1620</x>
-      <y>1038</y>
-      <w>18</w>
-      <h>30</h>
+      <x>2630</x>
+      <y>1730</y>
+      <w>30</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;30.0;10.0;10.0</additional_attributes>
@@ -3912,12 +3912,153 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1530</x>
-      <y>1092</y>
-      <w>42</w>
-      <h>18</h>
+      <x>2480</x>
+      <y>1820</y>
+      <w>70</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;50.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1910</x>
+      <y>920</y>
+      <w>30</w>
+      <h>1070</h>
+    </coordinates>
+    <panel_attributes>lt=.
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;1050.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1910</x>
+      <y>1950</y>
+      <w>350</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+vkCreateGraphicsPipelines</panel_attributes>
+    <additional_attributes>10.0;20.0;330.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1900</x>
+      <y>920</y>
+      <w>30</w>
+      <h>1110</h>
+    </coordinates>
+    <panel_attributes>lt=.
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;1090.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1900</x>
+      <y>1990</y>
+      <w>300</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+vkCreatePipelineCache</panel_attributes>
+    <additional_attributes>10.0;20.0;280.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>2180</x>
+      <y>1990</y>
+      <w>150</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>customelement=
+drawText("S",11,15,center)
+drawRectangle(0,0,width,height)
+drawRectangle(3,3,15,15)
+drawText("VkPipelineCache",width/1.9,height/1.3,center)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>1950</x>
+      <y>2030</y>
+      <w>220</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>customelement=
+drawText("S",11,15,center)
+drawRectangle(0,0,width,height)
+drawRectangle(3,3,15,15)
+drawText("VkPipelineCacheCreateInfo",width/1.9,height/1.3,center)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2050</x>
+      <y>2000</y>
+      <w>30</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=.
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1890</x>
+      <y>920</y>
+      <w>30</w>
+      <h>1190</h>
+    </coordinates>
+    <panel_attributes>lt=.
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;1170.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1890</x>
+      <y>2070</y>
+      <w>390</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+vkGetPipelineCacheData</panel_attributes>
+    <additional_attributes>10.0;20.0;370.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2190</x>
+      <y>2010</y>
+      <w>30</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=.
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>2260</x>
+      <y>2070</y>
+      <w>70</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>customelement=
+drawText("P",11,15,center)
+drawRectangle(0,0,width,height)
+drawRectangle(3,3,15,15)
+drawText("void*",46,height/1.3,center)</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>
